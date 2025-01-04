@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 035}
+\date{October 18, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \coordinate (a) at (0,0);
+  \draw[draw=fg!10!bg, step=0.25] ($(a)+(-0.6,-0.4)$) grid ++(3.1,2.8);
+  \draw[draw=fg, thick] (a) -- ++(2,0) to[capacitor] ++(0,2) -- ++(-2,0) to[battery] ++(0,-2);
+  \draw[draw=re, ultra thick, -stealth] ($(a)+(-0.2,1.55)$) -- ++(0,0.65) -- ++(2.4,0) -- ++(0,-0.65);
+  \draw[draw=bl, ultra thick, stealth-] ($(a)+(-0.2,0.45)$) -- ++(0,-0.65) -- ++(2.4,0) -- ++(0,0.65);
+\end{circuitikz}
+\end{document}

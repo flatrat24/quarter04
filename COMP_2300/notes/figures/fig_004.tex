@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 001}
+\date{September 19, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  % \fill[fill=fg!25!bg] (a) -- ++(4,0) -- ++(0,3) -- ++(-4,0) -- cycle;
+  \draw[draw=fg, thick] (a) -- ++(4,0) -- ++(0,3) -- ++(-4,0) -- cycle;
+  \fill[fill=fg!25!bg, thick] (a) ++(1.5,1.5) circle (1);
+  \fill[fill=bg, thick] (a) ++(2.5,1.5) circle (1);
+  \draw[draw=fg, thick] (a) ++(1.5,1.5) circle (1);
+  \draw[draw=fg, thick] (a) ++(2.5,1.5) circle (1);
+
+\end{tikzpicture}
+\end{document}

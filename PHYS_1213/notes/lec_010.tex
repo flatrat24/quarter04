@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 010}
+\date{November 07, 2024}
+
+\begin{document}
+
+\newpage
+\section{Electromagnetism}
+\label{sec:electromagnetism}
+
+Another way to relate electricity to magnetism is that changing magnetic fields
+\textbf{create} EMF. In other ways, a time-varying magnetic field can make current flow.
+In Figure \ref{fig:044}, as the magnet moves away from the circuit, a current is created
+causing the led to light up.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_044}
+  \caption{Magnetic Field Creating Current}
+  \label{fig:044}
+\end{figure}
+
+\subsection{Faraday's law}
+\label{ssec:faradaysLaw}
+
+This behavior follows \textbf{Faraday's Law} which models the relationship between the
+EMF created and the change in the magnetic field.
+
+\begin{formula}{Faraday's Law}
+
+  \vspace{12pt}
+  The change in voltage ($EMF$) is equal to the rate of change of the magnetic flux
+  ($\frac{d \Phi}{dt}$).
+  \begin{equation*}
+    EMF = -\frac{d \Phi}{dt}
+  \end{equation*}
+\end{formula}
+
+The EMF created is similar to the voltage provided by a battery in a circuit. However, 
+EMF is distributed evenly throughout a circuit. To calculate it integrate an electric
+field around a loop:
+\begin{equation*}
+  EMF = \oint_{}^{} \overline{E} \cdot \, d \overline{L}
+\end{equation*}
+
+Faraday's Law scales with the number of loops being considered. If $N$ loops were to be
+stacked on top of each other, the formula to calculate EMF would become:
+\begin{equation*}
+  EMF = -N \frac{d \Phi}{dt}
+\end{equation*}
+
+\subsection{Magnetic Flux}
+\label{ssec:magneticFlux}
+
+If $EMF$ is created by a change in magnetic flux, then what are the ways magnetic flux
+can change? If $\Phi_B = BA\cos(\theta)$, then $\Phi_B$ can change if:
+\begin{itemize}
+  \itemsep0em
+  \item There is a change in the \textbf{strength of the B field}
+  \item There is a change in the \textbf{area of the loop}
+  \item There is a change in the \textbf{angle between the field and the loop}
+\end{itemize}
+
+\subsection{Lenz's Law}
+\label{ssec:lenzsLaw}
+
+Why is there a negative sign in Faraday's Law? It indicates the direction of the induced
+$EMF$ by the change in magnetic field.
+
+\begin{definition}{Lenz's Law}
+  The direction of the induced current's magnetic field will oppose the \textbf{change}
+  in the original B field (not the B field itself, just the change).
+\end{definition}
+
+Remember that the direction of a magnetic field created by a current is determined by
+the right hand rule and $I \times r$.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_045}
+  \caption{Moving a Bar in a Circuit}
+  \label{fig:045}
+\end{figure}
+
+In Figure \ref{fig:045}, there is a bar completing a circuit. As the bar is moved to the
+left ($v$), the magnetic flux is \textbf{increasing}. In other words, the amount of magnetic
+field enclosed within the loop is increasing \textbf{into the page}, meaning that the
+current induced will create a magnetic field pointed \textbf{out of the page}, thus the
+current flows counterclockwise.
+
+Because there is now a current flowing, the magnetic field will exert a force
+($F = IL \times B$) on the wire. This is the force ($F$) opposing the movement of the bar.
+The force caused by this related to the \textbf{eddy current}.
+
+\begin{definition}{Eddy Current}
+  The induced current in a loop when the size of the loop changes, thus changing the
+  magnetic flux in the system. This current will always create a force opposing the
+  direction of the movement.
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_046}
+  \caption{EMF Created}
+  \label{fig:046}
+\end{figure}
+
+When determining the amount of $EMF$ created by the setup in Figure \ref{fig:046},
+Faraday's Law can be used: $EMF = - \frac{d \Phi_B}{dt}$. The amount of magnetic flux is
+modeled as $xLB$. Since $x$ is changing at a rate of $v$ while $B$ and $L$ remain constant,
+the rate of change of $\Phi_B$ is $BLv$. Thus: $EMF = BLv$.
+
+If the bar has a resistance of $R$, then the power ($P = \frac{V^2}{R}$) dissipated over
+the bar can be expressed as:
+\begin{equation*}
+  P = \frac{(BLv)^2}{R}
+\end{equation*}
+Similarly, the amount of force being applied to the bar ($ILB$) multiplied with the
+distance/time ($v$) the bar is moving is the amount of power being applied to the bar.
+\begin{align*}
+  P &= (ILB)(v) \\
+  P &= (\frac{BLv}{R}LB)(v) \\
+  P &= \frac{(BLv)^2}{R}
+\end{align*}
+Evidently, the power dissipated over the resistor is the same as the power applied to the
+bar. Thus, the system conserves energy.
+
+\end{document}

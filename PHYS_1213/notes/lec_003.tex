@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 003}
+\date{September 18, 2024}
+
+\begin{document}
+
+\newpage
+\section{Gauss's Law}
+\label{sec:gausssLaw}
+
+How can the charges be determined only knowing what electric field is present?
+
+\begin{definition}{Electric Flux}
+  \begin{wrapfigure}[]{r}{0.2\textwidth}
+    \centering
+    \includestandalone{figures/fig_012}
+    \caption{Flux}
+    \label{fig:012}
+  \end{wrapfigure}
+
+  Flux is a mathematical way of describing how much "flow" is going through an area.
+  Electric flux refers to the amount of \textbf{electric field} that is going through an
+  area. The value of electric charge depends on:
+  \begin{enumerate}
+    \itemsep0em
+    \item The \textbf{strength} of the electric field
+    \item The \textbf{area} through which the electric field acts on
+    \item The \textbf{angle} between the field and the area; the direction of the electric field
+      that acts upon the area
+  \end{enumerate}
+
+  \begin{equation*}
+    \Phi = E \cdot A = EAcos(\theta)
+  \end{equation*}
+\end{definition}
+
+\begin{wrapfigure}[5]{l}{0.4\textwidth}
+  \centering
+  \includestandalone{figures/fig_013}
+  \caption{Flux}
+  \label{fig:013}
+\end{wrapfigure}
+
+An electric field going through an object will result in a net zero electric flux. This is
+because electric flux can be measured in \textbf{inward} and \textbf{outward} electric flux.
+
+\begin{formula}{True Electric Flux}
+  \begin{equation*}
+    \Phi = \oint_{}^{} \overrightarrow{E} \cdot d \overrightarrow{A} \,
+  \end{equation*}
+\end{formula}
+
+\begin{formula}{Gauss's Law}
+  \begin{equation*}
+    \Phi = \oint_{}^{} \overrightarrow{E} \cdot d \overrightarrow{A} \, = \frac{q_{enclosed}}{\in_0}
+  \end{equation*}
+\end{formula}
+
+This shows that the total electric flux ($\Phi$) through an object is determined by
+the amount of charge enclosed within that object divided by a constant of nature ($\epsilon_0$).
+
+Let's say we have an infinitely long wire of charge. The charge per unit length is $\lambda$.
+What is the electric field at some point at a distance $r$ from the wire?
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_014}
+\end{figure}
+
+Continuous charge distributions often have a uniform \textbf{charge density}.
+\begin{center}
+  $\lambda$ = "lambda" = linear charge density (charge per unit length; $\frac{C}{m}$)
+
+  $\sigma$ = "sigma" = surface charge density (charge per unit area; $\frac{C}{m^2}$)
+
+  $\rho$ = "rho" = volume charge density (charge per unit volume; $\frac{C}{m^3}$)
+\end{center}
+
+To solve this, a Gaussian Surface equidistant from the wire at all points would be easiest
+to use; a cylinder wrapped around the wire would be simplest.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_015}
+\end{figure}
+
+With this Gaussian Surface defined, $q_{\textup{enclosed}}$ is the length of wire enclosed
+by the cylinder multiplied by the charge per unit length: $q_{\textup{enclosed}} = \lambda L$.
+
+Since the surface is perpendicular to the Electric Field at every point, the dot product of
+the electric flux and the area is just simple multiplication.
+\begin{align*}
+  \oint_{}^{} \overrightarrow{E} \cdot d \overrightarrow{A} \, &= \frac{q_{\textup{enclosed}}}{\epsilon_0} \\
+  E_{\bot}A &= \frac{q_{\textup{enclosed}}}{\epsilon_0} \\
+  E(2\pi rL) &= \frac{\lambda L}{\epsilon_0} \\
+  E &= \frac{\frac{\lambda L}{\epsilon_0}}{2\pi rL} \\
+  E &= \frac{\lambda L}{2\pi rL\epsilon_0} \\
+  E &= \frac{\lambda}{2\pi r\epsilon_0}
+\end{align*}
+Thus, the electric field near a long wire of charge is modeled as $E = \frac{\lambda}{2\pi r\epsilon_0}$.
+This is an approximation, but still very accurate when the distance $r$ is small in comparison
+to the length of the wire.
+
+
+\end{document}

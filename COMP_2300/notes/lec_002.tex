@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 002}
+\date{September 19, 2024}
+
+\begin{document}
+
+\newpage
+\section{Sets}
+\label{sec:sets}
+
+\subsection{Introduction to Sets}
+\label{ssec:introductionToSets}
+
+\begin{definition}{Set}
+  A collection of objects defined either by listing its members or by defining a pattern.
+\end{definition}
+
+The ways to specifically define certain elements as part of a set is as follows:
+\begin{center}
+  \begin{tblr}{cc}
+    \toprule
+    Notation & Meaning \\
+    \midrule
+    $5 \in A$ & $5$ is a member of set $A$ \\
+    $3 \notin B$ & $3$ is not a member of set $B$ \\
+    $C = \{1, 2, 3\}$ & Set $C$ contains $1$, $2$, and $3$ \\
+    \bottomrule
+  \end{tblr}
+\end{center}
+
+Additionally, set builder notation allows you to construct a set based on a defined pattern:
+\begin{figure}[H]
+  \vspace{-20pt}
+  \begin{align*}
+    A &= \{2k+1|k \in \mathbb{Z}\} \\
+    A &= \{n\ |\ \exists k \in \mathbb{Z} \textup{ for which } n = 2k + 1\}
+  \end{align*}
+  \caption{Defines Set $A$ as all odd numbers}
+  \label{fig:setA}
+\end{figure}
+Sets can also be defined to be empty. $A = \{\}$, $A = \varnothing$, and $A = \{\varnothing\}$
+all define the set $A$ to be empty. Additionally, this can be done through set builder notation:
+\begin{equation*}
+  A = \{x\ |\ \forall x, x \ \exists !\  U\}
+\end{equation*}
+
+\hrule
+\vspace{12pt}
+
+\subsection{Set Operations}
+\label{ssec:setOperations}
+
+Once a set exists, operations can be performed on the set at large. Four basic operations
+are the union of two sets ($\cup$), the intersection of two sets ($\cap$), the complement
+of a set ($\complement$), and the difference of two sets (\textbf{\textbackslash}).
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_001}
+    \caption{$A \cup B$}
+    \label{fig:setUnion}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_002}
+    \caption{$A \cap B$}
+    \label{fig:setIntersection}
+  \end{subfigure}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_003}
+    \caption{$A^{\mathbb{C}}$}
+    \label{fig:setComplement}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_004}
+    \caption{$A \textbf{\textbackslash} B$}
+    \label{fig:setDifference}
+  \end{subfigure}
+  \caption{Set Operations}
+  \label{fig:setOperations}
+\end{figure}
+
+\subsection{Subsets and Supersets}
+\label{ssec:subsetsAndSupersets}
+
+\begin{definition}{Subset}
+  
+\end{definition}
+
+\begin{definition}{Superset}
+  
+\end{definition}
+
+\subsection{Powersets and Cartesian Products}
+\label{ssec:powersetsAndCartesianProducts}
+
+\begin{definition}{Powerset}
+  
+\end{definition}
+
+\begin{definition}{Cartesian Product}
+  
+\end{definition}
+
+\subsection{Set Identities}
+\label{ssec:setIdentities}
+
+\subsection{Set Notation}
+\label{ssec:setNotation}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{cc}
+      \toprule
+      Notation & Meaning \\
+      \midrule
+      $\varnothing$ & Empty Set \\
+      $\#$ & Size of a Set \\
+      $\in$ & Is a member of \\
+      $\notin$ & Is not a member of \\
+      $\subset$ & Is a subset of \\
+      $\supset$ & Is a superset of \\
+      $\supset$ & Is a superset of \\
+      $\cup$ & Set union \\
+      $\cap$ & Set intersection \\
+      \textbf{\textbackslash} & Set difference \\
+      $\complement$ & Set complement \\
+      \bottomrule
+    \end{tblr}
+    \caption{Set Theory}
+    \label{fig:setTheory}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{cc}
+      \toprule
+      Notation & Meaning \\
+      \midrule
+      $\neg$ & Logical Negation \\
+      $\land$ & Logical And \\
+      $\lor$ & Logical Or \\
+      $\oplus$ & Logical Xor \\
+      $\forall$ & Universal Quantification \\
+      $\exists$ & Existential Quantification \\
+      $\exists !$ & Uniqueness Quantification \\
+      $\Rightarrow$ & Material Conditional \\
+      $\Leftrightarrow$ & Logical Equivalence \\
+      $\bot$ & False Predicate \\
+      $\top$ & True  Predicate \\
+      \bottomrule
+    \end{tblr}
+    \caption{Formal Logic}
+    \label{fig:formalLogic}
+  \end{subfigure}
+
+  \vspace{12pt}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{cc}
+      \toprule
+      Notation & Meaning \\
+      \midrule
+      $\mathbb{N}$ & Natural Numbers \\
+      $\mathbb{Z}$ & Integers \\
+      $\mathbb{Q}$ & Rational Numbers \\
+      $\mathbb{R}$ & Real Numbers \\
+      $\mathbb{C}$ & Complex Numbers \\
+      \bottomrule
+    \end{tblr}
+    \caption{Number Systems}
+    \label{fig:numberSystems}
+  \end{subfigure}
+  \caption{Logic and Set Theory Notation}
+  \label{fig:logicAndSetTheoryNotation}
+\end{figure}
+
+\end{document}

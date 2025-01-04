@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 036}
+\date{November 07, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1.75,
+    logic ports/fill=fg!10!bg,
+    sources/fill=fg!10!bg,
+    flipflops/fill=fg!10!bg
+  }
+  \coordinate (a) at (0,0);
+  \node[thick, and port, number inputs = 3] (and) at ($(a)+(5.5,0.5)$){};
+
+  \draw[] (and.in 1) node[rotate = 0, anchor = east] {{\LARGE $x$}};
+  \draw[] (and.in 2) node[rotate = 0, anchor = east] {{\LARGE $y$}};
+  \draw[] (and.in 3) node[rotate = 0, anchor = east] {{\LARGE $z$}};
+  \draw[] (and.out)  node[rotate = 0, anchor = west] {{\LARGE $O$}};
+
+  % \filldraw[fill=re!50!bg, draw=re, thick] ($(a)+(8,2)$)  circle (0.35) node[anchor = center] {$O_2$};
+
+\end{circuitikz}
+\end{document}

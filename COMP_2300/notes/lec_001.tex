@@ -1,0 +1,505 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 001}
+\date{September 10, 2024}
+
+\begin{document}
+
+\section{Logical Expressions}
+\label{sec:logicalExpressions}
+
+A statement needs to be either true or false.
+
+\begin{definition}{Mathematical Proposition}
+  A statement that is either true or false, but \textbf{not both}. Some texts call it a
+  mathematical proposition.
+\end{definition}
+
+Some examples of Mathematical Propositions are:
+\begin{itemize}
+  \itemsep0em
+  \item All primes are odd (false)
+  \item For all real numbers $x$, $x^2 > 0$
+  \item Every even integer greater than $2$ can be expressed as the sum of two primes.
+\end{itemize}
+Some non-examples are:
+\begin{itemize}
+  \itemsep0em
+  \item Math is fun
+  \item Go directly to jain, do not pass go, do not collect \textdollar $200$
+  \item This sentence is false
+\end{itemize}
+
+\begin{definition}{Propositional Function}
+  Also called an open sentence, is a sentence with at least one free variable that becomes
+  a statement once the variable is substituted with a value.
+\end{definition}
+
+Some examples are:
+\begin{itemize}
+  \itemsep0em
+  \item The truth value of $P(x)$ depends on $x$.
+  \item $P(0)$ is false.
+  \item $P(5)$ is true.
+\end{itemize}
+
+These all aren't true \textit{or} false, unless we substitute the variables with a specific
+value. For example, $x > 0$ isn't true or false, but $x > 0; x = 1$ is false.
+
+\subsection{Logical Operators}
+\label{ssec:logicalOperators}
+
+\begin{definition}{Logical Operator}
+  A function that modifies one or more mathematical propositions.
+\end{definition}
+
+The operator \textbf{not} negates a proposition $p$. It is written as $\neg p$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{c|c}
+    \toprule
+    $p$ & $\neg p$ \\
+    \midrule
+    F & T \\
+    T & F \\
+    \bottomrule
+  \end{tblr}
+  \caption{Not Operator}
+  \label{fig:not}
+\end{figure}
+
+\vspace{-6pt}
+\begin{wrapfigure}[8]{r}{0.45\textwidth}
+  \begin{subfigure}[H]{0.22\textwidth}
+    \centering
+    \begin{tblr}{cc|c}
+      \toprule
+      $p$ & $q$ & $p \land q$ \\
+      \midrule
+      F & F & F \\
+      T & F & F \\
+      F & T & F \\
+      T & T & T \\
+      \bottomrule
+    \end{tblr}
+    \caption{And}
+    \label{tbl:and}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.22\textwidth}
+    \centering
+    \begin{tblr}{cc|c}
+      \toprule
+      $p$ & $q$ & $p \lor q$ \\
+      \midrule
+      F & F & F \\
+      T & F & T \\
+      F & T & T \\
+      T & T & T \\
+      \bottomrule
+    \end{tblr}
+    \caption{Or}
+    \label{tbl:or}
+  \end{subfigure}
+  \centering
+\end{wrapfigure}
+
+When we have two statements $p$ and $q$, we can modify and combine them in different ways.
+The operator \textbf{and}, written as $\land p$ combines them in such a way that the result is
+true \textit{only if} both $p$ and $q$ are true individually.
+
+The operator \textbf{or} operates such that the result is true if \textit{either} $p$ or $q$
+is true individually. If $p$ and $q$ are both true individually, the or operator still recognizes
+that as truth.
+
+\begin{wrapfigure}[10]{l}{0.22\textwidth}
+  \begin{subfigure}[H]{0.22\textwidth}
+    \centering
+    \begin{tblr}{cc|c}
+      \toprule
+      $p$ & $q$ & $p \oplus q$ \\
+      \midrule
+      F & F & F \\
+      F & T & T \\
+      T & F & T \\
+      T & T & F \\
+      \bottomrule
+    \end{tblr}
+    \caption{xor}
+    \label{tbl:xor}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[H]{0.22\textwidth}
+    \centering
+    \begin{tblr}{cc|c}
+      \toprule
+      $p$ & $q$ & $p \Rightarrow q$ \\
+      \midrule
+      F & F & T \\
+      F & T & T \\
+      T & F & F \\
+      T & T & T \\
+      \bottomrule
+    \end{tblr}
+    \caption{If $\Rightarrow$ Then}
+    \label{tbl:ifThen}
+  \end{subfigure}
+\end{wrapfigure}
+
+The \textbf{Exclusive Or} operator is similar to the or operator in that it is true in the
+case of one of $p$ or $q$ being true, but limits it to only a single one being true. If both
+are true, then the result is false.
+
+\subsection{Conditionals}
+\label{ssec:conditionals}
+
+\begin{definition}{Consitional Statement}
+  Contains a \textbf{hypothesis} (or premise), and results in a \textbf{conclusion} (or consequence). This
+  statement takes the hypothesis, and determines the state of the conclusion based on the
+  hypothesis.
+\end{definition}
+
+An \textbf{If, then} statement is an example of a conditional statement. The truth table
+of the statement is in Figure \ref{tbl:ifThen}.
+
+Given the conditional statement $p \Rightarrow q$, its \textbf{converse} is the statement $q \Rightarrow p$.
+A statement and its converse are not logiaclly equivalent. For example, "If it is raining, then it is cloudy." is not equivalent to its converse, "If it is cloudy, then it is raining."
+
+Given a statement $p \Rightarrow q$, its \textbf{contrapositive} is the statement $\neg p \Rightarrow \neg q$.
+These statements \textit{are} logically equivalent.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \centering
+    \begin{tblr}{cc|c|c}
+      \toprule
+      $p$ & $q$ & $p \Rightarrow q$ & $q \Rightarrow p$ \\
+      \midrule
+      F & F & T & T \\
+      F & T & T & F \\
+      T & F & F & T \\
+      T & T & T & T \\
+      \bottomrule
+    \end{tblr}
+    \caption{Converse}
+    \label{tbl:converse}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.6\textwidth}
+    \centering
+    \centering
+    \begin{tblr}{cc|c|cc|c}
+      \toprule
+      $p$ & $q$ & $p \Rightarrow q$ & $\neg p$ & $\neg q$ & $\neg p \Rightarrow \neg q$ \\
+      \midrule
+      F & F & T & T & T & T \\
+      F & T & T & F & T & T \\
+      T & F & F & T & F & F \\
+      T & T & T & T & F & T \\
+      \bottomrule
+    \end{tblr}
+    \caption{Contrapositive}
+    \label{tbl:contrapositive}
+  \end{subfigure}
+  \caption{Converse and Contrapositive}
+  \label{fig:converseAndContrapositive}
+\end{figure}
+
+The statement $p \Leftrightarrow q$ (if and only if), results in truth \textit{only if} both
+statements are the same, whether it be both false or both true.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|c}
+    \toprule
+    $p$ & $q$ & $p \Leftrightarrow q$ \\
+    \midrule
+    F & F & T \\
+    F & T & F \\
+    T & F & F \\
+    T & T & T \\
+    \bottomrule
+  \end{tblr}
+  \caption{If and Only If}
+  \label{fig:ifOnlyIf}
+\end{figure}
+
+\subsection{Vocabulary}
+\label{ssec:vocabulary}
+
+\begin{definition}{Tautology}
+  A compound proposition that is always true for all truth values of the propositional variables
+  it contains.
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|c}
+    \toprule
+    $p$ & $\neg p$ & $p \lor\neg p$ \\
+    \midrule
+    F & F & T \\
+    F & T & T \\
+    T & F & T \\
+    T & T & T \\
+    \bottomrule
+  \end{tblr}
+  \caption{Tautology}
+  \label{fig:tautology}
+\end{figure}
+
+\begin{definition}{Contradiction}
+  A compound proposition that is always false.
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|c}
+    \toprule
+    $p$ & $\neg p$ & $p \land\neg p$ \\
+    \midrule
+    F & F & F \\
+    F & T & F \\
+    T & F & F \\
+    T & T & F \\
+    \bottomrule
+  \end{tblr}
+  \caption{Contradiction}
+  \label{fig:contradiction}
+\end{figure}
+
+\begin{definition}{Contingency}
+  A compound proposition that is \textbf{neither} a tautology or a contradiction.
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|c}
+    \toprule
+    $p$ & $q$ & $p \land q$ \\
+    \midrule
+    F & F & F \\
+    F & T & F \\
+    T & F & F \\
+    T & T & T \\
+    \bottomrule
+  \end{tblr}
+  \caption{Contingency}
+  \label{fig:contingency}
+\end{figure}
+
+\begin{definition}{Satisfiable}
+  A compound proposition is considered \textbf{satisfiable} if there is at least one assignment
+  of truth values to its variables that makes it true.
+\end{definition}
+
+\subsection{Logical Equivalences}
+\label{ssec:logicalEquivalences}
+
+Figure \ref{fig:demorgansLaws} shows one of \textbf{DeMorgan's Laws}, proving that the proposition:
+$\neg(p\land q)$ is logically equivalent to $\neg p \lor \neg q$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|cc|cc|c}
+    \toprule
+    $p$ & $q$ & $\neg p$ & $\neg q$ & $p \land q$ & $\neg (p \land q)$ & $\neg p \lor \neg q$ \\
+    \midrule
+    F & F & T & T & F & T & T \\
+    F & T & T & F & F & T & T \\
+    T & F & F & T & F & T & T \\
+    T & T & F & F & T & F & F \\
+    \bottomrule
+  \end{tblr}
+  \caption{DeMorgan's Laws}
+  \label{fig:demorgansLaws}
+\end{figure}
+
+Apart from DeMorgan's Law, there are several other logical equivalences in Figure \ref{fig:listOfLogicalEquivalences}.
+These can be used to manipulate logical expressions algebraically without breaking the rules
+of logic.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc}
+    \toprule
+    \textbf{Mathematical Representation} & \textbf{Name of the Law} \\
+    \midrule
+    $p\lor\neg q \equiv T$ & Law of Excluded Middle \\
+    $p\land \neg p \equiv F$ & Law of Non-Contradiction \\
+    $p \land T \equiv p$ & \SetCell[r=2]{c} Identity Laws \\
+    $p \lor F \equiv p$ \\
+    $p \land F \equiv F$ & \SetCell[r=2]{c} Domination Laws \\
+    $p \lor T \equiv T$ \\
+    $p \lor p \equiv p$ & \SetCell[r=2]{c} Idempotent Laws \\
+    $p \land p \equiv p$ \\
+    $\neg\neg p \equiv p$ & Laws of Double Negation Elimination \\
+    $p \lor q \equiv q \lor q$ & \SetCell[r=2]{c} Commutative Laws \\
+    $p \land q \equiv q \land q$ \\
+    $(p \lor q) \lor r \equiv p \lor (q \lor r)$ & \SetCell[r=2]{c} Associative Laws \\
+    $(p \land q) \land r \equiv p \land (q \land r)$ \\
+    $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ & \SetCell[r=2]{c} Distributive Laws \\
+    $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ \\
+    $\neg(p \land q) \equiv \neg p \lor \neg q$ & \SetCell[r=2]{c} DeMorgan's Laws \\
+    $\neg(p \lor q) \equiv \neg p \land \neg q$ \\
+    $p \lor (p \land q) \equiv p$ & \SetCell[r=2]{c} Absorption Laws \\
+    $p \land (p \lor q) \equiv p$ \\
+    $p \Rightarrow q \equiv q \lor \neg p$ & $\lor$ Restatement of Implication \\
+    $p \Rightarrow q \equiv \neg q \Rightarrow \neg p$ & Contraposition \\
+    $(p \Rightarrow q) \land (p \Rightarrow r) \equiv p \Rightarrow (q \land r)$ & Conjunction of Implications \\
+    $(p \Rightarrow r) \land (q \Rightarrow r) \equiv (p \lor q) \Rightarrow r$ & Will Show This Below \\
+    $(p \Rightarrow q) \lor (p \Rightarrow r) \equiv p \Rightarrow q \lor r$ & \SetCell[r=2]{c} Disjunction of Implications \\
+    $(p \Rightarrow r) \lor (q \Rightarrow r) \equiv (p \land q) \Rightarrow r$ \\
+    $p \Leftrightarrow q \equiv (p \Rightarrow q) \land (q \Rightarrow p)$ & Conjunction of Implications \\
+    $p \Leftrightarrow q \equiv \neg p \Leftrightarrow \neg q$ & Negation Restatement \\
+    $\neg(p \Leftrightarrow q) \equiv \neg p \Leftrightarrow q$ & Negation \\
+    \bottomrule
+  \end{tblr}
+  \caption{List of Logical Equivalences}
+  \label{fig:listOfLogicalEquivalences}
+\end{figure}
+
+\newpage
+
+Figures \ref{fig:tautologyExample} and \ref{fig:tautologyExampleTwo} are both examples
+of tautologies. By breaking them down into smaller parts, their logical meaning can be better
+understood.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|c|c|c}
+    \toprule
+    $p$ & $q$ & $p \Rightarrow q$ & $p \land (p \Rightarrow q)$ & $(p \land (p \Rightarrow q)) \Rightarrow q$ \\
+    \midrule
+    F & F & T & F & T \\
+    F & T & T & F & T \\
+    T & F & F & F & T \\
+    T & T & T & T & T \\
+    \bottomrule
+  \end{tblr}
+  \caption{Tautology Example One}
+  \label{fig:tautologyExample}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|cc|c|c}
+    \toprule
+    $r$ & $v$ & $r \lor v$ & $\neg r$ & $(r \lor v) \land \neg r$ & $((r \lor v) \land \neg r) \Rightarrow v$ \\
+    \midrule
+    F & F & F & T & F & T \\
+    F & T & T & T & F & T \\
+    T & F & Y & F & F & T \\
+    T & T & T & F & T & T \\
+    \bottomrule
+  \end{tblr}
+  \caption{Tautology Example Two}
+  \label{fig:tautologyExampleTwo}
+\end{figure}
+
+\begin{example}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.5\textwidth}
+      By using the logical equivalences in Figure \ref{fig:listOfLogicalEquivalences}, you
+      can decompose a proposition into simpler terms to more clearly see what characteristics
+      it has. For example, decomposing $(p \land p \Rightarrow q) \Rightarrow q \equiv T$
+      shows that it is a tautology.
+    \end{subfigure}
+    \begin{subfigure}[H]{0.4\textwidth}
+      \centering
+        \begin{align*}
+          (p \land p \Rightarrow q) \Rightarrow q &\equiv T \\
+          [p \land (q \lor \neg p)] \Rightarrow q &\equiv T \\
+          [(p \land q) \lor (p \land \neg p)] \Rightarrow q &\equiv T \\
+          [(p \land q) \lor (F)] \Rightarrow q &\equiv T \\
+          (p \land q) \Rightarrow q &\equiv T \\
+          q \lor \neg(p \land q) &\equiv T \\
+          q \lor \neg p \lor \neg q &\equiv T \\
+          q \lor \neg q \lor \neg p &\equiv T \\
+          T \lor \neg p &\equiv T \\
+          T &\equiv T
+        \end{align*}
+    \end{subfigure}
+  \end{figure}
+\end{example}
+
+\begin{definition}{Syllogism}
+  \centering
+  \begin{align*}
+    [(p \Rightarrow q) \land (q \Rightarrow r)]                                            \Rightarrow &(p \Rightarrow r) \\
+    (q \Rightarrow \neg p) \land (r \Rightarrow \neg q)                                    \Rightarrow &(p \Rightarrow r) \\
+    [q \land (r \lor \neg q)] \lor [\neg p \land (r \lor \neg q)]                          \Rightarrow &(p \Rightarrow r) \\
+    [(q \land r) \lor (q \land \neg q)] \lor [(\neg p \land r) \lor (\neg p \land \neg q)] \Rightarrow &(p \Rightarrow r) \\
+    [(q \land r) \lor (\neg p \land r) \lor (\neg p \land \neg q)]                         \Rightarrow &(p \Rightarrow r) \\
+    [\neg (q \land r) \land \neg (\neg p \land r) \land \neg (\neg p \land \neg q)]        \lor        &(p \Rightarrow r) \\
+    [(\neg q \lor \neg r) \land (p \lor \neg r) \land (p \lor q)]                          \lor        &(p \Rightarrow r)
+  \end{align*}
+
+  A syllogism is a form in which, if $p$ implies $q$, and $q$ implies $r$, then $p$ implies $r$.
+  It can be decomposed as seen above to show that the form of $[(p \Rightarrow q) \land (q \Rightarrow r)] \Rightarrow (p \Rightarrow r)$
+  is a tautology.
+\end{definition}
+
+\begin{definition}{Modus Tollens}
+  \centering
+  \begin{align*}
+    (\neg \land p \Rightarrow q) \Rightarrow                  &\neg p \\
+    (\neg q \land (q \lor \neg p)) \Rightarrow                &\neg p \\
+    [(\neg q \land q) \lor (\neg q \land \neg p)] \Rightarrow &\neg p \\
+    [F \lor (\neg q \land \neg p)] \Rightarrow                &\neg p \\
+    (\neg q \land \neg p) \Rightarrow                         &\neg p
+  \end{align*}
+\end{definition}
+
+\subsection{Quantifiers}
+\label{ssec:quantifiers}
+
+In the context of propositional functions, certain restrictions can be applied to what can
+be considered as a value to use in the function. These restrictions are determined by quantifiers.
+
+A propositional function can be quantified with a \textbf{universal quantifier}. For example:
+\begin{center}
+  "All integers are either positive or negative"
+\end{center}
+This is equivalent to:
+\begin{center}
+  $\forall n \in \mathbb{Z}, (n \ge 0) \lor (n < 0)$
+\end{center}
+
+\vspace{6pt}
+\hrule
+
+A propositional function can also be quantified with a \textbf{existential quantifier}. For example:
+\begin{center}
+  "There is an integer $n$ that is even \textit{and} prime"
+\end{center}
+This is equivalent to:
+\begin{center}
+  $\exists n \in \mathbb{Z}, (n \textup{ is even}) \land (n \textup{ is prime})$
+\end{center}
+
+\subsection{Canonical Normal Form}
+\label{ssec:canonicalNormalForm}
+
+Canonical Normal Forms are standardized forms of boolean logic that serve some purpose to
+simplify the expression of boolean values.
+
+\begin{definition}{Disjunctive Normal Form}
+  A canonical logical form consisting of a disjunction (OR) of conjunctions (ANDs). More broadly,
+  a logical formula is said to be in Disjunctive Normal Form (DNF) if it consists of one or
+  more conjunctions or literals joined in disjunction.
+\end{definition}
+
+All of the following formulas follow Disjunctive Normal Form.
+\begin{align*}
+  &(A \land \neg B \land \neg C) \lor (\neg D \land E \land F \land D \land F) \\
+  &(A \land B) \lor (C) \\
+  &(A \land B) \\
+  &(A)
+\end{align*}
+
+\end{document}

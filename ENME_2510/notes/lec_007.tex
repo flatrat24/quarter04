@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 007}
+\date{October 07, 2024}
+
+\begin{document}
+
+\newpage
+\section{Shear and Bending}
+\label{sec:shearAndBending}
+
+\subsection{Notation and Convention}
+\label{ssec:notationAndConvention}
+
+Thusfar, only external forces have been considered. However internal forces also exist.
+\begin{definition}{Internal Loads}
+  Act \textit{everywhere} inside the object/body. These forces hold the object/body together
+  and adapt/change based on external loading conditions.
+\end{definition}
+There are three main types of internal loads:
+
+\begin{wrapfigure}[3]{r}{0.3\textwidth}
+  \vspace{-10pt}
+  \centering
+  \includestandalone{figures/fig_020}
+  % \caption{Axial Forces}
+  \label{fig:020}
+\end{wrapfigure}
+\begin{center}
+  {\large \textbf{Axial Forces ($N^+$)}}
+\end{center}
+These internal loads act directly along the length of the axis of an object.
+
+The sign convention of Axial Forces is such that:
+\begin{itemize}
+  \itemsep0em
+  \item Positive refers to \textbf{tension}
+  \item Negative refers to \textbf{compression}
+\end{itemize}
+
+\begin{wrapfigure}[3]{r}{0.3\textwidth}
+  \vspace{-20pt}
+  \centering
+  \includestandalone{figures/fig_021}
+  % \caption{Shear Forces}
+  \label{fig:021}
+\end{wrapfigure}
+\begin{center}
+  {\large \textbf{Shear Forces ($V^+$)}}
+\end{center}
+Force \textit{transverse} to the length of the member (\textit{parallel} to the cross section area.
+This force will always create a moment about the $z$ axis of the member. 
+
+The sign convention is such that:
+\begin{itemize}
+  \itemsep0em
+  \item Positive refers to \textbf{clockwise rotation}
+  \item Negative refers to \textbf{counterclockwise rotation}
+\end{itemize}
+
+\begin{wrapfigure}[3]{r}{0.3\textwidth}
+  \vspace{-35pt}
+  \centering
+  \includestandalone{figures/fig_022}
+  % \caption{Bending Moments}
+  \label{fig:022}
+\end{wrapfigure}
+\begin{center}
+  {\large \textbf{Bending Moments ($M^+$)}}
+\end{center}
+\textit{Rotational} load that bends the beam.
+
+The sign convention is such that:
+\begin{itemize}
+  \itemsep0em
+  \item Positive refers to \textbf{concave upward bending}
+  \item Negative refers to \textbf{downward bending}
+\end{itemize}
+
+Notice that a force in the positive $\hat{i}$, negative $\hat{j}$, or positive $\hat{k}$
+is considered a positive internal force when it is on the right side of an object.
+Conversely, these forces are considered negative when on the left side of the object.
+
+\begin{figure}[H]
+  \vspace{-15pt}
+  \centering
+  \includestandalone{figures/fig_028}
+  \caption{Sign Conventions of Internal Forces}
+  \label{fig:028}
+\end{figure}
+
+\subsection{Solving for Internal Forces}
+\label{ssec:solvingForInternalForces}
+
+All the information thusfar in Statics will be important in solving for internal forces
+of an object in static equilibrium. The only difference to the general process is in the
+preparation. When solving for an internal force, \textit{cutting} the object at that point
+of interest and treating it as two separate objects is how to find the internal stress.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_023}
+    \caption{Original Object}
+    \label{fig:originalObject}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_024}
+    \caption{Cut of the Object}
+    \label{fig:cutOfTheObject}
+  \end{subfigure}
+  \caption{Cutting an Object}
+  \label{fig:023}
+\end{figure}
+
+In Figure \ref{fig:023}, a beam attached to a vertical support is experiencing two forces:
+$F_1$ and $F_2$. To find the internal forces acting on the object at point $A$, one must
+cut the beam into two imaginary parts along point $A$, the solve for the forces as $A$ as
+usual remaining under the conditions of static equilibrium.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_025}
+  \caption{Initial Free Body Diagram}
+  \label{fig:025}
+\end{figure}
+
+The original object is in static equilibrium, thus it is possible to find the reactionary
+forces and moments about a point ($B$) in terms of the forces acting upon the object ($F_1$ and $F_2$).
+\begin{align*}
+  F_{Rx} &= \hat{i} \big(|cos(\theta)F_1|\big) \\
+  F_{Ry} &= \hat{j} \big(|F_2| + |sin(\theta)F_1|\big) \\
+  M_{R}  &= \hat{k} \big(|F_2L_1| + |F_1sin(\theta)L|\big)
+\end{align*}
+If we were to then cut the object at the line of $A$, the reaction forces would be in
+equilibrium with the internal forces at $A$, as would the original forces of $F_1$ and $F_2$.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_027}
+    \caption{Reaction Forces and Internal Forces}
+    \label{fig:027}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_026}
+    \caption{Internal Forces and Original Forces}
+    \label{fig:026}
+  \end{subfigure}
+  \caption{Free Body Diagram of Each Segment}
+  \label{fig:fbdOfEachSegment}
+\end{figure}
+From here, each segment can be solved as usual for the forces in each Free Body Diagram.
+Figure \ref{fig:027} would balance the reaction forces with the internal forces. Figure \ref{fig:026}
+would balance the original forces with the internal forces. In either situation, the
+calculated internal forces should be the same.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \textbf{Left Segment}
+    \begin{align*}
+      F_{Ix} &= -\hat{i}|F_{Rx}| \\
+      F_{Iy} &= -\hat{j}|F_{Ry}| \\
+      M_{I}  &= -\hat{k}|M_{R}|
+    \end{align*}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \textbf{Right Segment}
+    \begin{align*}
+      F_{Ix} &= \hat{i}|cos(\theta)F_1| \\
+      F_{Iy} &= \hat{j}\big(|sin(\theta)F_1| + |F_2|\big) \\
+      M_{I}  &= \hat{k}\big(|sin(\theta)F_1(L_1+L_2)| + |F_2L_2|\big)
+    \end{align*}
+  \end{subfigure}
+  \begin{subfigure}[H]{\textwidth}
+    \vspace{22pt}
+    \centering
+    \textbf{Finding Equilibrium in Both Sides}
+
+    \begin{subfigure}[H]{0.45\textwidth}
+      \centering
+      \begin{align*}
+        -\hat{i}|F_{Rx}|  &\rightarrow \hat{i}|cos(\theta)F_1| \\
+        -|F_{Rx}|         &\rightarrow |cos(\theta)F_1| \\
+        -|cos(\theta)F_1| &\rightarrow |cos(\theta)F_1|
+      \end{align*}
+      \caption{Balancing $\hat{i}$ Forces}
+      \label{onetwothree}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}[H]{0.45\textwidth}
+      \begin{align*}
+        -\hat{j}|F_{Ry}|                    &\rightarrow \hat{j}\big(|sin(\theta)F_1| + |F_2|\big) \\
+        -|F_{Ry}|                           &\rightarrow |sin(\theta)F_1| + |F_2| \\
+        -\big(|sin(\theta)F_1| + |F_2|\big) &\rightarrow |sin(\theta)F_1| + |F_2|
+      \end{align*}
+      \caption{Balancing $\hat{j}$ Forces}
+      \label{onetwfw}
+    \end{subfigure}
+    \begin{subfigure}[H]{\textwidth}
+      \centering
+      \begin{align*}
+        -\hat{k}|M_{R}|                            &\rightarrow \hat{k}\big(|sin(\theta)F_1(L_1+L_2)| + |F_2L_2|\big) \\
+        -|M_{R}|                                   &\rightarrow |sin(\theta)F_1(L_1+L_2)| + |F_2L_2| \\
+        -|\big(|F_2L_1| + |F_1sin(\theta)L|\big)|  &\rightarrow |sin(\theta)F_1(L_1+L_2)| + |F_2L_2|
+      \end{align*}
+      \caption{Balancing $\hat{k}$ Moments}
+      \label{onetwoth}
+    \end{subfigure}
+  \end{subfigure}
+\end{figure}
+
+\end{document}

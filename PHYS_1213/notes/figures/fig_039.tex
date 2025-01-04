@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 039}
+\date{October 23, 2024}
+
+\begin{document}
+\begin{tikzpicture}[scale = 1.25]
+  \foreach \x in {0,0.75,...,2.25} {
+    \foreach \y in {0,0.75,...,2.25} {
+      \draw[draw=fg] (\x,\y) circle (5pt);
+      \filldraw[fill=fg!50!bg, draw=fg!50!bg, thick] (\x,\y) circle (1pt);
+    }
+  }
+  \coordinate (a) at (1.125,2);
+  \draw[draw=fg, thick, dashed] ($(a)+(0,-1)$) circle (1);
+  \draw[draw=bl, ultra thick, -stealth] (a) -- ++(0.75,0);
+  \draw[draw=re, ultra thick, -stealth] (a) -- ++(0,-0.5);
+  \filldraw[fill=gr!50!fg, draw=gr, thick] (a) circle (5pt);
+
+  \coordinate (b) at (2.125,1);
+  \draw[draw=bl, ultra thick, -stealth] (b) -- ++(0,-0.75);
+  \draw[draw=re, ultra thick, -stealth] (b) -- ++(-0.5,0);
+  \filldraw[fill=gr!50!fg, draw=gr, thick] (b) circle (5pt);
+
+  \coordinate (c) at (1.125,0);
+  \draw[draw=bl, ultra thick, -stealth] (c) -- ++(-0.75,0);
+  \draw[draw=re, ultra thick, -stealth] (c) -- ++(0,0.5);
+  \filldraw[fill=gr!50!fg, draw=gr, thick] (c) circle (5pt);
+
+  \coordinate (d) at (0.125,1);
+  \draw[draw=bl, ultra thick, -stealth] (d) -- ++(0,0.75);
+  \draw[draw=re, ultra thick, -stealth] (d) -- ++(0.5,0);
+  \filldraw[fill=gr!50!fg, draw=gr, thick] (d) circle (5pt);
+\end{tikzpicture}
+\end{document}

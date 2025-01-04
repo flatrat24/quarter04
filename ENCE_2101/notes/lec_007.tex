@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 006}
+\date{October 23, 2024}
+
+\begin{document}
+\newpage
+\section{Sequential Circuits}
+\label{sec:sequentialCircuits}
+
+A \textbf{combinational circuit} is the result of interconnecting logic gates. The
+functioning of a combinational circuit is instentaneous. The current state of the inputs
+entirely determines the state of the outputs.
+
+\begin{definition}{Sequential Circuit}
+  Contains \textbf{combinational circuits} and \textbf{memory elements} with a feedback
+  path from the memory element to the combinational circuit.
+\end{definition}
+
+The output of a sequential circuit will be dependent on \textbf{both} the current inputs
+as well as the memory, or past history, of the circuit stored in the memory elements. The
+data stored in the memory is referred to as \textbf{the state} of the circuit.
+
+\subsection{Synchronous Sequential Circuits}
+\label{ssec:synchronousSequentialCircuits}
+A \textbf{synchronous sequential circuit} is a circuit whose behavior can be defined from
+the knowledge of its signals at \uline{discrete instants of time}. A clock signal is used
+to control and synchronize the circuit behavior. These circuits are called \textbf{clocked
+sequential circuits}.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_017}
+  \caption{Clock Signals}
+  \label{fig:017}
+\end{figure}
+These clock signals "ticks" each time there is a change from low to high or from high to
+low. A circuit can use either the leading
+(\tikz{\draw[draw=bl!75!fg, ultra thick, stealth-] (0,0) -- ++(0,-0.3);}) or trailing
+(\tikz{\draw[draw=re!75!fg, ultra thick, stealth-] (0,0) -- ++(0,0.3);}) edge of a pulse
+to mark the "tick" of the clock pulse.
+
+\subsection{Sequential Circuit Analysis}
+\label{ssec:sequentialCircuitAnalysis}
+
+Analyzing a sequential circuit follows three steps:
+\begin{enumerate}
+  \itemsep0em
+  \item Derive the \textbf{state equations} and the \textbf{output equations} for the
+    circuit
+    \begin{itemize}
+      \itemsep0em
+      \item State equations model the next state as a function of the current states and
+        any inputs
+      \item Output equations model the outputs as a function of the current states and any
+        inputs
+    \end{itemize}
+  \item Derive the \textbf{transition table} and the \textbf{state table} for the circuit
+  \item Derive the \textbf{state diagram} for the circuit
+\end{enumerate}
+
+\subsubsection{State and Output Equations}
+\label{sssec:stateAndOutputEquations}
+
+
+
+\end{document}

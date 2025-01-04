@@ -1,0 +1,205 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 007}
+\date{October 09, 2024}
+
+\begin{document}
+\newpage
+\section{Current}
+\label{sec:current}
+
+\subsection{Current Definition and Formula}
+\label{ssec:currentDefinitionAndFormula}
+
+\begin{definition}{Current}
+  Current describes how much charge moves past some spot over any given second.
+\end{definition}
+
+\begin{formula}{Current}
+  \begin{align*}
+    I &= \frac{\Delta Q}{\Delta t} = \frac{dQ}{dt} \\
+    \textup{Ampere} &= \frac{\textup{Coulomb}}{\textup{Second}}
+  \end{align*}
+\end{formula}
+
+Current has a direction. The direction of it is just convention, but is such that a \textbf{positive}
+current corresponds to negative charges moving in the negative direction or positive charges
+are moving in the negative direction.
+
+Currents are created by \textbf{electric fields}, which can be conceptualized by a difference
+in electric potential (voltage).
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_026}
+  \caption{Current in a Wire}
+  \label{fig:026}
+\end{figure}
+
+\subsection{Current at a Specific Point}
+\label{ssec:currentAtASpecificPoint}
+
+Inside a wire, each particle is moving \textit{on average} with some velocity in some direction.
+This average \textbf{drift velocity} ($v_d$) of the particles is what determines the current of the
+circuit.
+
+\begin{formula}{Current by Volume}
+  \begin{align*}
+    \Delta L &= v_{d} \Delta t \\
+    I &= nv_{d}Aq \\
+    J &= \frac{I}{A} = nv_{d}q
+  \end{align*}
+  \begin{tblr}{ccccc}
+    $I= $ current & $n=$ particle density & $v_d= $ velocity & $A= $ area & $q=$ charge \\
+  \end{tblr}
+\end{formula}
+
+Different materials allow particles to move through them with varying ease. This property
+is called the conductivity of the material.
+\begin{definition}{Conductivity}
+  Describes how easily a particle can move through a material. Denoted as $\sigma$.
+\end{definition}
+The conductivity of a material is empirically derived, but conceptually can be thought of
+as the amount of obstacles in the way of a particles movement. The "denser" the path is,
+the harder it is for a particle to move through the material.
+\begin{formula}{Energy in Terms of Conductivity}
+  \begin{align*}
+    J &= \sigma E \\
+    J \frac{1}{\sigma} &= E \\
+    J \rho &= E
+  \end{align*}
+  \begin{tblr}{c|c}
+    $J = \textup{current density} = \frac{A}{m^2}$ & $\sigma = \textup{conductivity} = \frac{A}{Vm}$ \\
+    $E = \textup{electric field} = \frac{N}{C}$ & $\rho = \textup{resistivity} = \frac{Vm}{A}$ \\
+  \end{tblr}
+\end{formula}
+
+\subsection{Ohm's Law}
+\label{ssec:ohmsLaw}
+
+\begin{formula}{Ohm's Law}
+  \begin{equation*}
+    J = \frac{E}{\rho} \ \ \Rightarrow\ \  \frac{I}{A} = \frac{\frac{\Delta V}{L}}{\rho} \ \ \Rightarrow\ \  \Delta V = \frac{\rho L}{A}I
+  \end{equation*}
+  \begin{tblr}{c|c}
+    $I = \textup{current} = A$ & $A = \textup{area} = m^2$ \\
+    $\Delta V = \textup{voltage drop} = V$ & $L = \textup{length} = m$ \\
+  \end{tblr}
+  \vspace{12pt}
+
+  $\frac{\rho L}{A}$ are all constants, and are thus combined into a single constant: resistance ($R$).
+  \begin{equation*}
+    \Delta V = IR
+  \end{equation*}
+\end{formula}
+
+Ohm's Law provides an alternative way to calculate energy within a circuit in terms of
+voltage, current, and resistance.
+Notably, Ohm's law is not a law of nature, but only applies to certain "ohmic" materials. In
+terms of \textbf{resistance}, it is measured in Ohms ($\Omega$) with units in $\frac{V}{A} = \frac{Js}{C^2}$.
+
+The amount of resistance is dependent on its resistivity/conductivity. However, that's not
+the only thing it is related to. The size and shape of the conductor also play a role in
+its resistance. Since:
+\begin{equation*}
+  R = \frac{\rho L}{A}
+\end{equation*}
+An increase in length corresponds to an \textit{increase} in resistivity. Conversely, an increase in
+area of the cross-section of the conductor would correspond to a \textit{decrease} in
+resistivity.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{ccc}
+    \toprule
+    \textbf{Material} & \textbf{Resistivity} $\rho$ & \textbf{Conductivity} $\sigma$ \\
+    \midrule
+    Aluminum          & $2.8  \times 10^{-8}$       & $3.5  \times 10^{7}$            \\
+    Silver            & $1.59 \times 10^{-8}$       & $6.30 \times 10^{7}$            \\
+    Copper            & $1.68 \times 10^{-8}$       & $5.96 \times 10^{7}$            \\
+    Gold              & $2.44 \times 10^{-8}$       & $4.10 \times 10^{7}$            \\
+    Calcium           & $3.36 \times 10^{-8}$       & $2.98 \times 10^{7}$            \\
+    Tungsten          & $5.60 \times 10^{-8}$       & $1.79 \times 10^{7}$            \\
+    Zinc              & $5.90 \times 10^{-8}$       & $1.69 \times 10^{7}$            \\
+    Nickel            & $6.99 \times 10^{-8}$       & $1.43 \times 10^{7}$            \\
+    Iron              & $1.00 \times 10^{-8}$       & $1.00 \times 10^{7}$            \\
+    \bottomrule
+  \end{tblr}
+  \caption{Resistivity and Conductivity of Common Material}
+  \label{fig:resistivityConductivity}
+\end{figure}
+
+\begin{wrapfigure}[]{l}{0.2\textwidth}
+  \centering
+  \vspace{-20pt}
+  \includestandalone{figures/fig_028}
+  % \caption{Voltage Across a Resistor}
+  \label{fig:028}
+\end{wrapfigure}
+
+As a current travels across a resistor, there is a voltage drop. This is seen in Ohm's Law,
+where the voltage drop ($\Delta V$) is equal to the product of the current ($I$) and the
+resistance ($R$).
+\begin{equation*}
+  \Delta V = IR
+\end{equation*}
+The larger the current or resistance in the resistor, the larger the voltage drop will be.
+This voltage drop is a loss of energy within the system. So where does the energy go?
+
+\subsection{Dissipated Heat}
+\label{ssec:dissipatedHeat}
+
+When a voltage drop occurs over a resistor, energy is lost. That energy transforms into \textbf{heat}. To measure
+the heat power dissipated by a resistor:
+
+\begin{formula}{Heat}
+  \begin{equation*}
+    \frac{J}{s} = IV = I^2R = \frac{V^2}{R}
+  \end{equation*}
+\end{formula}
+
+Since the resistance of a material can only be reliably calculated in the ways outlined
+within the scope of PHYS 1213 for Ohmic materials, $I^2R$ and $\frac{V^2}{R}$ only apply
+to Ohmic materials. However, $IV$ applied universally since it is not based on resistance.
+
+\subsection{Current Throughout a Circuit}
+\label{ssec:currentThroughoutACircuit}
+
+\begin{wrapfigure}[]{r}{0.3\textwidth}
+  \vspace{-40pt}
+  \includestandalone{figures/fig_027}
+  \caption{Charge in a Circuit}
+  \label{fig:027}
+\end{wrapfigure}
+
+Current is just a measurement of how the physical electrons/protons in a circuit are \textbf{moving}
+about. The movement of these particles depends on the amount of energy they have (voltage).
+
+Current throughout a circuit is conserved. In other words, at any point, the total amount
+of current flowing into a location must be the same as the amount flowing out of that
+location.
+
+In Figure \ref{fig:027}, the amount of current flowing into junction $A$ is always going
+to equal the amount of current flowing out. In other words: $\overrightarrow{I_1} = \overrightarrow{I_2} + \overrightarrow{I_3}$.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_029}
+  \caption{Circuit Diagram}
+  \label{fig:029}
+\end{figure}
+
+Considering the circuit in Figure \ref{fig:029} in terms of \textit{energy}, the energy of
+the circuit is being supplied at the battery. The energy then travels through the circuit.
+At each resistor, some amount of energy is being \textit{lost} in the form of heat. Over a
+capacitor, the energy is charging up the capacitor to be stored in the form of potential
+energy.
+
+Importantly, no current is flowing across a capacitor, there is only a voltage drop across
+them.
+
+The voltage supply in a circuit is referred to as "emf", denoted as $\epsilon$.
+
+\end{document}

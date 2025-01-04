@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 024}
+\date{October 12, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (0,0) rectangle ++(2,0.5);
+  \draw[draw=fg, ultra thick] (0,-1) -- ++(0,2.5);
+  \coordinate (d) at (2,0.25);
+  \filldraw[fill=bl, draw=bl] (d) circle (3pt) node[yshift = -8pt, anchor = north] {$A$};
+
+  \draw[draw=fg, ultra thick, dashed] (2.5,-1) -- ++(0,2.5);
+
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (3,0) rectangle ++(3,0.5);
+  \coordinate (a) at (6,0.25);
+  \filldraw[fill=re, draw=re] (a) circle (3pt);
+  \draw[draw=fg, ultra thick, stealth-] (a) -- ++(0.5,1) node[anchor = south west] {$F_1$};
+  \coordinate (b) at (4,0.25);
+  \filldraw[fill=re, draw=re] (b) circle (3pt);
+  \draw[draw=fg, ultra thick, stealth-] (b) -- ++(0,1) node[anchor = south] {$F_2$};
+  \coordinate (c) at (3,0.25);
+  \filldraw[fill=bl, draw=bl] (c) circle (3pt) node[yshift = -8pt, anchor = north] {$A$};
+
+\end{tikzpicture}
+\end{document}

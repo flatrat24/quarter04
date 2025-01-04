@@ -1,0 +1,268 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 006}
+\date{October 23, 2024}
+
+\begin{document}
+\newpage
+\section{Latches and Flip-Flops}
+\label{sec:latchesAndFlipFlops}
+
+\subsection{Latch Gate}
+\label{ssec:latchGate}
+
+\begin{definition}{Latch}
+  A latch is a \uline{bi-stable} memory element, meaning that it can store data in two
+  different states ($1$ or $0$). Additionally, it is also \uline{level-sensitive}, meaning
+  that the state that it stores is dependent on the inputs to the latch.
+\end{definition}
+A latch can be implemented in many ways, one of which being with two NOR gates as seen in
+Figure \ref{fig:latchCircuit}.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.5\textwidth}
+    \centering
+    \includestandalone{figures/fig_018}
+    \caption{}
+    \label{fig:018}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.4\textwidth}
+    \centering
+    \includestandalone{figures/fig_019}
+    \caption{}
+    \label{fig:019}
+  \end{subfigure}
+  \caption{Latch Implementation With Nor Gates}
+  \label{fig:latchCircuit}
+\end{figure}
+
+\hrule
+
+\begin{center}
+  {\large \textbf{Operating a Latch Gate}}
+\end{center}
+
+The operation of a latch follows two simple rules:
+\begin{enumerate}
+  \itemsep0em
+  \item For all states, $P \equiv \overline{Q}$. $P$ is always the complement of $Q$
+  \item The inputs $R$ and $S$ must never change simultaneously
+\end{enumerate}
+
+Following these simple rules, manipulating the values of $R$ and $S$ changes the outputs of $P$
+and $Q$ according to the following table.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{cc|cc}
+      \toprule
+      S & R & P & Q \\
+      \midrule
+      0 & 0 & P & Q \\
+      0 & 1 & 0 & 1 \\
+      1 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 0 \\
+      \bottomrule
+    \end{tblr}
+    \caption{Characteristic Table}
+    \label{fig:characteristicTable}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{equation*}
+      Q^+ = S \lor (\overline{R} \land Q)
+    \end{equation*}
+    \caption{Characteristic Equation}
+    \label{fig:characteristicEquation}
+  \end{subfigure}
+  \caption{}
+  \label{fig:tempTwo}
+\end{figure}
+
+Consider Figure \ref{fig:latchOne}. Starting in the initial state of $R,S=0$,
+changing the value of $R$ to $1$ results in the output of $P$ changing from $0$ to $1$,
+and the output of $Q$ changing from $1$ to $0$.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_020}
+  \caption{}
+  \label{fig:latchOne}
+\end{figure}
+
+However, going from the resulting state in Figure \ref{fig:latchOne} and changing $R$ back
+to $0$, the state of $P$ and $Q$ are unaffected. Thus, we have a situation in which the
+inputs of $R=0$ and $S=0$ correspond to outputs of $P=0$ and $Q=1$. Previously, the same
+inputs corresponded to the complement of the outputs.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_021}
+  \caption{}
+  \label{fig:latchTwo}
+\end{figure}
+
+Starting from the resulting state of Figure \ref{fig:latchOne}, changing $R$ back to $0$
+has no effect on the outputs of the latch. This is a demonstration of the latch's "latching"
+behavior; in certain states, it retains a memory of its outputs independentally of its inputs.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_022}
+  \caption{}
+  \label{fig:latchThree}
+\end{figure}
+
+From the result of Figure \ref{fig:latchTwo}, raising $S$ to $1$ has the effect of
+complementing both of the outputs; $P$ goes to $1$ from $0$, and $Q$ goes to $0$ from $1$.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_023}
+  \caption{}
+  \label{fig:latchFour}
+\end{figure}
+
+After lowering $S$ back to $0$, again, the latch retains its outputs.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_024}
+  \caption{}
+  \label{fig:latchFive}
+\end{figure}
+
+Lastly, by raising $R$ back to $1$, the outputs of the latch are the same as they were in
+the initial state. If $R$ were to be lowered again to $0$, the latch would retain its
+memory of the state and would find itself back in the same initial state as it was in 
+Figure \ref{fig:latchOne}.
+
+Notice that the outputs only ever change when either $S$ or $R$ is raised to $1$. When
+either is lowered, the outputs remain constant.
+\vspace{12pt}
+\hrule
+
+Latches are useful for signal "debouncing". When a physical button is pressed, often there
+is excess kinetic energy that causes to circuit to flicker, leading to several input
+changes despite the button being pressed only a single time.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_025}
+  \caption{Bouncing Signal}
+  \label{fig:025}
+  \vspace{-15pt}
+\end{figure}
+Since a latch only changes its output when an input is \textbf{raised}, but not when it
+is lowered, only the initial rise will change the output. Each lowering of the input due
+to the bouncing is negated.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_026}
+  \caption{Debounced Signal}
+  \label{fig:026}
+\end{figure}
+
+\subsection{Gated Latch}
+\label{ssec:gatedLatch}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{ccc|cc}
+      \toprule
+      Clk & S & R & P & Q \\
+      \midrule
+      0 & x & x & P & Q \\
+      1 & 0 & 0 & P & Q \\
+      1 & 0 & 1 & 0 & 1 \\
+      1 & 1 & 0 & 1 & 0 \\
+      1 & 1 & 1 & x & x \\
+      \bottomrule
+    \end{tblr}
+    \caption{Characteristic Table}
+    \label{fig:characteristicTableTwo}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{equation*}
+      Q = Clk \big(S + \overline{R} \cdot Q \big) + \overline{Clk} \cdot Q
+    \end{equation*}
+    \caption{Characteristic Equation}
+    \label{fig:characteristicEquationTwo}
+  \end{subfigure}
+  \caption{}
+  \label{fig:tempOne}
+\end{figure}
+
+A gated latch operated similarly to a regular latch in that it uses two inputs $R$ and $S$
+to manage a circuit capable of storing memory. However, the difference is that it connects
+each input through an AND gate with a clock.
+
+Since the state of a latch can only change when $R$ or $S$ is raised, and $R$ or $S$ can
+only be raised when the clock ticks, the changing of $P$ or $Q$ is essentially restricted
+to when the clock ticks. In other words, the gated latch functions identically to the 
+regular latch, but it only can change states during the tick of a clock.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_027}
+  \caption{Gated Latch}
+  \label{fig:027}
+\end{figure}
+
+\subsection{Timing Diagrams}
+\label{ssec:timingDiagrams}
+
+\begin{definition}{Timing Diagram}
+  A timing diagram is a graphical view of a circuits behavior that shows how the outputs
+  of a circuit change in response to the inputs which are varying as a function of time.
+\end{definition}
+
+For a circuit such as a three-input AND gate, a possible timing diagram would look like
+Figure \ref{fig:035}.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_036}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_035}
+  \caption{AND Timing Diagram}
+  \label{fig:035}
+\end{figure}
+
+When given arbitrary high and low values for the inputs $x$, $y$, and $z$, the output $O$
+is only high when all three inputs are high. This is just a visual representation of
+the operation of an AND gate.
+
+With more complex circuits, timing diagrams get a little harder to parse. However, the
+same basic concept applies: each line for each input, output, or state should logically
+correspond to each other line of the diagram. Consider the timing diagram for some D
+Flip-Flops in Figure \ref{fig:timingDiagramForSomeDFlipFlops}.
+
+\begin{figure}[H]
+  \begin{subfigure}[H]{0.35\textwidth}
+    \centering
+    \includestandalone{figures/fig_037}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.55\textwidth}
+    \centering
+    \includestandalone{figures/fig_038}
+  \end{subfigure}
+  \caption{Timing Diagram for D Flip-Flops}
+  \label{fig:timingDiagramForSomeDFlipFlops}
+\end{figure}
+
+Flip-flop $a$ has a direct $Clk$ input, meaning it just takes the value of the clock and
+combined it with input $D$. Flip-flop $b$ triggers only on the rising edge, and flip-flop
+$c$ triggers only on a falling edge.
+
+\end{document}

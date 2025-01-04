@@ -1,0 +1,55 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 020}
+\date{October 28, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg
+  }
+  \coordinate (b) at (0,0);
+  \node[thick, nor port] (norb1) at ($(b)+(1,01.5)$){};
+  \node[thick, nor port] (norb2) at ($(b)+(1,-1.5)$){};
+
+  \draw[draw=fg, thick] ($(norb1.in 1)+(-1,0)$) node[left] {$R$} to[short, *-] node[midway, anchor = south] {{\color{re!75!fg} \textbf{1}}} (norb1.in 1);
+  \draw[draw=fg, thick] ($(norb2.in 2)+(-1,0)$) node[left] {$S$} to[short, *-] node[midway, anchor = north] {{\color{re!75!fg} \textbf{0}}} (norb2.in 2);
+
+  \draw[draw=fg, thick] (norb1.out) to[short, -*] node[midway, anchor = south, xshift = -11pt] {{\color{re!75!fg} \textbf{0}}} ++(1,0) node[anchor = west] {$P$};
+  \draw[draw=fg, thick] (norb2.out) to[short, -*] node[midway, anchor = north, xshift = -17pt] {{\color{re!75!fg} \textbf{1}}} ++(1,0) node[anchor = west] {$Q$};
+
+  \draw[draw=fg, thick] ($(norb2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(norb1.in 2)+(-0.5,-1)$) |- node[midway, anchor = east, yshift = -14pt] {{\color{re!75!fg} \textbf{1}}} (norb1.in 2);
+  \draw[draw=fg, thick] ($(norb1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(norb2.in 1)+(-0.5,01)$) |- node[midway, anchor = east, yshift = 014pt] {{\color{re!75!fg} \textbf{0}}} (norb2.in 1);
+
+  \coordinate (c) at (8,0);
+  \draw[draw=fg, -stealth, ultra thick] ($(c)+(-4,0)$) -- node[midway, anchor = south] {Set $R$ to $0$} ++(2,0);
+  \node[thick, nor port] (norc1) at ($(c)+(1,01.5)$){};
+  \node[thick, nor port] (norc2) at ($(c)+(1,-1.5)$){};
+
+  \draw[draw=fg, thick] ($(norc1.in 1)+(-1,0)$) node[left] {$R$} to[short, *-] node[midway, anchor = south] {{\color{bl!75!fg} \textbf{0}}} (norc1.in 1);
+  \draw[draw=fg, thick] ($(norc2.in 2)+(-1,0)$) node[left] {$S$} to[short, *-] node[midway, anchor = north] {{\color{re!75!fg} \textbf{0}}} (norc2.in 2);
+
+  \draw[draw=fg, thick] (norc1.out) to[short, -*] node[midway, anchor = south, xshift = -11pt] {{\color{re!75!fg} \textbf{0}}} ++(1,0) node[anchor = west] {$P$};
+  \draw[draw=fg, thick] (norc2.out) to[short, -*] node[midway, anchor = north, xshift = -17pt] {{\color{re!75!fg} \textbf{1}}} ++(1,0) node[anchor = west] {$Q$};
+
+  \draw[draw=fg, thick] ($(norc2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(norc1.in 2)+(-0.5,-1)$) |- node[midway, anchor = east, yshift = -14pt] {{\color{re!75!fg} \textbf{1}}} (norc1.in 2);
+  \draw[draw=fg, thick] ($(norc1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(norc2.in 1)+(-0.5,01)$) |- node[midway, anchor = east, yshift = 014pt] {{\color{re!75!fg} \textbf{0}}} (norc2.in 1);
+
+  % \coordinate (d) at (8,-6);
+  % \node[thick, nor port] (nord1) at ($(d)+(1,01.5)$){};
+  % \node[thick, nor port] (nord2) at ($(d)+(1,-1.5)$){};
+  %
+  % \draw[draw=fg, thick] ($(nord1.in 1)+(-1,0)$) node[left] {$R$} to[short, *-] node[midway, anchor = south] {{\color{re!75!fg} \textbf{0}}} (nord1.in 1);
+  % \draw[draw=fg, thick] ($(nord2.in 2)+(-1,0)$) node[left] {$S$} to[short, *-] node[midway, anchor = north] {{\color{bl!75!fg} \textbf{1}}} (nord2.in 2);
+  %
+  % \draw[draw=fg, thick] ($(nord1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(nord2.in 1)+(-0.5,01)$) |- node[midway, anchor = east, yshift = 014pt] {{\color{gr!75!fg} \textbf{1}}} (nord2.in 1);
+  % \draw[draw=fg, thick] (nord1.out) to[short, -*] node[midway, anchor = south, xshift = -11pt]                                                      {{\color{gr!75!fg} \textbf{1}}} ++(1,0) node[anchor = west] {$P$};
+  %
+  % \draw[draw=fg, thick] ($(nord2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(nord1.in 2)+(-0.5,-1)$) |- node[midway, anchor = east, yshift = -14pt] {{\color{gr!75!fg} \textbf{0}}} (nord1.in 2);
+  % \draw[draw=fg, thick] (nord2.out) to[short, -*] node[midway, anchor = north, xshift = -17pt]                                                      {{\color{gr!75!fg} \textbf{0}}} ++(1,0) node[anchor = west] {$Q$};
+  % \draw[draw=fg, ultra thick, -stealth] ($(d)+(3.5,0)$) -- ++(1,0);
+\end{circuitikz}
+\end{document}

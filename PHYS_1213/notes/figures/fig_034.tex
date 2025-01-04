@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 034}
+\date{October 16, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \filldraw[fill=or!10!bg, draw=or, ultra thick, rounded corners] (1.75,-0.3) rectangle ++(2.25,2);
+
+  \draw[draw=fg, thick] (0,0) to[resistor] ++(2,0) to[resistor] ++(1.5,0) to[battery, invert] ++(0,1.5) -- ++(-1.5,0) to[resistor] ++(-2,0) to[battery] ++(0,-1.5);
+  \draw[draw=fg, thick] (2,0) to[resistor, *-*] ++(0,1.5);
+\end{circuitikz}
+\end{document}

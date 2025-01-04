@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 007}
+\date{September 12, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (-2,0);
+  \coordinate (b) at (0,0);
+  \coordinate (c) at (3,0);
+
+  \coordinate (A) at (-2,-1);
+  \coordinate (B) at (0,-1);
+  \coordinate (C) at (3,-1);
+
+  \filldraw[fill=ma!50, draw=ma!50] (a) node[bg] {Q1} circle (10pt);
+  \filldraw[fill=ma!50, draw=ma!50] (b) node[bg] {Q2} circle (10pt);
+  \filldraw[fill=ma!50, draw=ma!50] (c) node[bg] {Q3} circle (10pt);
+
+  \draw[] (a) node[rotate = 0, anchor = south, yshift=10pt] {$-4 \mu C$};
+  \draw[] (b) node[rotate = 0, anchor = south, yshift=10pt] {$-2 \mu C$};
+  \draw[] (c) node[rotate = 0, anchor = south, yshift=10pt] {$-3 \mu C$};
+
+  \draw[draw=fg, thick, stealth-stealth] (A) node[midway, anchor=north] {$2m$} -- (B);
+  \draw[draw=fg, thick, stealth-stealth] (B) node[midway, anchor=north] {$3m$} -- (C);
+
+\end{tikzpicture}
+\end{document}

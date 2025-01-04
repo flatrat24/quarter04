@@ -1,0 +1,35 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 038}
+\date{November 07, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \foreach \x in {0,...,9} {
+    \draw[draw=fg!25!bg, thick, dashed] (\x,1) -- (\x,-8);
+  }
+
+  \coordinate (a) at (0,0);
+  \draw[] (a) node[rotate = 0, anchor = east] {{\LARGE $Clk$}};
+  \draw[draw=fg, ultra thick] (a) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(1,0);
+
+  \coordinate (b) at (0,-2);
+  \draw[] (b) node[rotate = 0, anchor = east] {{\LARGE $D$}};
+  \draw[draw=fg, ultra thick] (b) -- ++(0.5,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(1.25,0) -- ++(0,-1) -- ++(2,0) -- ++(0,1) -- ++(0.75,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(1.5,0);
+
+  \coordinate (c) at (0,-4);
+  \draw[] (c) node[rotate = 0, anchor = east] {{\LARGE $Q_a$}};
+  \draw[re!50!fg, ultra thick] (c) -- ++(1,0) -- ++(0,1) -- ++(0.5,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,1) -- ++(0.75,0) -- ++(0,-1) -- ++(2,0) -- ++(0,1) -- ++(0.25,0) -- ++(0,-1) -- ++(1.5,0) -- ++(0,1) -- ++(0.5,0) -- ++(0,-1) -- ++(1,0);
+
+  \coordinate (d) at (0,-6);
+  \draw[] (d) node[rotate = 0, anchor = east] {{\LARGE $Q_b$}};
+  \draw[gr!50!fg, ultra thick] (d) -- ++(1,0) -- ++(0,1) -- ++(4,0) -- ++(0,-1) -- ++(4,0);
+
+  \coordinate (e) at (0,-8);
+  \draw[] (e) node[rotate = 0, anchor = east] {{\LARGE $Q_c$}};
+  \draw[bl!50!fg, ultra thick] (e) -- ++(6,0) -- ++(0,1) -- ++(3,0);
+
+\end{tikzpicture}
+\end{document}

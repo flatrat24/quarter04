@@ -1,0 +1,26 @@
+{
+  "schedule": {
+    "start":        900,
+    "end":          1000,
+    "days":         "Mon Wed",
+    "labStart":     1200,
+    "labEnd":       1400,
+    "labDays":      "Tue"
+  },
+
+  "name": {
+    "title":        "Digital Design",
+    "short":        "ENCE 2101",
+    "code":         "ENCE",
+    "number":       "2101"
+  },
+
+  "bookmarks": {
+    "Canvas Homepage":        "https://canvas.du.edu/courses/179034",
+    "Course Schedule":        "/home/ea/Documents/School/quarter04/ENCE_2101/Course Schedule.pdf",
+    "Syllabus":               "/home/ea/Documents/School/quarter04/ENCE_2101/ENCE 2101 - Syllabus.pdf",
+    "Textbook":               "/home/ea/Documents/School/quarter04/ENCE_2101/ENCE 2101 - Textbook.pdf"
+  },
+
+  "hasLab":         true
+}

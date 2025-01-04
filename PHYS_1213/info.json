@@ -1,0 +1,26 @@
+{
+  "schedule": {
+    "start":        1100,
+    "end":          1200,
+    "days":         "Mon Wed Thu Fri",
+    "labStart":     1000,
+    "labEnd":       1200,
+    "labDays":      "Tue"
+  },
+
+  "name": {
+    "title":        "University Physics III",
+    "short":        "PHYS 1213",
+    "code":         "PHYS",
+    "number":       "1213"
+  },
+
+  "bookmarks": {
+    "Canvas Homepage":        "https://canvas.du.edu/courses/178472",
+    "Pearson Homework":       "https://mylabmastering.pearson.com/?courseId=13134455",
+    "PointSolutions":         "https://participant.turningtechnologies.com/en/polling/UPHYS/polling",
+    "Syllabus":               "/home/ea/Documents/School/quarter04/PHYS_1213/PHYS 1213 - Syllabus.pdf"
+  },
+
+  "hasLab":         true
+}

@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 005}
+\date{October 08, 2024}
+
+\begin{document}
+\newpage
+\section{Number Theory}
+\label{sec:numberTheory}
+
+\subsection{Last-Digit Algebra}
+\label{ssec:lastDigitAlgebra}
+
+\begin{wrapfigure}[19]{l}{0.35\textwidth}
+  \centering
+  \begin{tblr}{cc|c}
+    \toprule
+    $i$ & $n \cdot i$ & $n \% 10$ \\
+    \midrule
+    0  & 0  & 0 \\
+    1  & 7  & 7 \\
+    2  & 14 & 4 \\
+    3  & 21 & 1 \\
+    4  & 28 & 8 \\
+    5  & 35 & 5 \\
+    6  & 42 & 2 \\
+    7  & 49 & 9 \\
+    8  & 56 & 6 \\
+    9  & 63 & 3 \\
+    10 & 70 & 0 \\
+    11 & 77 & 7 \\
+    12 & 84 & 4 \\
+    13 & 91 & 1 \\
+    \bottomrule
+  \end{tblr}
+\end{wrapfigure}
+
+Adding $7$ to itself infinitely will result in an infinitely increasing sequence of integers.
+By focusing only on the last digit (the one's digit) of each item in the sequence, a pattern
+emerges: $0,7,4,1,8,5,2,9,6,3,0,7,4,1,...$.
+
+This sequence is showing that when $7$ is added to a number ending in a $0$, the sum will
+end in a $7$; when $7$ is added to a number ending in a $7$, the sum will end in a $4$; etc.
+This idea can be stated as:
+\begin{align*}
+  (7 \cdot 1) \% 10 &= 7 \\
+  (7 \cdot 2) \% 10 &= 4
+\end{align*}
+Any number ending in a $7$ can replace the seven in these equations. Thus:
+\begin{align*}
+  \forall x\ | \ x \% 10=7 \Rightarrow (x \cdot 1) \% 10 &= 7 \\
+  \forall x\ | \ x \% 10=7 \Rightarrow (x \cdot 2) \% 10 &= 4
+\end{align*}
+By considering only the last digit of a number, rules can be derived about the result of
+some arbitrary algebraic operation.
+
+\subsection{Divisibility and Modular Arithmetic}
+\label{ssec:divisibility}
+
+\begin{definition}{Divides}
+  $a$ is said to \textit{divide} $b$ if $\frac{b}{a} \in \mathbb{Z}$. In other words,
+  $a$ divides $b$ if there exists some integer $c$ such that $b = c \cdot a$. Denoted as
+  $a | b$.
+\end{definition}
+There are three \textbf{basic properties of divisibility}. Considering all \textit{integer} values of $a$,
+$b$, and $c$ where $a \neq 0$, then:
+\begin{align*}
+  a|b \land a|c &\Rightarrow a|(b+c) \\
+  a|b           &\Rightarrow a|bc \\
+  a|b \land b|c &\Rightarrow a|c
+\end{align*}
+\end{document}

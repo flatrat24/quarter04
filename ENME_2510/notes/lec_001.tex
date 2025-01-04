@@ -1,0 +1,154 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 001}
+\date{September 09, 2024}
+
+\begin{document}
+
+\section{Introduction to Mechanics}
+\label{sec:introductionToMechanics}
+
+The basic concepts used in mechanics are \textit{space, time, mass, and force}. Together,
+they come to form the general idea of what mechanics is.
+
+\begin{definition}{Mechanics}
+  The study of what happens to an object or system when forces are applied to it.
+  There are three bodies of mechanics: rigid body mechanics, mechanics of materials,
+  and fluid mechanics.
+\end{definition}
+
+Elementary mechanics is derived from six basic principles.
+
+\begin{definition}{Six Basic Principles of Mechanics}
+  \textbf{The Parallelogram Law for the Addition of Forces} - Two separate forces acting upon
+  the same object can be combined into the \textit{resultant} force by drawing the diagonal
+  inside a parallelogram formed by two of each of the original forces.
+
+  \textbf{The Principle of Transimmibility} - The equilibrium of an object remains unchanged
+  if a force acting upon that object is replaced with another identical force acting along
+  the same line of action.
+
+  \textbf{Newton's Three Laws of Motion}
+  \begin{itemize}
+    \itemsep0em
+    \item \textbf{First Law} - An object's motion remains unchanged if the resultant force
+      on that object is zero.
+    \item \textbf{Second Law} - An object will have an acceleration proportional to the resultant
+      force acting upon it. The proportionality is described as: $\overrightarrow{F}=m \overrightarrow{a}$.
+    \item \textbf{Third Law} - The forces of action and reaction between bodies in contact are 
+      equal in magnitude and line of action, and opposite in direction.
+  \end{itemize}
+
+  \textbf{Newton's Law of Gravitation} - Two particles of mass $M$ and $m$ are attracted
+  by forces $F$ and $-F$ respectively given by: $F=G \frac{Mm}{r^2}$.
+\end{definition}
+
+\subsection{Units}
+\label{ssec:units}
+
+There are two systems of units: the \textbf{International System of Units (SI)} and the \textbf{U.S. Customary}.
+These systems measure the four basic physical quantities (space, time, mass, and force).
+
+The \textbf{SI Base} units are what every other unit is derived from. They are listed in full in
+Figure \ref{tbl:siBaseUnits}.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{tblr}{lcc}
+      \toprule
+      \textbf{Base Quantity}    & \textbf{Name} & \textbf{Symbol} \\
+      \midrule
+      Length                    & meter         & m               \\
+      Mass                      & kilogram      & kg              \\
+      Time                      & second        & s               \\
+      Electric Current          & ampere        & A               \\
+      Thermodynamic Temperature & kelvin        & K               \\
+      Amount of Substance       & mole          & mol             \\
+      Luminous Intensity        & candela       & cd              \\
+      \bottomrule
+    \end{tblr}
+    \caption{SI Base Units}
+    \label{tbl:siBaseUnits}
+  \end{center}
+\end{figure}
+
+Using the SI Base Units, there is also a set of \textbf{SI Derived Units}, meaning that they are
+standard units that are created through combining the SI Base Units in different ways. They
+are listed in Figure \ref{tbl:siDerivedUnits}.
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{tblr}{lccc}
+      \toprule
+      \textbf{Derived Quantity} & \textbf{Name}  & \textbf{Symbol} & \textbf{Equivalent Base Units} \\
+      \midrule
+      Frequency                 & hertz          & Hz              & $s^{-1}$                       \\
+      Force                     & newtown        & N               & $\frac{m \cdot kg}{s^2}$       \\
+      Pressure                  & pascal         & Pa              & $\frac{N}{m^2}$                \\
+      Energy                    & joule          & J               & $N \cdot m$                    \\
+      Power                     & watt           & W               & $\frac{J}{s}$                  \\
+      Electric Charge           & coulomb        & C               & $s \cdot A$                    \\
+      Electric Potential        & volt           & V               & $\frac{W}{A}$                  \\
+      Electric Resistance       & ohm            & $\Omega$        & $\frac{V}{A}$                  \\
+      Celsius Temperature       & degree Celsius & $\celsius$      & $K$                            \\
+      \bottomrule
+    \end{tblr}
+    \caption{SI Derived Units}
+    \label{tbl:siDerivedUnits}
+  \end{center}
+\end{figure}
+
+Converting between SI and U.S. Customary, there each physical quantity has a corresponding
+unit in both systems that are linearly related. The conversions are shows in Figure \ref{tbl:conversion}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{lccc}
+    \toprule
+    \textbf{Quantity} & \textbf{U.S. Customary} & \textbf{Equals} & \textbf{SI} \\
+    \midrule
+    Force  & $1lb$   & = & $4.448N$ \\
+    Mass   & $1slug$ & = & $14.59kg$ \\
+    Length & $1ft $  & = & $0.3048m$ \\
+    Volume & $1gal$  & = & $3.785l$ \\
+    \bottomrule
+  \end{tblr}
+  \caption{Unit Conversions}
+  \label{tbl:conversion}
+\end{figure}
+
+Lastly, there is a set of \textbf{SI Unit Prefixes}, used to modify the magnitude of a unit.
+The range of prefixes is listed in Figure \ref{tbl:siPrefix}.
+
+\vspace{-6pt}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{tblr}{lccl}
+      \toprule
+      \textbf{Factor} & \textbf{Name} & \textbf{Symbol} & \textbf{Numerical Value} \\
+      \midrule
+      $10^{15}$       & peta          & P               & $1\ 000\ 000\ 000\ 000\ 000$  \\
+      $10^{12}$       & tera          & T               & $1\ 000\ 000\ 000\ 000$       \\
+      $10^{9}$        & giga          & G               & $1\ 000\ 000\ 000$            \\
+      $10^{6}$        & mega          & M               & $1\ 000\ 000$                 \\
+      $10^{3}$        & kilo          & k               & $1\ 000$                      \\
+      $10^{2}$        & hecto         & h               & $100$                         \\
+      $10^{1}$        & deka          & da              & $10$                          \\
+      $10^{-1}$       & deci          & d               & $0.1$                         \\
+      $10^{-2}$       & centi         & c               & $0.01$                        \\
+      $10^{-3}$       & milli         & m               & $0.001$                       \\
+      $10^{-6}$       & micro         & $\mu$           & $0.000\ 001$                  \\
+      $10^{-9}$       & nano          & n               & $0.000\ 000\ 001$             \\
+      $10^{-12}$      & pico          & p               & $0.000\ 000\ 000\ 001$        \\
+      $10^{-15}$      & femto         & f               & $0.000\ 000\ 000\ 000\ 001$   \\
+      \bottomrule
+    \end{tblr}
+    \caption{SI Unit Prefixes}
+    \label{tbl:siPrefix}
+  \end{center}
+\end{figure}
+
+\end{document}

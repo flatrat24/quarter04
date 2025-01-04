@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 004}
+\date{September 13, 2024}
+
+\begin{document}
+
+\section{2D Moments}
+\label{sec:2DMoments}
+
+\subsection{Defining Moments}
+\label{ssec:definingMoments}
+
+\begin{definition}{Moment}
+  A \textbf{vector quantity} used to describe the "turning effect" of a force about a point
+  perpendicular to the force. Calculated using the vector product:
+  \begin{equation*}
+    \overrightarrow{M}_O = \overrightarrow{r} \times \overrightarrow{F}
+  \end{equation*}
+\end{definition}
+
+To calculate the moment of a force about a point, we need to calculate vector products. The
+cross product of two vectors ($\overrightarrow{P} \times \overrightarrow{Q}$) results in a third
+vector ($\overrightarrow{V}$):
+
+\begin{formula}{Vector Product}
+  \begin{equation*}
+    \overrightarrow{V} = \overrightarrow{P} \times \overrightarrow{Q}
+  \end{equation*}
+  This results in a new vector with
+  \begin{itemize}
+    \itemsep0em
+    \item Magnitude $M_V$ determined by $|\overrightarrow{V}|=PQsin(\theta)$
+    \item Direction $\hat{u}_V$ with a \textit{line of action} perpendicular to both original
+      vectors and \textit{sense} determined by the right hand rule
+  \end{itemize}
+\end{formula}
+
+To calculate the vector product of two vectors, the following process is used:
+
+
+\begin{definition}{Principle of Transmissibility}
+  Any force $\overrightarrow{F}$ acting on a rigid body at a given point can be replaced by
+  an \textbf{equivalent force} $\overrightarrow{F}'$ provided that $\overrightarrow{F}$ and
+  $\overrightarrow{F}'$ have the \uline{same magnitude}, \uline{same direction}, and
+  \uline{same line of action}.
+\end{definition}
+
+\subsection{General Process}
+\label{ssec:generalProcess}
+
+%TODO
+
+\newpage
+
+\begin{example}
+  \begin{wrapfigure}[]{r}{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_006}
+  \end{wrapfigure}
+
+  A gardener is moving soil with a wheelbarrow. The length of the handle from $A$ to $B$ is
+  $45in$, and in the position shows, $\theta$ is $25 \degree$. Find the moment created about
+  the axle $A$ when she applies a verticle $30$ lb force at $B$ by resolving the force $F$
+  into components parallel and perpendicular to the handle.
+
+  \vspace{22pt}
+  \hrule
+  \vspace{12pt}
+
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.2\textwidth}
+      \centering
+      \uline{Find:}
+      \begin{equation*}
+        \overrightarrow{M}_A
+      \end{equation*}
+    \end{subfigure}
+    \vrule
+    \begin{subfigure}[t]{0.3\textwidth}
+      \centering
+      \uline{Given:}
+      \begin{align*}
+        F &= 30 \textup{lb} \\
+        l_{ab} &= 45 \textup{in} \\
+        \theta &= 25 \degree
+      \end{align*}
+    \end{subfigure}
+    \vrule
+    \begin{subfigure}[t]{0.4\textwidth}
+      \centering
+      \uline{Knowns:}
+      \begin{align*}
+        \overrightarrow{M}_A &= \overrightarrow{r}_{b/a} \times \overrightarrow{F} \\
+        M_A &= r_{b/a} F sin(\theta)
+      \end{align*}
+    \end{subfigure}
+  \end{figure}
+
+  \hrule
+  \vspace{12pt}
+
+  \textbf{1)} Define the reference frame ($x, y, z$ and $\hat{i},\hat{j},\hat{k}$)
+  \begin{figure}[H]
+    \centering
+    \includestandalone{figures/fig_007}
+  \end{figure}
+
+  \textbf{2)} Find $\overrightarrow{r}_{b/a}$
+  \begin{align*}
+    \overrightarrow{r}_{b/a} &= \overrightarrow{r}_x\hat{i} + \overrightarrow{r}_y\hat{j} + \overrightarrow{r}_z\hat{k} \\
+                             &= l_{ab}cos(\theta)\hat{i} + l_{ab}sin(\theta)\hat{j} + 0\hat{k}
+  \end{align*}
+
+  \textbf{3)} Find $\overrightarrow{F}$
+  \begin{align*}
+    \overrightarrow{F} &= \overrightarrow{F}_x\hat{i} + \overrightarrow{F}_y\hat{j} + \overrightarrow{F}_z\hat{k} \\
+                       &= 0\hat{i} + |\overrightarrow{F}|\hat{j} + 0\hat{k}
+  \end{align*}
+
+  \textit{\hfill continued...}
+
+
+\end{example}
+
+\newpage
+\begin{tcolorbox}[
+  standard jigsaw, % Allows opacity
+  colframe=fg,
+  boxrule=1px,
+  colback=black,
+  opacityback=0,
+  sharp corners,
+  coltext=fg
+  ]
+  \textbf{Example Continued \hfill \thesection.\theexample}
+  \vspace{5px}
+  \hrule
+  \vspace{5px}
+  \noindent
+
+  \textbf{4)} Evaluate $\overrightarrow{M}_A = \overrightarrow{r}_{b/a} \times \overrightarrow{F}$
+  \begin{align*}
+    \overrightarrow{M}_A &=
+    \begin{vmatrix}
+      \hat{i} & \hat{j} & \hat{k} \\
+      \overrightarrow{r}_x & \overrightarrow{r}_y & \overrightarrow{r}_z \\
+      \overrightarrow{F}_x & \overrightarrow{F}_y & \overrightarrow{F}_z
+    \end{vmatrix}
+    =
+    \begin{vmatrix}
+      \hat{i} & \hat{j} & \hat{k} \\
+      l_{ab}cos(\theta) & l_{ab}sin(\theta) & 0 \\
+      0 & |\overrightarrow{F}| & 0
+    \end{vmatrix} \\
+    &= \hat{i}
+    \begin{vmatrix}
+      l_{ab}sin(\theta) & 0 \\
+      |\overrightarrow{F}| & 0
+    \end{vmatrix}
+    - \hat{j}
+    \begin{vmatrix}
+      l_{ab}cos(\theta) & 0 \\
+      0 & 0
+    \end{vmatrix}
+    + \hat{k}
+    \begin{vmatrix}
+      l_{ab}cos(\theta) & l_{ab}sin(\theta) \\
+      0 & |\overrightarrow{F}|
+    \end{vmatrix} \\
+    &= \hat{i}(l_{ab}cos(\theta) \cdot 0 - |\overrightarrow{F}| \cdot 0) - \hat{j}(l_{ab}cos(\theta) \cdot 0 - 0) + \hat{k}(l_{ab}cos(\theta) \cdot |\overrightarrow{F}| - l_{ab}sin(\theta) \cdot 0) \\
+    &= (0)\hat{i} - (0)\hat{j} + (l_{ab}cos(\theta) \cdot |\overrightarrow{F}|)\hat{k} \\
+    &= (0)\hat{i} - (0)\hat{j} + (45\textup{in}cos(25\degree) \cdot |30\textup{lb}|)\hat{k} \\
+    &= (0)\hat{i} - (0)\hat{j} + (40.78\textup{in}) \cdot 30\textup{lb})\hat{k} \\
+    &= (0)\hat{i} - (0)\hat{j} + (1223.51\textup{in} \cdot \textup{lb})\hat{k}
+  \end{align*}
+
+  \textbf{5)} Find the effective moment arm
+  \begin{align*}
+    \textup{M} &= \frac{\textup{Fr}sin(\beta)}{\textup{F}} \\
+               &= \frac{30 \textup{lb} \cdot 45 \textup{in} \cdot sin(115 \degree)}{30 \textup{lb}} \\
+               &= \frac{1223.5 \textup{lb} \cdot \textup{in}}{30 \textup{lb}} \\
+               &= 40.9 \textup{in}
+  \end{align*}
+\end{tcolorbox}
+
+\end{document}

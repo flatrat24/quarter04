@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 003}
+\date{September 26, 2024}
+
+\begin{document}
+
+\newpage
+\section{Functions}
+\label{sec:functions}
+
+\subsection{Function Definition}
+\label{ssec:functionDefinition}
+
+A function is defined as $f: A \rightarrow B$, where each element in array $A$ is assigned
+to exactly one element in array $B$. $f(a) = b$ denotes a single element from set $B$ as the
+assignment from an element from set $A$.
+
+A function $f: A \rightarrow B$ can also be defined as a subset of $A \times B$. This is because
+a function $f: A \rightarrow B$ contains one, and only one, ordered pair for each element
+in $A$.
+\begin{equation*}
+  \forall x [ x \in A \rightarrow \exists y [ y \in B \land (x,y) \in f]]
+\end{equation*}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_005}
+    \caption{Not a Function}
+    \label{fig:005}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_006}
+    \caption{Function}
+    \label{fig:006}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_007}
+    \caption{Function}
+    \label{fig:007}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_008}
+    \caption{Not a Function}
+    \label{fig:008}
+  \end{subfigure}
+\end{figure}
+
+In the working definition of a function as $f: A \rightarrow B$, the \textbf{domain} of the
+function is $A$, and the \textbf{codomain} is $B$. In terms of $f(a) = b$, $a$ is the \textbf{preimage}
+and $b$ is the \textbf{image}.
+
+\begin{definition}{Range of a Function}
+  The range of a function is the set of all images of the function.
+  \begin{equation*}
+    \textup{Range of a Set} = \{x|\forall a \in A, f(a) = x \land x \in B\}
+  \end{equation*}
+\end{definition}
+
+\subsection{Properties of Functions}
+\label{ssec:propertiesOfFunctions}
+
+\begin{definition}{Injection (One to one)}
+  A function is said to be \textit{injective} if and only if $f(a) = f(b) \rightarrow a = b$.
+  An injective function has only one input for each element in its range.
+\end{definition}
+
+\begin{definition}{Surjection (Onto)}
+  A function is said to be \textit{surjective} if and only if for every element $b$ in $B$, there
+  is an element $a$ in $A$ such that $f(a) = b$. In other words, the range of the function
+  must be equivalent to the codomain.
+\end{definition}
+
+\begin{definition}{Bijection}
+  A function is said to be bijective if and only if it is both \textit{injective} and \textit{surjective}.
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_009}
+    \caption{General Function}
+    \label{fig:009}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_010}
+    \caption{Injective}
+    \label{fig:010}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_011}
+    \caption{Surjective}
+    \label{fig:011}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.24\textwidth}
+    \centering
+    \includestandalone{figures/fig_012}
+    \caption{Bijective}
+    \label{fig:012}
+  \end{subfigure}
+  \caption{Examples of Functions}
+  \label{fig:examplesOfFunctions}
+\end{figure}
+
+Functions can also be inversed. If there is a function $f$, the inverse is denoted as $f^{-1}$.
+A function can only have an inverse if it is a \textbf{bijective} function. This is because,
+if the function were to be injective, but not surjective, there would be elements in the domain of $f^{-1}$
+that don't map onto the codomain of $f^{-1}$. Similarly, if the function were to be surjective,
+but not injective, elements in the domain of $f^{-1}$ would map onto multiple values.
+
+\end{document}

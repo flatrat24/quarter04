@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 005}
+\date{October 05, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,4);
+  \coordinate (b) at (0,3);
+  \coordinate (c) at (0,2);
+  \coordinate (d) at (0,1);
+  \coordinate (e) at (0,0);
+
+  \draw[draw=fg, ultra thick, -stealth] (a) -- ++(1.75,0);
+  \draw[draw=fg, ultra thick, -stealth] (b) -- ++(1.75,-1);
+  \draw[draw=fg, ultra thick, -stealth] (c) -- ++(1.75,1);
+  \draw[draw=fg, ultra thick, -stealth] (d) -- ++(1.75,0);
+
+  \filldraw[fill=ma!50, draw=ma, thick] (a) circle (5pt);
+  \filldraw[fill=ma!50, draw=ma, thick] (b) circle (5pt);
+  \filldraw[fill=ma!50, draw=ma, thick] (c) circle (5pt);
+  \filldraw[fill=ma!50, draw=ma, thick] (d) circle (5pt);
+
+  \filldraw[fill=or!50, draw=or, thick] (2,4) circle (5pt);
+  \filldraw[fill=or!50, draw=or, thick] (2,3) circle (5pt);
+  \filldraw[fill=or!50, draw=or, thick] (2,2) circle (5pt);
+  \filldraw[fill=or!50, draw=or, thick] (2,1) circle (5pt);
+  \filldraw[fill=or!50, draw=or, thick] (2,0) circle (5pt);
+
+\end{tikzpicture}
+\end{document}

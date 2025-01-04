@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 005}
+\date{September 19, 2024}
+
+\begin{document}
+
+\newpage
+\section{Free Body Diagrams}
+\label{sec:freeBodyDiagrams}
+
+\subsection{Position Vectors}
+\label{ssec:positionVectors}
+
+\begin{definition}{Position Vector}
+  A fixed vector which locates a point in space \textit{relative} to another point. Any point
+  in space, given that a $xyz$ coordinate system has been established, can be described as
+  a position vector.
+\end{definition}
+
+A position vector can also be used to describe the position of a point relative to \textit{another}
+point. This can be done following these steps:
+\begin{enumerate}
+  \itemsep0em
+  \item Identify the coordinates of each point
+    \begin{align*}
+      A &= (x_A, y_A, z_A) \\
+      B &= (x_B, y_B, z_B)
+    \end{align*}
+  \item Determine the \textit{head} and \textit{tail} of the position vector
+    \begin{center}
+      \uline{from} point $A$ \uline{to} point $B$ $\Rightarrow$ $\overrightarrow{r}_{A/B}$ $\Rightarrow$ tail at $A$, head at $B$ \\
+      \uline{from} point $B$ \uline{to} point $A$ $\Rightarrow$ $\overrightarrow{r}_{B/A}$ $\Rightarrow$ tail at $B$, head at $A$
+    \end{center}
+  \item Subtract \textit{tail} from \textit{head} coordinates
+    \begin{align*}
+      \overrightarrow{r}_{A/B} = (x_A - x_B)\hat{i} + (y_A - y_B)\hat{j} + (z_A - z_B)\hat{k} \\
+      \overrightarrow{r}_{B/A} = (x_B - x_A)\hat{i} + (y_B - y_A)\hat{j} + (z_B - z_A)\hat{k}
+    \end{align*}
+\end{enumerate}
+
+This process is the same process for finding the distance of some point $A$ from the origin
+since the origin is located at ($0\hat{i},0\hat{j},0\hat{k}$).
+
+\subsection{Free Body Diagrams}
+\label{ssec:freeBodyDiagrams}
+
+\begin{definition}{Free Body Diagram}
+  A diagram modeling all forces and torques applied to a body at a given point in time.
+\end{definition}
+
+What is included in a \textbf{Free Body Diagram (FBD)}?
+\begin{itemize}
+  \itemsep0em
+  \item The structure being analyzed (particle, rigid body, etc.)
+  \item \textbf{\uline{ALL}} forces and moments acting on the body
+  \item Relevant dimensions
+\end{itemize}
+
+Steps to drawing a FBD:
+\begin{enumerate}
+  \itemsep0em
+  \item Draw the isolated particle
+  \item Draw all forces acting on the particle
+  \item Label all known force magnitudes and/or directions
+  \item Label all unknown force magnitudes and/or directions as variables
+\end{enumerate}
+
+
+\end{document}

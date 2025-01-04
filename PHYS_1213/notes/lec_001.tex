@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 001}
+\date{September 09, 2024}
+
+\begin{document}
+
+\section{Introduction to Electricity and Magentism}
+\label{sec:introductionToElectricityAndMagentism}
+
+\subsection{Electric Charge}
+\label{ssec:electricCharge}
+
+\begin{definition}{Electric Charge}
+  Subatomic particles (electrons and protons) carry small discrete packets of energy, 
+  in positive and negative form, which is what we call electric charge.
+\end{definition}
+
+Like charges repel, opposite charges attract.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_001}
+    \caption{Both Positive}
+    \label{fig:001}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_002}
+    \caption{Positive and Negative}
+    \label{fig:002}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_003}
+    \caption{Both Negative}
+    \label{fig:003}
+  \end{subfigure}
+  \caption{Attraction}
+  \label{fig:attraction}
+\end{figure}
+
+Charge is an inherent property of types of particles (protons and electrons). These particles
+can move between systems, but still retain there charge. This is the how and why \textbf{charge is
+always conserved}.
+
+\begin{formula}{Mass of Protons and Electrons}
+  \begin{align*}
+    m_p = m_n &= 1.67 \times 10^{-27}kg \\
+    m_e &= 9.11 \times 10^{-31}kg
+  \end{align*}
+\end{formula}
+
+When particles move between objects, it is usually said that the electrons are what move
+between the object, thus changing the net charge of the objects.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_004}
+  \caption{Electrons Moving Between Objects}
+  \label{fig:004}
+\end{figure}
+
+It is generally metals that become charged because they are \textbf{conductive}. When a metal
+becomes charged, its charge is spread about evenly throughout the surface because the forces
+of the particles cause each particle to find a position where they are equidistant from every
+other particle.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_005}
+  \caption{Even Distribution}
+  \label{fig:005}
+\end{figure}
+
+The standard unit of charge is the \textbf{Coulomb} (C). 
+
+\subsection{Forces Between Particles}
+\label{ssec:forcesBetweenParticles}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_006}
+  \caption{Two Protons in Space}
+  \label{fig:006}
+\end{figure}
+
+The force between two particles can be modeled in terms of the charge of each object, Coulomb's Constant
+$k$, and the distance between the two objects.
+
+\begin{formula}{Coulomb's Law}
+  \begin{align*}
+    F &= k \frac{q_1 q_2}{r^2}
+  \end{align*}
+  \hrule
+  \begin{align*}
+    F &= \textup{Force Between Particles} \\
+    q_1 &= \textup{Charge of Particle One} \\
+    q_2 &= \textup{Charge of Particle Two} \\
+    r &= \textup{Distance Between Particles} \\
+    k &= \textup{Coulomb's Constant;\ \ } 8.99 \times 10^9 \frac{N \times m^2}{s^2}
+  \end{align*}
+\end{formula}
+
+\end{document}

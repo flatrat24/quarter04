@@ -1,0 +1,91 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 014}
+\date{October 15, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg
+  }
+
+  \coordinate (a) at (0,2);
+
+  \node[thick, xor port] (xora) at (a){};
+  \node[thick, and port] (anda) at ($(a) + (0,-2)$){};
+
+  \draw[draw=fg, thick] (xora.in 1) to[short, -*] ++(-2,0) node[left] {$x_a$};
+  \draw[draw=fg, thick] (xora.in 2) to[short, -*] ++(-2,0) node[left] {$y_a$};
+
+  \draw[draw=fg, thick] ($(xora.in 1)+(-0.75,0)$) to[short, *-] ++(0,0) |- (anda.in 1);
+  \draw[draw=fg, thick] ($(xora.in 2)+(-1.25,0)$) to[short, *-] ++(0,0) |- (anda.in 2);
+
+  \draw[draw=fg, thick] (xora.out) to[short, -*] ++(1,0) node[right] {$S_a$};
+  \draw[draw=fg, thick] (anda.out) to[short, -*] ++(1,0) node[right] {$C_a$};
+
+  \coordinate (b) at (0,-2.5);
+
+  \node[thick, xor port]                  (xorb) at    (b){};
+  \node[thick, and port]                  (andb1) at ($(b) + (0,-2)$){};
+  \node[thick, and port]                  (andb2) at ($(b) + (0,-3.5)$){};
+  \node[thick, and port]                  (andb3) at ($(b) + (0,-5)$){};
+  \node[thick, or port, number inputs = 3] (orb) at  ($(b) + (2.5,-3.5)$){};
+  \node[thick, xor port]                  (torb) at  ($(b)+(2.5,0)$){};
+
+  \draw[draw=fg, thick] ($(anda.out)+(0.25,0)$) to[short, *-*] ++(0,-1) |-       (torb.in 1);
+  \draw[draw=fg, thick] ($(anda.out)+(0.25,-1)$) to[short, *-*] ++(0,-0.25) -| ($(andb2.in 2)+(-1.25,0)$) -- (andb2.in 2);
+  \draw[draw=fg, thick] ($(anda.out)+(0.25,-1)$) -|                            ($(andb3.in 2)+(-1.50,0)$) -- (andb3.in 2);
+
+  \draw[draw=fg, thick] (xorb.in 1) to[short, -*] ++(-2,0) node[left] {$x_b$};
+  \draw[draw=fg, thick] (xorb.in 2) to[short, -*] ++(-2,0) node[left] {$y_b$};
+
+  \draw[draw=fg, thick] ($(xorb.in 1)+(-0.25,0)$) to[short, *-] ++(0,0) |- (andb1.in 1);
+  \draw[draw=fg, thick] ($(xorb.in 2)+(-0.50,0)$) to[short, *-] ++(0,0) |- (andb1.in 2);
+
+  \draw[draw=fg, thick] ($(xorb.in 1)+(-0.75,0)$) to[short, *-] ++(0,0) |- (andb2.in 1);
+  \draw[draw=fg, thick] ($(xorb.in 2)+(-1.00,0)$) to[short, *-] ++(0,0) |- (andb3.in 1);
+
+  \draw[draw=fg, thick] (xorb.out) |- (torb.in 2);
+
+  \draw[draw=fg, thick] (andb1.out) |- (orb.in 1);
+  \draw[draw=fg, thick] (andb2.out) |- (orb.in 2);
+  \draw[draw=fg, thick] (andb3.out) |- (orb.in 3);
+
+  \draw[draw=fg, thick] (torb.out) to[short, -*] ++(1,0) node[right] {$S_b$};
+  \draw[draw=fg, thick]  (orb.out) to[short, -*] ++(1,0) node[right] {$C_b$};
+
+  \coordinate (c) at (0,-10);
+
+  \node[thick, xor port]                  (xorc) at    (c){};
+  \node[thick, and port]                  (andc1) at ($(c) + (0,-2)$){};
+  \node[thick, and port]                  (andc2) at ($(c) + (0,-3.5)$){};
+  \node[thick, and port]                  (andc3) at ($(c) + (0,-5)$){};
+  \node[thick, or port, number inputs = 3] (orc) at  ($(c) + (2.5,-3.5)$){};
+  \node[thick, xor port]                  (torc) at  ($(c)+(2.5,0)$){};
+
+  \draw[draw=fg, thick] ($(orb.out)+(0.25,0)$) to[short, *-] ++(0,-1) |-          ($(torc.in 1)+(-0.25,0.5)$) |- (torc.in 1);
+  \draw[draw=fg, thick] ($(orb.out)+(0.25,-2.5)$) to[short, *-*] ++(0,-0.25) -| ($(andc2.in 2)+(-1.25,0)$) -- (andc2.in 2);
+  \draw[draw=fg, thick] ($(orb.out)+(0.25,-2.5)$) -|                            ($(andc3.in 2)+(-1.50,0)$) -- (andc3.in 2);
+
+  \draw[draw=fg, thick] (xorc.in 1) to[short, -*] ++(-2,0) node[left] {$x_c$};
+  \draw[draw=fg, thick] (xorc.in 2) to[short, -*] ++(-2,0) node[left] {$y_c$};
+
+  \draw[draw=fg, thick] ($(xorc.in 1)+(-0.25,0)$) to[short, *-] ++(0,0) |- (andc1.in 1);
+  \draw[draw=fg, thick] ($(xorc.in 2)+(-0.50,0)$) to[short, *-] ++(0,0) |- (andc1.in 2);
+
+  \draw[draw=fg, thick] ($(xorc.in 1)+(-0.75,0)$) to[short, *-] ++(0,0) |- (andc2.in 1);
+  \draw[draw=fg, thick] ($(xorc.in 2)+(-1.00,0)$) to[short, *-] ++(0,0) |- (andc3.in 1);
+
+  \draw[draw=fg, thick] (xorc.out) |- (torc.in 2);
+
+  \draw[draw=fg, thick] (andc1.out) |- (orc.in 1);
+  \draw[draw=fg, thick] (andc2.out) |- (orc.in 2);
+  \draw[draw=fg, thick] (andc3.out) |- (orc.in 3);
+
+  \draw[draw=fg, thick] (torc.out) to[short, -*] ++(1,0) node[right] {$S_c$};
+  \draw[draw=fg, thick]  (orc.out) to[short, -*] ++(1,0) node[right] {$C_c$};
+\end{circuitikz}
+\end{document}

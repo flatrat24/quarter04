@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 032}
+\date{October 16, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \draw[draw=fg, thick, dashed] (0,0) -- ++(1,0);
+  \draw[draw=fg, thick] (1,0) to[resistor] ++(3,0);
+  \draw[draw=fg, thick] (1.5,0) -- ++(0,0.75) to[rmeter, t=V] ++(2,0) -- ++(0,-0.75);
+  \draw[draw=fg, thick, dashed] (4,0) -- ++(1,0);
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,21 @@
+{
+  "schedule": {
+    "start":        1400,
+    "end":          1600,
+    "days":         "Mon Wed"
+  },
+
+  "name": {
+    "title":        "Between Deluze and Foucault",
+    "short":        "PHIL 2145",
+    "code":         "PHIL",
+    "number":       "2145"
+  },
+
+  "bookmarks": {
+    "Canvas Homepage":        "https://canvas.du.edu/courses/189934",
+    "Syllabus":               "/home/ea/Documents/School/quarter04/PHIL_2145/PHIL 2145 - Syllabus.pdf"
+  },
+
+  "hasLab":         false
+}

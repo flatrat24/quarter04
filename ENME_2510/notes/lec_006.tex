@@ -1,0 +1,233 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+\graphicspath{ {./images/} }
+
+\title{Lecture 007}
+\date{September 30, 2024}
+
+\begin{document}
+
+\newpage
+\section{Distributed Loads}
+\label{sec:distributedLoads}
+
+\begin{wrapfigure}[3]{r}{0.3\textwidth}
+  \vspace{-30pt}
+  \centering
+  \includestandalone{figures/fig_010}
+  \caption{Continuous Load}
+  \label{fig:010}
+\end{wrapfigure}
+
+Up until now, the forces considered have been single lines acting on points of an object.
+However, in nature, many forces act continuously along an entire segment of an object. These
+forces are called \textbf{Distribute Loads}.
+
+\begin{definition}{Distributed Loads}
+  Forces that act continuously over a line or a surface.
+  \begin{itemize}
+    \itemsep0em
+    \item Force per unit distance ($\frac{N}{m}$)
+    \item Force per unit area ($\frac{N}{m^2}$ ; $Pa$)
+  \end{itemize}
+\end{definition}
+
+\subsection{Centroids}
+\label{ssec:centroids}
+
+For any distributed load, the center of force of the load can be considered as the line
+of action of the force. For example, in Figure \ref{fig:010}, the center of the orange object
+would be the line of action of the force acting upon the beam. This center is called the \textbf{centroid}.
+
+For simple shapes, finding the centroid of the force is simple. Figure \ref{fig:centroidsOfSimpleShapes}
+shows the centroids for common shapes.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{subfigure}[H]{0.45\textwidth}
+      \centering
+      \includestandalone{figures/fig_011}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.45\textwidth}
+      \begin{align*}
+        C_x &= l \div 2 \\
+        C_y &= l \div 2
+      \end{align*}
+    \end{subfigure}
+    \caption{Square}
+    \label{fig:011}
+  \end{subfigure}
+  \vrule
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{subfigure}[H]{0.45\textwidth}
+      \centering
+      \includestandalone{figures/fig_012}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.45\textwidth}
+      \begin{align*}
+        C_x &= r_x \\
+        C_y &= r_y
+      \end{align*}
+    \end{subfigure}
+    \caption{Circle}
+    \label{fig:012}
+  \end{subfigure}
+
+  \vspace{20pt}
+  \hrule
+  \vspace{20pt}
+
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{subfigure}[H]{0.45\textwidth}
+      \centering
+      \includestandalone{figures/fig_013}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.45\textwidth}
+      \begin{align*}
+        C_x &= r_x \\
+        C_y &= \frac{4r_y}{3 \pi}
+      \end{align*}
+    \end{subfigure}
+    \caption{Semi-Circle}
+    \label{fig:013}
+  \end{subfigure}
+  \vrule
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{subfigure}[H]{0.45\textwidth}
+      \centering
+      \includestandalone{figures/fig_014}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.45\textwidth}
+      \begin{align*}
+        C_x &= \frac{2}{3}b \\
+        C_y &= \frac{1}{3}h
+      \end{align*}
+    \end{subfigure}
+    \caption{Right Triangle}
+    \label{fig:014}
+  \end{subfigure}
+  \caption{Centroids of Simple Shapes}
+  \label{fig:centroidsOfSimpleShapes}
+\end{figure}
+
+All this is doing is finding the average position of the object. For all of the mass in the object,
+what is the average position of it. It is simple to see that the average position of an object
+that is symmetrical over the $x$ and $y$ axis has a centroid in the exact middle of the 
+object like the square or circle in Figure \ref{fig:centroidsOfSimpleShapes}.
+
+How would the centroid of some non-symmetrical shape be found?
+
+\begin{wrapfigure}[5]{r}{0.4\textwidth}
+  \centering
+  \includestandalone{figures/fig_016}
+  \caption{Reimann's Like Subdivision}
+  \label{fig:016}
+\end{wrapfigure}
+
+To find the average $x$ position of the shape (denoted as $\overline{x}$), the following
+formula is used:
+\begin{formula}{Centroid in One Axis}
+  \begin{equation*}
+    \overline{x} = \frac{\sum_{}^{} x_iA_i}{\sum_{}^{} A} = \frac{\int_{0}^{L} x\ dA \,}{\int_{0}^{L} dA \,}
+  \end{equation*}
+\end{formula}
+The summation formula could be used for discrete quantities, such as finding the average
+age among a group of people where each person and their age are integers. The integral is
+used for more natural shapes, such as a continuous (distributed) load.
+
+The formula essentially is dividing the shape into infinitesimally small portions, and finding
+the product of their area and $x$-position. It takes the total of that and divides it by
+the total area of a shape to find the weighted average, or the \textbf{centroid} of the shape.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_015}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.5\textwidth}
+    \centering
+    \begin{align*}
+      \overline{x} &= \frac{\int_{0}^{L} x\ dA \,}{\int_{0}^{L} dA \,} = \frac{\int_{0}^{3} (x)\left(\frac{1}{2}x\ dx\right) \,}{\int_{0}^{3} \frac{1}{2}x\ dx \,} \\
+                   &= \frac{\frac{1}{2}\int_{0}^{3} x^2\ dx \,}{\frac{1}{2}\int_{0}^{3}x\ dx \,} = \frac{\frac{1}{2}\left[\frac{1}{3}x^3\right]_{0}^{3}}{\frac{1}{2}\left[\frac{1}{2}x^2\right]_{0}^{3}} \\
+                   &= \frac{\frac{1}{2}\big[\left(\frac{1}{3}\cdot3^3\right)-\left(\frac{1}{3}\cdot0^3\right)\big]}{\frac{1}{2}\big[\left(\frac{1}{2}\cdot3^2\right)-\left(\frac{1}{2}\cdot0^2\right)\big]} \\
+                   &= \frac{\frac{1}{2}\cdot(9-0)}{\frac{1}{2}\cdot(\frac{9}{2}-0)} = \frac{\frac{9}{2}}{\frac{9}{4}} = \frac{36}{18} = \frac{2}{1} = 2
+    \end{align*}
+  \end{subfigure}
+\end{figure}
+
+\subsection{Finding Total Force}
+\label{ssec:findingTotalForce}
+
+The second step to calculating distributed loads is to find the total force being applied.
+With simple shapes, this can be done geometrically. In Figure \ref{fig:018}, the total force
+would be:
+\begin{equation*}
+  \frac{1}{2} \cdot 4m \cdot 1.5N = 3Nm
+\end{equation*}
+
+\begin{wrapfigure}[10]{l}{0.45\textwidth}
+  \centering
+  \includestandalone{figures/fig_018}
+  \caption{Finding Total Force}
+  \label{fig:018}
+\end{wrapfigure}
+
+However, for more complex shapes, the total force can't simply be calculated geometrically.
+In these cases, integrating is necessary (integrating can be used for simple shapes as well).
+
+Still using Figure \ref{fig:018}, the total force can be calculated with integrals. First,
+the magnitude of the force at an given point across the base of the triangle can be expressed
+as a function of $x$, with $x$ being the distance along the base the point is.
+\begin{equation*}
+  w(x) = \left(\frac{w_b - w_a}{b}\right)x + w_a = \left(\frac{1.5 - 0}{4}\right)x + 0 = \frac{1.5}{4}x
+\end{equation*}
+Then, integrating this function along the length of the continuous force (from $0m$ to $4m$)
+and evaluating will yield the total force being applied.
+\begin{align*}
+  W &= \int_{0}^{4} \frac{1.5}{4}x \,dx = \frac{1.5}{4}\left[\frac{x^2}{2}\right]_{0}^{4} = \frac{1.5}{4}\left[\left(\frac{4^2}{2}\right)-\left(\frac{0^2}{2}\right)\right] = \frac{1.5}{4} \cdot 8 = 3\ Nm
+\end{align*}
+
+\subsection{Calculating Distributed Loads}
+\label{ssec:calculatingDistributedLoads}
+
+Once the centroid and the total force of a distributed load is calculated, it can be treated
+just as a force along the line of action that its centroid is on of a magnitude of its
+total force.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_017}
+  \caption{Distributed Load}
+  \label{fig:017}
+\end{figure}
+{\large \textbf{Finding the Centroid}}
+\begin{align*}
+  \overline{x} &= \frac{\int_{0}^{L} x \,dA}{\int_{0}^{L}  \,dA} = \frac{\int_{0}^{L} x \left(w_A + \frac{w_B - w_A}{L}x\right) \,dx}{\int_{0}^{L} {w_A + \frac{w_B - w_A}{L}x} \,dx} \Rightarrow \frac{\int_{0}^{L} x \left(1500 + \frac{4500 - 1500}{6}x\right) \,dx}{\int_{0}^{6} {1500 + \frac{4500 - 1500}{6}x} \,dx} = \frac{\int_{0}^{L} 1500x + \frac{3000}{6}x^2 \,dx}{\int_{0}^{6} {1500 + \frac{3000}{6}x} \,dx} \\
+               &= \frac{\left[\frac{1500}{2}x^2 + \frac{3000}{18}x^3\right]_{0}^{6}}{\left[1500x + \frac{3000}{12}x^2\right]_{0}^{6}} = \frac{\left(\frac{1500}{2}\cdot6^2 + \frac{3000}{18}\cdot6^3\right)-\left(\frac{1500}{2}\cdot0^2 + \frac{3000}{18}\cdot0^3\right)}{\left(1500\cdot6 + \frac{3000}{12}\cdot6^2\right)-\left(1500\cdot0 + \frac{3000}{12}\cdot0^2\right)} = 3.5
+\end{align*}
+{\large \textbf{Finding the Magnitude of the Force}}
+\begin{align*}
+  w(x) = \left(\frac{w_B - w_A}{L}\right)x + w_A = \left(\frac{4500 - 1500}{6}\right)x + 1500 = \frac{3000}{6}x + 1500 = 500x + 1500
+\end{align*}
+\begin{gather*}
+  W = \int_{0}^{L} w(x) \,dx = \int_{0}^{6} 500x + 1500 \,dx = \left[\frac{500}{2}x^2 + 1500x\right]_{0}^{6} \\
+  = \left(\frac{500}{2}\cdot6^2 + 1500 \cdot 6\right)-\left(\frac{500}{2}\cdot0^2 + 1500 \cdot 0\right) = 18000\ Nm
+\end{gather*}
+
+Thus, with those two calculations, we can find that the equivalent force for the distributed
+load that acts upon the beam is a force of $1.8 \times 10^4\ Nm$ acting in the $-\hat{j}$ direction
+at a point $3.5\ m$ from the leftmost point of the beam. This is illustrated in Figure \ref{fig:019}.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_019}
+  \caption{Equivalent Force}
+  \label{fig:019}
+\end{figure}
+
+\end{document}

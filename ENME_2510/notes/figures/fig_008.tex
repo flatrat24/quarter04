@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 008}
+\date{September 30, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \draw[draw=fg, thick] (0,2) -- node[midway, anchor = south] {$w(x) = w$} (10,2);
+  \foreach \x in {0,0.5,...,10} {
+    \draw[draw=fg, thick, -stealth] (\x,2) -- (\x,1.1);
+  }
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (0,0) rectangle ++(10,1);
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (-0.2,-0.2) -- ++(0.2,0.2) -- ++(0.2,-0.2) -- cycle;
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (-0.2,-0.3) circle (3pt);
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (0,-0.3) circle (3pt);
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (0.2,-0.3) circle (3pt);
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (9.8,-0.4) -- ++(0.2,0.4) -- ++(0.2,-0.4) -- cycle;
+
+  \draw[draw=fg, thick] (0,-0.8) -- (0,-0.6);
+  \draw[draw=fg, thick] (10,-0.8) -- (10,-0.6);
+  \draw[draw=fg, thick] (0,-0.7) -- node[midway, anchor = north] {$L$} (10,-0.7);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,140 @@
+% \begin{tblr}{ccccc|c}
+%   \toprule
+%   15 & $\div$ & 2 & $=$ & 7 & 1    \\
+%   \bottomrule
+%   \SetCell[c=4]{r} Result: &&&&& 0111 \\
+% \end{tblr}
+
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 004}
+\date{October 05, 2024}
+
+\begin{document}
+\newpage
+\section{Binary Systems and Encoding}
+\label{sec:binarySystemsAndEncoding}
+
+\subsection{Number Format}
+\label{ssec:numberFormat}
+
+Inside of a computer, numbers are represented as a stream of digits in the computer's memory.
+The format the number is stored must be known for a computer to be able to use the value
+properly.
+
+\begin{definition}{Number Format}
+  The components of the way a number is expressed that determine how it is encoded and 
+  decoded. These components include:
+  \begin{itemize}
+    \itemsep0em
+    \item Number base
+    \item Number of digits in the number
+    \item Integer or floating point
+    \item Where the radix point is
+    \item The complement system, if any, being used
+  \end{itemize}
+\end{definition}
+
+\begin{center}
+  {\large \textbf{Signed Magnitude}}
+\end{center}
+
+\begin{center}
+  {\large \textbf{Binary Signed-Magnitude}}
+\end{center}
+
+\begin{center}
+  {\large \textbf{Complement Systems}}
+\end{center}
+A complement system \textit{negates} a number by taking the complement of it according
+to the rules of a specific complement system.
+
+Given a (fixed) number of ways we uniquely can represent values in a number system, we
+will assign a portion of the representations to represent negative (or inverse) values and
+develop a system of arithmetic using this new number system.
+
+Complement systems are useful because addition of One's or Two's Complemented numbers is
+done simply by adding each digit as usual. This type of binary addition is sign-agnostic.
+
+\begin{definition}{One's Complement}
+  The complement of a number according to One's Complement follows the pattern of subracting
+  each digit of the number from the radix ($r$) minus one ($r-1$).
+  \begin{center}
+    \begin{tblr}{r|r|r|r}
+      $0=0000_2$  & $2=0010_2$  & $7=0111_2$  & $5=0101_2$  \\
+      $-0=1111_2$ & $-2=1101_2$ & $-7=0111_2$ & $-7=1010_2$ \\
+    \end{tblr}
+  \end{center}
+\end{definition}
+
+One's complement is a symmetric number system. Both $0$ and $-0$ have different expressions
+under One's complement despite being equivalent. Thus, the system is symmetric in terms of
+the number of negatives and positives that can be expressed given a bit size. Two's complement
+is asymmetric as it expresses one more negative than it does positive.
+
+\begin{definition}{Two's Complement}
+  Given the number $a$, the radix $r$, and the number of digits $n$, the Two's complement
+  of $a$ is defined as any of the following:
+  \begin{align*}
+    (-a)_2 &= [\textup{one's complement of }a] + 1 \\
+           &= r^n - a                              \\
+           &= [\textup{each digit of }a \rightarrow (r-1)-\textup{digit}] + 1 \\
+           &= \textup{complement each digit to the left of the rightmost one}
+  \end{align*}
+  \hrule
+  \vspace{12pt}
+  \begin{center}
+    \begin{tblr}{r|r|r|r}
+      $0=0000_2$  & $2=0010_2$  & $7=0111_2$  & $5=0101_2$  \\
+      $-0=0000_2$ & $-2=1110_2$ & $-7=1001_2$ & $-7=1011_2$ \\
+    \end{tblr}
+  \end{center}
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{c|ccc}
+    \toprule
+    \textbf{Decimal} & \textbf{Two's Complement} & \textbf{One's Complement} & \textbf{Signed Magnitude} \\
+    \midrule
+     7 & 0111 & 0111 & 0111 \\
+     6 & 0110 & 0110 & 0110 \\
+     5 & 0101 & 0101 & 0101 \\
+     4 & 0100 & 0100 & 0100 \\
+     3 & 0011 & 0011 & 0011 \\
+     2 & 0010 & 0010 & 0010 \\
+     1 & 0001 & 0001 & 0001 \\
+     0 & 0000 & 0000 & 0000 \\
+    -0 & ---  & 1111 & 1000 \\
+    -1 & 1111 & 1110 & 1001 \\
+    -2 & 1110 & 1101 & 1010 \\
+    -3 & 1101 & 1100 & 1011 \\
+    -4 & 1100 & 1011 & 1100 \\
+    -5 & 1011 & 1010 & 1101 \\
+    -6 & 1010 & 1001 & 1110 \\
+    -7 & 1001 & 1000 & 1111 \\
+    -8 & 1000 & ---  & ---  \\
+    \bottomrule
+  \end{tblr}
+  \caption{Binary Number Systems in 4-Bits}
+  \label{fig:binaryNumberSystemsIn4Bits}
+\end{figure}
+
+\subsection{Binary Encoding}
+\label{ssec:binaryEncoding}
+
+\begin{center}
+  {\large \textbf{ASCII Character Codes}}
+\end{center}
+ASCII (\textbf{A}merican \textbf{S}tandard \textbf{C}ode for \textbf{I}nformation
+\textbf{I}nterchange) is a 7-bit coding standard that identifies letters, numbers, and
+various symbols of a teletype machine. With $2^7$, or $128$, possible combinations, that
+many possible values can be encoded as binary.
+
+When encoding in ASCII, a \textbf{parity bit} can be added to the front to ensure that
+there is a number of $1$s in the code that is either always even or always odd. This is
+done as a check to make sure that the codes being sent and received make sense.
+
+\end{document}

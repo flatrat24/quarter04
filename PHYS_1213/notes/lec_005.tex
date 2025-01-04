@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 004}
+\date{September 25, 2024}
+
+\begin{document}
+
+\newpage
+\section{Electric Potential}
+\label{sec:electricPotential}
+
+\begin{definition}{Electric Potential}
+  The amount of energy per unit of electric charge required to move a particle throughout
+  an electric field.
+  \begin{align*}
+    "\textup{\textbf{Potential}}" &= V = \frac{U}{q} \\
+    \frac{J}{C} &= \textup{ Volt} = V
+  \end{align*}
+  This measurement is done in \textbf{Voltage}, and often measured as a difference between
+  two points. For example, $V_{ab} = V_a = V_b$ states that the potential of $a$ with
+  respect to $b$ equals the work ($J$) done by the electric force when a UNIT ($C$)
+  charge moves from $a$ to $b$.
+\end{definition}
+
+To calculate the potential $V$ due to a single point charge, the following formula is used:
+
+\begin{formula}{Potential}
+  \begin{equation*}
+    V = \frac{1}{4 \pi \epsilon_0}\frac{q}{r}
+  \end{equation*}
+\end{formula}
+
+A change in potential (a "potential difference") causes a charged object to gain or lose
+potential energy. This gain or loss is on a per-charge basis.
+
+\begin{formula}{Change in Potential}
+  \begin{equation*}
+    \Delta V = V_2 - V_1 = \frac{\Delta U}{q} = -\int_{}^{} \overrightarrow{E} \cdot d \overrightarrow{r} \,
+  \end{equation*}
+\end{formula}
+
+\begin{wrapfigure}[11]{l}{0.5\textwidth}
+  \centering
+  \includestandalone{figures/fig_018}
+  \caption{Particles Moving in an Electric Field}
+  \label{fig:018}
+\end{wrapfigure}
+
+In Figure \ref{fig:018}, the change in potential energy of each particle is of equal magnitude,
+but since one is moving from a high potential energy area to a low one, while the other moves
+in the opposite direction, they would have opposite changes. This is analogous to raising an
+object up versus lowering it down an equal distance.
+
+If there is a point charge in space, where should the "zero" of the potential energy be places?
+
+The potential difference between two points $a$ and $b$ can be modeled as:
+\begin{equation*}
+  \Delta V = V_b - V_a = \frac{\Delta U}{q} = -\int_{}^{} \overrightarrow{E} \cdot d \overrightarrow{r} \, = kq \left(\frac{1}{r_b} - \frac{1}{r_a}\right)
+\end{equation*}
+\begin{wrapfigure}[]{r}{0.3\textwidth}
+  \centering
+  \includestandalone{figures/fig_019}
+  \caption{Point charge in space}
+  \label{fig:019}
+\end{wrapfigure}
+If we take this as point $b$ approaches infinity, we get:
+\begin{equation*}
+  \lim_{b \to \infty} kq \left(\frac{1}{r_b} - \frac{1}{r_a}\right) \rightarrow kq\left(\frac{1}{\infty} - \frac{1}{r_a}\right) \rightarrow kq\left(0 - \frac{1}{r_a}\right) \rightarrow -kq\frac{1}{r_a}
+\end{equation*}
+Thus:
+\begin{equation*}
+  \Delta V = V_b - V_a = k\frac{q}{r_b}-k\frac{q}{r_a} \textup{\ \ \ \textbf{or}\ \ \ } V_a = \frac{kq}{r_a}
+\end{equation*}
+
+\subsection{Equipotential}
+\label{ssec:equipotential}
+
+In an electric field, there are lines going through the electric field that have the same
+potential energy across it. In a simple electric field, such as the one in Figure \ref{fig:020},
+the lines will be perfectly horizontal. Notably, equipotential lines will always be perpendicular to the electric field.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_020}
+  \caption{Equipotential Lines}
+  \label{fig:020}
+\end{figure}
+In the case of a point charge, such as that in Figure \ref{fig:021}, the equipotential lines
+will form concentric circles around the particle.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_021}
+  \caption{Equipotential Around Point Charge}
+  \label{fig:021}
+\end{figure}
+
+\subsection{Electronvolt}
+\label{ss3c:electronvolt}
+
+When measuring the energy change of a particle as it moves through an electric field, rather
+than measuring in $qV$, a new unit to describe energy exists, the electronvolt. A single
+electronvolt is defined as $1.6 \times 10^-{19} J$
+
+\begin{definition}{Electronvolt}
+  $1 eV$ is defined as the amount of energy change for a particle of charge "$e$" moving 
+  through a $1V$ potential drop.
+\end{definition}
+
+\end{document}

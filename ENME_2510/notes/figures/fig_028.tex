@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 028}
+\date{October 17, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \fill[fill=fg!25!bg] (a) rectangle ++(2.5,0.25);
+  \draw[draw=fg, thick] ($(a)+(2.5,0.25)$) -- ++(-2.5,0);
+  \draw[draw=fg, thick] ($(a)+(2.5,0)$) -- ++(-2.5,0);
+  \draw[draw=fg, thick, dashed] ($(a)+(2.5,-0.25)$) -- ++(0,0.75);
+  \draw[draw=fg, thick, dashed] ($(a)+(0,-0.25)$) -- ++(0,0.75);
+  \draw[draw=re, ultra thick, -stealth] ($(a)+(2.75,0.125)$) -- node[midway, anchor = north] {$N^+$} ++(0.75,0);
+  \draw[draw=re, ultra thick, -stealth] ($(a)+(-0.25,0.125)$) -- node[midway, anchor = north] {$N^+$} ++(-0.75,0);
+  \draw[draw=bl, ultra thick, -stealth] ($(a)+(2.625,0.5)$) -- ++(0,-0.75) node[anchor = north] {$V^+$};
+  \draw[draw=bl, ultra thick, stealth-] ($(a)+(-0.125,0.5)$) -- ++(0,-0.75) node[anchor = north] {$V^+$};
+  \draw[draw=gr, -stealth, ultra thick] ($(a)+(-0.95,0.5)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = east, xshift = -15pt] {$M^+$};
+  \draw[draw=gr, -stealth, ultra thick, rotate = 180] ($(a)+(-3.3,0.3)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = west, xshift = 17pt] {$M^+$};
+
+  \coordinate (b) at (7.5,0);
+  \fill[fill=fg!25!bg] (b) rectangle ++(2.5,0.25);
+  \draw[draw=fg, thick] ($(b)+(2.5,0.25)$) -- ++(-2.5,0);
+  \draw[draw=fg, thick] ($(b)+(2.5,0)$) -- ++(-2.5,0);
+  \draw[draw=fg, thick, dashed] ($(b)+(2.5,-0.25)$) -- ++(0,0.75);
+  \draw[draw=fg, thick, dashed] ($(b)+(0,-0.25)$) -- ++(0,0.75);
+  \draw[draw=re, ultra thick, stealth-] ($(b)+(2.75,0.125)$) -- node[midway, anchor = north] {$N^-$} ++(0.75,0);
+  \draw[draw=re, ultra thick, stealth-] ($(b)+(-0.25,0.125)$) -- node[midway, anchor = north] {$N^-$} ++(-0.75,0);
+  \draw[draw=bl, ultra thick, stealth-] ($(b)+(2.625,0.5)$) -- ++(0,-0.75) node[anchor = north] {$V^-$};
+  \draw[draw=bl, ultra thick, -stealth] ($(b)+(-0.125,0.5)$) -- ++(0,-0.75) node[anchor = north] {$V^-$};
+  \draw[draw=gr, stealth-, ultra thick] ($(b)+(-0.95,0.5)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = east, xshift = -15pt] {$M^-$};
+  \draw[draw=gr, stealth-, ultra thick, rotate = 180] ($(b)+(-3.3,0.3)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = west, xshift = 17pt] {$M^-$};
+
+\end{tikzpicture}
+\end{document}

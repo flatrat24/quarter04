@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 004}
+\date{September 25, 2024}
+
+\begin{document}
+
+\newpage
+\section{Electric Potential Energy}
+\label{sec:electricPotentialEnergy}
+
+\subsection{Review of Work and Energy}
+\label{ssec:reviewOfWorkAndEnergy}
+
+When a force $\overrightarrow{F}$ acts upon a particle that moves from point $a$ to point $b$,
+the work done on that particle is given by an integral.
+\begin{formula}{Work Done by a Force}
+  \begin{equation*}
+    W_{a \rightarrow b} = \int_{a}^{b} \overrightarrow{F} \cdot d\overrightarrow{r} \, = \int_{a}^{b} Fcos(\theta)dr \,
+  \end{equation*}
+\end{formula}
+If the force acting upon that particle is \textit{conservative}, the work done by $\overrightarrow{F}$
+can be expressed in terms of potential energy ($U$).
+\begin{formula}{Work in Terms of Potential Energy}
+  \begin{equation*}
+    W_{a \rightarrow b} = U_a - U_b = -(U_b - U_a) = - \Delta U
+  \end{equation*}
+\end{formula}
+The work-energy theorem states that the net work done on a particle is equal to the change
+in kinetic energy of that particle: $W_{net} = \Delta K = K_b - K_a$. Under the assumption
+that only conservative forces are acting upon the object, then:
+\begin{formula}{Conservation of Mechanical Energy}
+  \begin{align*}
+    K_b - K_a &= -(U_b - U_a) \\
+    K_a + U_a &= K_b + U_b
+  \end{align*}
+\end{formula}
+
+
+
+\subsection{Electric Potential Energy}
+\label{ssec:electricPotentialEnergy}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_016}
+  \caption{Potential Energy in an Electric Field}
+  \label{fig:016}
+\end{figure}
+
+Electric potential energy applies within electric fields. In Figure \ref{fig:016}, a particle with
+a positive charge in a field, it would have the highest potential energy closes to the
+\textbf{source} of the positive electric field.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_017}
+  \caption{Potential Energy in an Electric Field}
+  \label{fig:017}
+\end{figure}
+
+In Figure \ref{fig:017}, the positively charged particle would have a relatively low potential
+energy. The work done on the particle in Figure \ref{fig:017} can be modeled as:
+\begin{align*}
+  W &= F(r_b - r_a) \\
+  W &= Eq(r_b - r_a)
+\end{align*}
+
+This only holds for particles in uniform electric fields. If, for example, two charged particles
+exist in space and perform work on each other, an integral would be required to find the net
+work done on each particle. This integral is the general form to find the work done on a
+particle by an electric field.
+
+\begin{formula}{Work Done on a Particle by an Electric Field}
+  \begin{align*}
+    W_{a \rightarrow b} &= \int_{r_a}^{r_b} Fcos(\theta) dl \,
+  \end{align*}
+\end{formula}
+
+\begin{formula}{Electric Potential Energy of Two Point Charges}
+  \begin{equation*}
+    U = \frac{1}{4 \pi \epsilon_0}\frac{qq_0}{r}
+  \end{equation*}
+\end{formula}
+
+Electric potential energy is not a property of a single particle. In a system of two particles,
+the electric potential energy is a shared property of both particles, just as gravitational
+potential energy is shared between both you and the Earth.
+
+\begin{wrapfigure}[]{l}{0.4\textwidth}
+  \centering
+  \includestandalone{figures/fig_022}
+  \caption{System of Particles}
+  \label{fig:022}
+\end{wrapfigure}
+
+If there is a system of charges in space, what is the total potential energy of this system?
+In other words, how much energy would it take to bring all the particles together from infinity?
+
+The total $U$ would just be the potential energy that each particle creates relative to each
+other particle:
+\begin{equation*}
+  U = k\left(\frac{q_aq_b}{r_{ab}} + \frac{q_bq_c}{r_{bc}} + \frac{q_cq_a}{r_{ca}}\right)
+\end{equation*}
+
+Thus, the potential energy of a system of particles is just the sum of all potential energies
+between each of those particles. Similarly, the work done on a particle as it moves through
+the system is simply the final potential energy minus the initial potential energy.
+
+\end{document}

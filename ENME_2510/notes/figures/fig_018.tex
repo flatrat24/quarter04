@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 018}
+\date{October 06, 2024}
+
+\begin{document}
+\begin{tikzpicture}[scale = 1.5]
+
+  \draw[draw=fg!10!bg, step = 0.25] (-0.6,-0.6) grid (3.6,2.1);
+
+  \begin{scope}
+    \clip(0,0) -- ++(3,0) -- ++(0,1.5) -- (0,0.1) -- cycle;
+    \foreach \x in {0, 0.2, 0.4, ..., 2.8} {
+      \draw[draw=fg, thick, -stealth] (\x,1.5) -- ++(0,-1.4);
+    }
+  \end{scope}
+
+  \draw[draw=fg, thick, |-|] (0,0) -- node[midway, anchor = north] {$b=3m$} ++(3,0);
+  \draw[draw=fg, thick, |-|] (3,0) -- node[rotate = 90, midway, anchor = north] {$h=1.5N$} ++(0,1.5);
+
+\end{tikzpicture}
+\end{document}

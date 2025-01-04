@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 010}
+\date{September 13, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \coordinate (b) at (2,0);
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (a) +(-0.5,-0.75) rectangle ++(2.5,0.5);
+  \draw[draw=fg, thick] (a) -- node[anchor=north] {a} (b);
+  \filldraw[fill=or!50, draw=or!50] (a) node[bg] {{\footnotesize $+1$}} circle (7.5pt);
+  \filldraw[fill=or!50, draw=or!50] (b) node[bg] {{\footnotesize $+1$}} circle (7.5pt);
+
+  \coordinate (c) at (4,0);
+  \coordinate (d) at (6,0);
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (c) +(-0.5,-0.75) rectangle ++(2.5,0.5);
+  \draw[draw=fg, thick] (c) -- node[anchor=north] {b} (d);
+  \filldraw[fill=or!50, draw=or!50] (c) node[bg] {{\footnotesize $+2$}} circle (7.5pt);
+  \filldraw[fill=ma!50, draw=ma!50] (d) node[bg] {{\footnotesize $-1$}} circle (7.5pt);
+
+  \coordinate (e) at (8,0);
+  \coordinate (f) at (10,0);
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (e) +(-0.5,-0.75) rectangle ++(2.5,0.5);
+  \draw[draw=fg, thick] (e) -- node[anchor=north] {c} (f);
+  \filldraw[fill=ma!50, draw=ma!50] (e) node[bg] {{\footnotesize $-1$}} circle (7.5pt);
+  \filldraw[fill=or!50, draw=or!50] (f) node[bg] {{\footnotesize $+1$}} circle (7.5pt);
+
+\end{tikzpicture}
+\end{document}

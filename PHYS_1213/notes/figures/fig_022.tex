@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 022}
+\date{September 27, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \coordinate (b) at (2,2);
+  \coordinate (c) at (-2,2);
+
+  \draw[draw=fg, thick] (a) -- node[anchor = north west] {$r_{ab}$} (b);
+  \draw[draw=fg, thick] (b) -- node[anchor = south] {$r_{bc}$} (c);
+  \draw[draw=fg, thick] (c) -- node[anchor = north east] {$r_{ca}$} (a);
+
+  \filldraw[fill=or!50!fg, draw=or, thick] (a) circle (15pt) node[bg] {$+q$};
+  \filldraw[fill=or!50!fg, draw=or, thick] (b) circle (15pt) node[bg] {$+q$};
+  \filldraw[fill=or!50!fg, draw=or, thick] (c) circle (15pt) node[bg] {$+q$};
+
+\end{tikzpicture}
+\end{document}

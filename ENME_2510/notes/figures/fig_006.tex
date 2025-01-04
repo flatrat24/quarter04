@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 006}
+\date{September 16, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (3,1.5);
+
+  \draw[draw=fg, ultra thick] (A) -- (B) node[anchor=north]{$B$};
+  \draw[draw=fg, dotted, thick] (A) -- (3,0);
+  \filldraw[fill=fg!25!bg, draw=fg, ultra thick] (A) node[]{$A$} circle (10pt);
+  \filldraw[fill=fg!25!bg, draw=fg, ultra thick] (0.4,0.3) -- (1.8,1) -- (1.9,1.3) -- (-0.3,1.3) -- cycle;
+
+  \draw[draw=fg, dashed, ultra thick, -stealth] (B) -- ++(0,1) node[anchor=west] {$F$};
+  \node[] at (1,0.25) {$\theta$};
+  \node[] at (2.75,1.6) {$\beta$};
+
+\end{tikzpicture}
+\end{document}

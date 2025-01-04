@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 028}
+\date{November 06, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \begin{scope}[very thick, every node/.style={sloped,allow upside down}]
+    \draw[draw=fg, thick] (0,0)  -- node {\midarrow} (4,0);
+    \draw[draw=fg, thick] (4,0)  -- node {\midarrow} (2,-3);
+    \draw[draw=fg, thick] (2,-3) -- node {\midarrow} (0,0);
+  \end{scope}
+
+  \draw[] (0,-1.2) node[rotate = 0, anchor = center] {Start};
+
+  \filldraw[fill=gr!50!bg, draw=gr, thick] (0,0)  circle (1) node[anchor = center] {{\LARGE $S_0$}};
+  \filldraw[fill=ye!50!bg, draw=ye, thick] (4,0)  circle (1) node[anchor = center] {{\LARGE $S_1$}};
+  \filldraw[fill=re!50!bg, draw=re, thick] (2,-3) circle (1) node[anchor = center] {{\LARGE $S_2$}};
+
+\end{tikzpicture}
+\end{document}

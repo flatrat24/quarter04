@@ -1,0 +1,12 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 029}
+\date{October 11, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \draw[thick] (0,0) to[resistor] ++(4,0) to[resistor] ++(0,2) to[battery] ++(-4,0) to[capacitor] ++(0,-2);
+  \draw[thick] (4,0) -- ++(2,0) to[resistor] ++(0,2) -- ++(-2,0);
+\end{circuitikz}
+\end{document}

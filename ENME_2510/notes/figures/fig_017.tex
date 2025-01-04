@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 017}
+\date{October 06, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \draw[draw=fg, thick] (0,1.5) node[anchor = south, yshift = 2] {$w_A = 1500 \frac{N}{m}$} -- node[midway, anchor = south] {$w(x) = w$} (10,3) node[anchor = south] {$w_B = 4500 \frac{N}{m}$};
+  \foreach \x in {0,0.5,...,10} {
+    \pgfmathsetmacro{\y}{(\x * 0.15) + 1.5}
+    \draw[draw=fg, thick, -stealth] (\x,\y) -- (\x,1.1);
+  }
+  \filldraw[fill=fg!50!bg, draw=fg, thick] (0,0.5) rectangle ++(10,0.5);
+
+  \draw[draw=fg, thick, |-|] (0,0.2) -- node[midway, anchor = north] {$L = 6m$} ++(10,0);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 017}
+\date{October 23, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \draw[draw=fg, ultra thick] (a) -- ++(0.75,0) -- ++(0,0.75) -- ++(0.75,0) -- ++(0,-0.75) -- ++(0.75,0) -- ++(0,0.75) -- ++(0.75,0) -- ++(0,-0.75) -- ++(0.75,0) -- ++(0,0.75) -- ++(0.75,0) -- ++(0,-0.75) -- ++(0.75,0) -- ++(0,0.75) -- ++(0.75,0) -- ++(0,-0.75) -- ++(0.75,0);
+  \draw[draw=fg, dashed, stealth-stealth, ultra thick] ($(a)+(0.75,0.95)$) -- node[midway, anchor = south] {Period; $T$} ++(1.5,0);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(0.75,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(1.50,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(2.25,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(3.00,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(3.75,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(4.50,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(5.25,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(6.00,-0.1)$) -- ++(0,-0.3);
+
+\end{tikzpicture}
+\end{document}

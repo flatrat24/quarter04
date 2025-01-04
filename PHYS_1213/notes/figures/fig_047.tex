@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 047}
+\date{November 13, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \draw[] (5,2) node[rotate = 0, anchor = center] {{\color{or} \textbf{E}}};
+  \foreach \y in {-1.5,-1.0,...,1.5} {
+    \draw[draw=or, thick, -stealth] (4.25,\y) node[anchor = east, xshift = -10pt] {\textbf{{\color{or}+}}} -- ++(1.5,0) node[anchor = west, xshift = 10pt] {\textbf{{\color{or}-}}};
+  }
+
+  \draw[draw=fg, ultra thick] (0,0) -- ++(4,0);
+  \draw[draw=bl, thick, -stealth] (0.5,-0.25) -- node[midway, anchor = north] {Current ($I$)} ++(3,0);
+  \draw[draw=fg, ultra thick] (6,0) -- ++(4,0);
+  \draw[draw=bl, thick, -stealth] (6.5,-0.25) -- node[midway, anchor = north] {Current ($I$)} ++(3,0);
+
+  \draw[draw=fg, ultra thick] (4,-2) -- ++(0,4);
+  \draw[draw=fg, ultra thick] (6,-2) -- ++(0,4);
+
+  \filldraw[fill=fg, draw=fg] (5,-2) circle (2.5pt) node[yshift = -5pt, anchor = north] {$A$};
+
+\end{tikzpicture}
+\end{document}

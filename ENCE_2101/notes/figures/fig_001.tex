@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 001}
+\date{September 09, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \begin{axis}[
+    basicAxis,
+    title = Analog,
+    xmax = ,
+    xlabel = ,
+    xtick = {},
+    xticklabels = {},
+    ymax = ,
+    ylabel = ,
+    ytick = {},
+    yticklabels = {},
+    ]
+    \addplot [
+      domain=0:10,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {x-10*x^2+x^3};
+  \end{axis}
+
+\end{tikzpicture}
+\end{document}

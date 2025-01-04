@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 038}
+\date{October 23, 2024}
+
+\begin{document}
+\begin{circuitikz}
+
+  \filldraw[fill=bl!50!fg, draw=fg, thick] (0,0) rectangle node[bg, anchor = center] {$S$} ++(2,0.5);
+  \filldraw[fill=re!50!fg, draw=fg, thick] (2,0) rectangle node[bg, anchor = center] {$N$} ++(2,0.5);
+  \draw[draw=fg, ultra thick, -stealth] (4,-0.2) -- ++(-4,0);
+
+  \coordinate (a) at (5,-1);
+  \draw[thick] (a) to[] ++(2,0) to[led] ++(0,2) to[] ++(-2,0) to[] (a);
+  \filldraw[fill=ye, draw=ye, fill opacity = 0.5, draw opacity = 0.5] (7,0) circle (0.75);
+
+\end{circuitikz}
+\end{document}

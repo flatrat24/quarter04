@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 011}
+\date{November 13, 2024}
+
+\begin{document}
+
+\newpage
+\section{Electromagnetic Waves}
+\label{sec:electromagneticWaves}
+
+\subsection{Maxwell's Equations}
+\label{ssec:maxwellsEquations}
+
+Based on everything thusfar, four primary equations represent the entirety of all of
+what is known about electricity, magnetism, and how they relate. These equations are
+referred to as the \textbf{Maxwell Equations}, and are in Figure
+\ref{fig:maxwellsEquations}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{rl}
+    \toprule
+    \textbf{Equation} & \textbf{Law} \\
+    \midrule
+    $\oint_{}^{} \overrightarrow{E} \cdot \,d \overrightarrow{A} = \frac{Q_{enclosed}}{\epsilon_0}$ & \textbf{Gauss's Law} - Charges create diverging electric fields \\
+    $\oint_{}^{} \overrightarrow{B} \cdot \,d \overrightarrow{A} = 0$                               & \textbf{Gauss's (Magentism) Law} - No magnetic monopoles        \\
+    $\oint_{}^{} \overrightarrow{E} \cdot \,d \overrightarrow{l} = -\frac{d \Phi_B}{dt}$            & \textbf{Faraday's Law} - Changing B fields make E fields        \\
+    $\oint_{}^{} \overrightarrow{B} \cdot \,d \overrightarrow{l} = \mu_0I_{enclosed}$               & \textbf{Ampere's Law} - Currents make B fields                  \\
+    \bottomrule
+  \end{tblr}
+  \caption{Maxwell's Equations}
+  \label{fig:maxwellsEquations}
+\end{figure}
+
+However, \textbf{Ampere's Law} doesn't properly describe what is happening all of the time.
+Considering a capacitor that is being charged up, there is no current passing over the
+capacitor. However, there \textit{is} a B field at that spot.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_047}
+  \caption{Ampere's Law with a Capacitor}
+  \label{fig:047}
+\end{figure}
+
+Based on the \textbf{Biot-Savart Law}, there should be a B field created at point $A$ in
+Figure \ref{fig:047}. However, a loop drawn around the electric field that intersects $A$
+would lead to an Ampere's Law with no enclosed current and thus no B field.
+
+As it turns out, the true Ampere's Law that accounts for this effect is:
+\begin{equation*}
+  \oint_{}^{} \overrightarrow{B} \cdot \,d \overrightarrow{l} = \mu_0\left(I_{enclosed} + \epsilon_0\frac{d \Phi_E}{dt}\right)
+\end{equation*}
+
+Thus, the true Maxwell's Equations are in Figure \ref{fig:trueMaxwell'sEquations}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{rl}
+    \toprule
+    \textbf{Equation} & \textbf{Law} \\
+    \midrule
+    \textbf{Gauss's Law}             & $\oint_{}^{} \overrightarrow{E} \cdot \,d \overrightarrow{A} = \frac{Q_{enclosed}}{\epsilon_0}$ \\
+    \textbf{Gauss's (Magentism) Law} & $\oint_{}^{} \overrightarrow{B} \cdot \,d \overrightarrow{A} = 0$  \\
+    \textbf{Faraday's Law}           & $\oint_{}^{} \overrightarrow{E} \cdot \,d \overrightarrow{l} = -\frac{d \Phi_B}{dt}$ \\
+    \textbf{Ampere's Law}            & $\oint_{}^{} \overrightarrow{B} \cdot \,d \overrightarrow{l} = \mu_0\left(I_{enclosed} + \epsilon_0\frac{d \Phi_E}{dt}\right)$ \\
+    \bottomrule
+  \end{tblr}
+  \caption{True Maxwell's Equations}
+  \label{fig:trueMaxwell'sEquations}
+\end{figure}
+
+\subsection{Electromagnetic Waves}
+\label{ssec:electromagneticWaves}
+
+When a particle vibrates, its changing electric field will create a magnetic field.
+However, since the changing electric field changes at different rates, the magnetic field
+will also change, thus creating an electric field. This reciprocal behavior goes on
+forever, and produces what is called an \textbf{electromagnetic wave}.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_048}
+  \caption{Electromagnetic Wave}
+  \label{fig:048}
+\end{figure}
+
+Through vector calculus, Maxwell was able to show mathematically how quickly an
+electromagnetic wave moves:
+\begin{equation*}
+  v = \frac{1}{\sqrt{\mu_0 \epsilon_0}} = 3 \times 10^8 \frac{m}{s}
+\end{equation*}
+Coincidentally (not really coincidentally), this is the speed of light!
+
+\vspace{8pt}
+\hrule
+
+Waves are described by: $A \cos \left(\frac{2 \pi}{\lambda}x - \frac{2 \pi}{T}t\right)$,
+where $\lambda$ is the wavelength of the wave, $T$ is the period of the wave, $x$ is the
+position of the wave, and $t$ is time.
+
+Similarly, this equation can be expressed as:
+\begin{equation*}
+  y(x,y) = A \cos \left(kx - \omega t\right)
+\end{equation*}
+Where $k$ is $\frac{2 \pi}{\lambda}$ and is referred to as the wavenumber (spatial frequency)
+of the wave and $\omega$ is $\frac{2 \pi}{T}$ and is the angular frequency of the wave.
+
+With electromagnetic waves, the same equation is true for both the E and B fields.
+\begin{formula}{Electromagnetic Wave Equations}
+  \begin{align*}
+    y(x,t) &= A \cos(k x-\omega t) \\
+    E      &= E_{max} \cos(kx-\omega t) \\
+    B      &= B_{max} \cos(kx-\omega t)
+  \end{align*}
+\end{formula}
+
+Additionally, the E and B waves are always in \textbf{phase} with eachother. This means
+that they oscillate over the same period and reach their peaks and troughs at the same time.
+They are also both \textbf{perpendicular} to the direction of travel. Both of these things
+together mean that we can relate them linearly as:
+\begin{equation*}
+  E = cB
+\end{equation*}
+
+\subsection{Electromagnetic Energy}
+\label{ssec:electromagneticEnergy}
+
+Waves transport things. In the case of electromagnetic waves, only energy is transferred.
+There is no material being transferred (partly because there is no medium required for an
+electromagnetic wave to propagate over).
+
+The energy density in a given E or B field is:
+\begin{align*}
+  \textup{Energy Density}_E &= \frac{1}{2}\epsilon_0E^2 \\
+  \textup{Energy Density}_B &= \frac{1}{2 \mu_0}B^2 \\
+\end{align*}
+However, the actual power that exists over a given unit area of an EM wave is:
+\begin{equation*}
+  S = \frac{1}{\mu_0}EB
+\end{equation*}
+And expressed as a vector, is:
+\begin{equation*}
+  \overrightarrow{S} = \frac{1}{\mu_0} \overrightarrow{E} \times \overrightarrow{B}
+\end{equation*}
+Generally, it's more relevant to consider the \textbf{average} power/area of a wave rather
+than the power/area at a single point in time. This quantity is called the
+\textbf{Intensity} of the wave as is:
+\begin{equation*}
+  I = S_{avg} = \frac{1}{2\mu_0} E_{max}B_{max}
+\end{equation*}
+Knowing all of this, how can the intensity of a wave be related to the specific E and B
+fields?
+\begin{formula}{Maximum Intensities of E and B Fields}
+
+  \vspace{5pt}
+  The intensity of a wave was previously defined as the power per area of that wave. 
+  Mathematically, this can be expressed as:
+  \begin{equation*}
+    I = \frac{P}{A}
+  \end{equation*}
+  Using the intensity of any given EM wave, the relationship that exists between $E_{max}$,
+  $B_{max}$, and $I$ are:
+  \begin{equation*}
+    I = \frac{1}{2 \mu_0}cB^2_{max} = \frac{1}{2}\epsilon_0cE^2_{max}
+  \end{equation*}
+\end{formula}
+
+\subsection{Electromagnetic Momentum}
+\label{ssec:electromagneticMomentum}
+
+Electromagnetic waves also have momentum. This is how solar sails in space work. The
+pressure exerted on the sail from electromagnetic waves creates small bits of momentum
+that compound over time. The mathematical expression for this pressure is:
+
+\begin{formula}{Radiation Pressure}
+  \begin{align*}
+    P_{\textup{absorbed}}  &= \frac{I}{c} \\
+    P_{\textup{reflected}} &= \frac{2I}{c}
+  \end{align*}
+\end{formula}
+
+Note that this works just like regular momentum; when the particles are fully reflected,
+the amount of pressure is doubled when compared to when the particles are fully
+absorbed. To translate this into force:
+
+\begin{formula}{Radiation Force}
+  \begin{align*}
+    F_{\textup{absorbed}}  &= \frac{I}{c} A = \frac{IA}{c} \\
+    F_{\textup{reflected}} &= \frac{2I}{c} A = \frac{2IA}{c}
+  \end{align*}
+\end{formula}
+
+\end{document}

@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 037}
+\date{November 07, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg,
+    sources/fill=fg!25!bg,
+    flipflops/fill=fg!25!bg
+  }
+  \coordinate (a) at (0,0);
+  \node[fill = re!50!bg, thick, latch] (da) at ($(a)+(2,02)$){};
+  \node[fill = gr!50!bg, thick, flipflop D] (db) at ($(a)+(2,-2)$){};
+  \node[fill = bl!50!bg, thick, flipflop D] (dc) at ($(a)+(2,-6)$){};
+  \node[thick, vsourcesquareshape, rotate = 90] (clock) at ($(a)+(-1,-8)$){};
+
+  \draw[draw=fg, thick] ($(clock)+(0,0.45)$) -- ++(0,8.75);
+  \draw[draw=fg, thick] ($(da.pin 3)+(0,0)$) to[short, -*] ++(-1.875,0);
+  \draw[draw=fg, thick] ($(db.pin 3)+(0,0)$) to[short, -*] ++(-1.875,0);
+  \draw[draw=fg, thick] ($(dc.pin 3)+(0,0)$) to[short, -*] ++(-1.875,0);
+
+  \draw[draw=fg, thick] ($(da.pin 1)+(-1.5,0)$) node[anchor = east] {$D$} to[short, *-] ($(da.pin 1)+(-1,0)$) to[short, *-] (da.pin 1);
+  \draw[draw=fg, thick] (db.pin 1) -| ($(da.pin 1)+(-1,0)$);
+  \draw[draw=fg, thick] (dc.pin 1) -| ($(db.pin 1)+(-1,0)$) to[short, -*] ++(0,0);
+
+  \draw[draw=fg, thick] (da.pin 6) to[short, -*] ++(0.25,0) node[anchor = west] {$Q_a$};
+  \draw[draw=fg, thick] (da.pin 4) to[short, -*] ++(0.25,0) node[anchor = west] {$\overline{Q}_a$};
+
+  \draw[draw=fg, thick] (db.pin 6) to[short, -*] ++(0.25,0) node[anchor = west] {$Q_b$};
+  \draw[draw=fg, thick] (db.pin 4) to[short, -*] ++(0.25,0) node[anchor = west] {$\overline{Q}_b$};
+
+  \draw[draw=fg, thick] (dc.pin 6) to[short, -*] ++(0.25,0) node[anchor = west] {$Q_b$};
+  \draw[draw=fg, thick] (dc.pin 4) to[short, -*] ++(0.25,0) node[anchor = west] {$\overline{Q}_b$};
+
+  \filldraw[fill=fg!10!bg, draw=fg, thick] ($(dc.bpin 3)+(-3.5pt,0)$) circle (3pt);
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 002}
+\date{September 12, 2024}
+
+\begin{document}
+
+\begin{wrapfigure}[5]{r}{0.3\textwidth}
+  \centering
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_008}
+    \caption{Continuous Charge}
+    \label{fig:008}
+  \end{subfigure}
+\end{wrapfigure}
+
+When dealing with discrete charges, it's simple to find the direction of force. But when
+there is a continuous charge, how can you find the direction of force it exerts on a particle?
+
+Using \textbf{integration}, you can calculate the direction and magnitude of the force.
+
+\begin{formula}{Force of Continuous Objects}
+  \begin{equation*}
+    \int_{}^{} dF = \int_{}^{} \frac{kQdq}{r^2} \,
+  \end{equation*}
+  \hrule
+  \begin{align*}
+    dF &= \textup{Change in Force from Charge} \\
+    k &= \textup{Coulomb's Constant} \\
+    Q &= \textup{Net Charge of Continuous Object} \\
+    dq &= \textup{Change in Instantaneous Charge} \\
+    r &= \textup{Distance Between Objects} \\
+  \end{align*}
+\end{formula}
+
+\textbf{Electric Fields} are created by charges particles that affect other charged particles
+within the field. When two particles exert forces on each other, it is because both particles
+are created some field around them that in turn affects other particles around it.
+
+\begin{formula}{Strength of an Electric Field}
+  \begin{tcolorbox}[
+    standard jigsaw, % Allows opacity
+    colframe=fg,
+    boxrule=0px,
+    opacityback=0,
+    sidebyside,
+    lefthand width=200px,
+    coltext=fg,
+  ]
+  \textbf{Known Values}
+  \begin{align*}
+    E &= \textup{Strength of Electric Field} \\
+    k &= \textup{Coulomb's Constant} \\
+    q &= \textup{Charge of Particle} \\
+    r &= \textup{Distance from Particle}
+  \end{align*}
+  \tcblower
+  \begin{align*}
+    E &= \frac{F}{q} \\
+    F &= k \frac{q_1 \cdot q_2}{r^2} \\
+    E &= k \frac{q}{r^2}
+  \end{align*}
+  \end{tcolorbox}
+\end{formula}
+
+When drawing an electric field, the lines have some useful properties:
+\begin{enumerate}
+  \itemsep0em
+  \item At any point in space, the directionof the lines tells you the direction of the electric
+    field.
+  \item The \textit{denser} the lines, the \textit{stronger} the electric field
+  \item Field lines only start and end at charges
+  \item Field lines never cross each other
+\end{enumerate}
+
+\vspace{12pt}
+\hrule
+
+\begin{figure}[h]
+  \centering
+  \includestandalone{figures/fig_010} \\
+  Given the above figures, particles \textbf{b} would experience the greatest force.
+\end{figure}
+\hrule
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_011}
+  \caption{Infinite Charged Bars}
+  \label{fig:011}
+\end{figure}
+
+In a steady state, the electric field within a conductor is equal to zero. This is true because
+the external electric field acting on the conductor will cause particles within the conductor
+to move to an equilibrium state to cancel out the field.
+
+\end{document}

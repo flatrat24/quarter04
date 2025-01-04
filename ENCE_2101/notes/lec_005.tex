@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 005}
+\date{October 15, 2024}
+
+\begin{document}
+
+\newpage
+\section{Adders and Comparators}
+\label{sec:addersAndComparators}
+
+\subsection{Adder}
+\label{ssec:adder}
+
+\begin{wrapfigure}[10]{r}{0.2\textwidth}
+  \centering
+  \begin{tblr}{cc|c|c}
+    \toprule
+    $x$ & $y$ & $S$ & $C$ \\
+    \midrule
+    0 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 0 \\
+    1 & 0 & 1 & 0 \\
+    1 & 1 & 0 & 1 \\
+    \bottomrule
+  \end{tblr}
+  \caption{Half Adder Truth Table}
+  \label{fig:halfAdderTruthTable}
+\end{wrapfigure}
+
+An \textbf{Adder} performs addition of bits using the rules for addition defined in the
+binary number system. With an adder, subtraction (addition of the complement), multiplication
+(repeated addition), and division (repeated addition of the complement) can all be performed.
+
+Given two inputs, a \textbf{Half Adder} combines the bits of each input to produce two outputs:
+the sum bit ($S$) and the carry bit ($C$). With any two bits, the sum will only be $1$ if
+one of the two is a $1$, thus a XOR gate would be used for the sum. The carry will only
+result in a $1$ if both inputs are $1$, thus an AND gate would be used. The circuit is
+shown in Figure \ref{fig:013}.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_013}
+  \caption{Half Adder}
+  \label{fig:013}
+\end{figure}
+
+A \textbf{Full Adder} performs the addition of three digits. Conceptually, adders can be
+linked in a chain such that each adder has three inputs: two unique inputs and the carry
+bit from the previous link in the chain. Thus, a full adder must accommodate three inputs.
+A full adder can be seen in Figure \ref{fig:014}.
+
+The Karnaugh Map representation of each term is as in Figure \ref{fig:adderKarnaugh}. Two
+different outputs are defined: one for the sum bit ($S$) and one for the carry bit ($C$).
+Based on these K-Maps: $S = c \oplus (x \oplus y)$ and $C = xy+yc+cx$.
+
+\begin{figure}[H]
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_015}
+    \caption{Sum Bit}
+    \label{fig:015}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_016}
+    \caption{Carry Bit}
+    \label{fig:016}
+  \end{subfigure}
+  \caption{Karnaugh Maps of the Sum and Carry Bits}
+  \label{fig:adderKarnaugh}
+\end{figure}
+
+\newpage
+\vfill
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_014}
+  \caption{Full Adder}
+  \label{fig:014}
+\end{figure}
+\vfill
+\newpage
+
+
+
+\end{document}

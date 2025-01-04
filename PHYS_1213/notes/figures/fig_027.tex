@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 027}
+\date{October 10, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \draw[thick] (0,0) to[short, -*] node[midway, anchor = south east] {$\overrightarrow{I_1}$} ++(2,0) node[anchor = north east] {$A$};
+  \draw[thick, -stealth] (2,0) |- ++(2,1) node[anchor = south east] {$\overrightarrow{I_2}$};
+  \draw[thick, -stealth] (2,0) |- ++(2,-1) node[anchor = north east] {$\overrightarrow{I_3}$};
+\end{circuitikz}
+\end{document}

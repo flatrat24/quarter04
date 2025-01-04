@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 001}
+\date{September 09, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \begin{axis}[
+    basicAxis,
+    title = Digital,
+    xmax = ,
+    xlabel = ,
+    xtick = {},
+    xticklabels = {},
+    ymax = ,
+    ylabel = ,
+    ytick = {},
+    yticklabels = {},
+    ]
+    \addplot [
+      domain=0:10,
+      samples=100,
+      color=ma!50,
+      dashed,
+      thick
+    ] {x-10*x^2+x^3};
+    \addplot [
+      domain=0:2,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {-10};
+    \addplot [
+      domain=2:4,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {-50};
+    \addplot [
+      domain=4:6,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {-120};
+    \addplot [
+      domain=6:8,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {-140};
+    \addplot [
+      domain=8:10,
+      samples=100,
+      color=ma!50,
+      thick
+    ] {-60};
+  \end{axis}
+
+\end{tikzpicture}
+\end{document}

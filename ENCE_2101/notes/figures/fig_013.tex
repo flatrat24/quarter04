@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 013}
+\date{October 15, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg
+  }
+
+  \coordinate (x) at (0,2);
+  \coordinate (y) at (0,0);
+
+  \node[thick, xor port] (xor) at ($(x) + (3,0)$){};
+  \node[thick, and port] (and) at ($(y) + (3,0)$){};
+
+  \draw[draw=fg, thick] (x) node[left] {$x$} to[short, *-*] ++(0.75,0) |- (xor.in 1);
+  \draw[draw=fg, thick] (y) node[left] {$y$} to[short, *-*] ++(1.25,0) |- (xor.in 2);
+
+  \draw[draw=fg, thick] ($(x)+(0.75,0)$) |- (and.in 1);
+  \draw[draw=fg, thick] ($(y)+(1.25,0)$) |- (and.in 2);
+
+  \draw[draw=fg, thick] (xor.out) to[short, -*] ++(0.50,0) node[right] {$S$};
+  \draw[draw=fg, thick] (and.out) to[short, -*] ++(0.50,0) node[right] {$C$};
+\end{circuitikz}
+\end{document}

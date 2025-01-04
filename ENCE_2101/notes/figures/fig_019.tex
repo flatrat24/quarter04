@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 019}
+\date{October 28, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg
+  }
+  \coordinate (b) at (0,0);
+  \node[thick, nor port] (norb1) at ($(b)+(1,01.5)$){};
+  \node[thick, nor port] (norb2) at ($(b)+(1,-1.5)$){};
+
+  \draw[draw=fg, thick] ($(norb1.in 1)+(-1,0)$) node[left] {Reset} to[short, *-] (norb1.in 1);
+  \draw[draw=fg, thick] ($(norb2.in 2)+(-1,0)$) node[left] {Set}   to[short, *-] (norb2.in 2);
+
+  \draw[draw=fg, thick] ($(norb1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(norb2.in 1)+(-0.5,01)$) |- (norb2.in 1);
+  \draw[draw=fg, thick] ($(norb2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(norb1.in 2)+(-0.5,-1)$) |- (norb1.in 2);
+
+  \draw[draw=fg, thick] (norb2.out) to[short, -*] ++(1,0) node[anchor = west] {$Q$};
+  \draw[draw=fg, thick] (norb1.out) to[short, -*] ++(1,0) node[anchor = west] {$P$};
+
+\end{circuitikz}
+\end{document}

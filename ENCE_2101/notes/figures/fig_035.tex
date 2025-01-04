@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 035}
+\date{November 07, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \draw[] (a) node[rotate = 0, anchor = east] {{\LARGE $O$}};
+  \draw[draw=fg, ultra thick] (a) -- ++(7,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1) -- ++(3,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(2,0);
+
+  \coordinate (b) at (0,-2);
+  \draw[] (b) node[rotate = 0, anchor = east] {{\LARGE $x$}};
+  \draw[draw=fg, ultra thick] (b) -- ++(4,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(6,0) -- ++(0,-1) -- ++(2,0);
+
+  \coordinate (c) at (0,-4);
+  \draw[] (c) node[rotate = 0, anchor = east] {{\LARGE $y$}};
+  \draw[draw=fg, ultra thick] (c) -- ++(1,0) -- ++(0,1) -- ++(1,0) -- ++(0,-1) -- ++(5,0) -- ++(0,1) -- ++(1,0) -- ++(1,0) -- ++(0,-1) -- ++(3,0) -- ++(0,1) -- ++(3,0);
+
+  \coordinate (d) at (0,-6);
+  \draw[] (d) node[rotate = 0, anchor = east] {{\LARGE $z$}};
+  \draw[draw=fg, ultra thick] (d) -- ++(1,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1) -- ++(3,0) -- ++(0,1) -- ++(4,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1) -- ++(2,0);
+
+\end{tikzpicture}
+\end{document}

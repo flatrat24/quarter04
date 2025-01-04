@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 006}
+\date{September 11, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  % \filldraw[fill=fg!10!bg, draw=fg, thick] (-1,-0.5) rectangle (3,0.5);
+
+  \filldraw[fill=or!50, draw=or!50] (0,0) node[bg] {$q_1$} circle (10pt);
+  \filldraw[fill=or!50, draw=or!50] (2,0) node[bg] {$q_2$} circle (10pt);
+
+  \draw[draw=fg, dashed, thick, stealth-stealth] (0,0.5) -- (1,0.5) node[anchor=south] {$r$} -- (2,0.5);
+
+\end{tikzpicture}
+\end{document}

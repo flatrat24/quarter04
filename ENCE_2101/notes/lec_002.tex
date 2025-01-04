@@ -1,0 +1,327 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 002}
+\date{September 16, 2024}
+
+\begin{document}
+
+\section{Truth Tables}
+\label{sec:truthTables}
+
+Truth tables are useful for depicting logical functions. A truth table shows the output value
+of a logic function or expression for every combination of values of the input variables.
+
+In Figure \ref{fig:truthTableTemplate}, 
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{c|ccc|c}
+    \toprule
+    \textbf{Row \#} & $i_0$ & $i_1$ & $i_n$ & \textbf{Output Values} \\
+    \midrule
+    0              & 0     & 0     & 0     & 0                      \\
+    1              & 0     & 0     & 1     & 0                      \\
+    2              & 0     & 1     & 0     & 0                      \\
+    3              & 0     & 1     & 1     & 0                      \\
+    $2^n - 1$      & 1     & 1     & 1     & 0                      \\
+    \bottomrule
+  \end{tblr}
+  \caption{Truth Table Template}
+  \label{fig:truthTableTemplate}
+\end{figure}
+
+\subsection{Boolean Algebra}
+\label{ssec:booleanAlgebra}
+
+Boolean algebra consists of:
+\begin{itemize}
+  \itemsep0em
+  \item A set of elements/variables (such as $x$, $y$, and $z$) that represent a condition or a physical quantity.
+  \item Values for elements/variables (i.e. 0 = FALSE, 1 = TRUE) that represent the state of the variable.
+  \item Primitive logical operations (\textbf{AND}, \textbf{OR}, \textbf{NOT}) for combining the values of the variables.
+  \item A set of axioms, postulates, and theorems that define the algebra.
+\end{itemize}
+
+\textbf{Boolean Operators} are foundational to boolean algebra. They take a set of inputs, whether it be a single
+input or a pair, and return a value based on the states of those inputs. These are the logical
+operations that combine values of variables in boolean algebra.
+
+\begin{definition}{AND Operator}
+  \begin{wrapfigure}[]{r}{0.2\textwidth}
+    \centering
+    \begin{circuitikz}
+      \ctikzset{
+        logic ports=ieee,
+        logic ports/scale=1,
+        logic ports/fill=fg!25!bg
+      }
+      \node[thick, and port] (AND1) at (0,0) {};
+    \end{circuitikz}
+  \end{wrapfigure}
+
+  When all inputs are $1$, the output value of \textbf{and} is $1$. Otherwise, the output is
+  $0$.
+
+  \begin{center}
+    $AB$, $A \cdot B$, $A \land B$, $A$ \& $B$, or $A$ and $B$.
+  \end{center}
+\end{definition}
+
+\begin{definition}{OR Operator}
+  \begin{wrapfigure}[]{r}{0.2\textwidth}
+    \centering
+    \begin{circuitikz}
+      \ctikzset{
+        logic ports=ieee,
+        logic ports/scale=1,
+        logic ports/fill=fg!25!bg
+      }
+      \node[thick, or port] (OR1) at (0,0) {};
+    \end{circuitikz}
+  \end{wrapfigure}
+
+  When any input is $1$, the output value of \textbf{or} is $1$. Otherwise, the output is
+  $0$.
+
+  \begin{center}
+    $X + Y$, $X \# Y$, $X | Y$, $X \lor Y$, or $X or Y$.
+  \end{center}
+\end{definition}
+
+\begin{definition}{NOT Operator}
+  \begin{wrapfigure}[]{r}{0.2\textwidth}
+    \centering
+    \begin{circuitikz}
+      \ctikzset{
+        logic ports=ieee,
+        logic ports/scale=1,
+        logic ports/fill=fg!25!bg
+      }
+      \node[thick, not port] (NOT1) at (0,0) {};
+    \end{circuitikz}
+  \end{wrapfigure}
+
+  The output of \textbf{not} is the \textit{inverse} of the output; $1$ becomes $0$, and
+  $0$ becomes $1$.
+
+  \begin{center}
+    $\overline{Y}$, $Y'$, $!Y$, $\neg Y$, or not $Y$.
+  \end{center}
+\end{definition}
+
+\begin{definition}{XOR Operator}
+  \begin{wrapfigure}[]{r}{0.2\textwidth}
+    \centering
+    \begin{circuitikz}
+      \ctikzset{
+        logic ports=ieee,
+        logic ports/scale=1,
+        logic ports/fill=fg!25!bg
+      }
+      \node[thick, xor port] (XOR1) at (0,0) {};
+    \end{circuitikz}
+  \end{wrapfigure}
+
+  The output of \textbf{XOR} is 1 is \textbf{only} one of the inputs is 1, but not both and
+  not neither.
+
+  \begin{center}
+    $A \oplus B$ or $A$ XOR $B$.
+  \end{center}
+\end{definition}
+
+\begin{definition}{NAND and NOR Operators}
+  \begin{wrapfigure}[4]{r}{0.35\textwidth}
+    \centering
+    \begin{circuitikz}
+      \ctikzset{
+        logic ports=ieee,
+        logic ports/scale=1,
+        logic ports/fill=fg!25!bg
+      }
+      \node[thick, nand port] (NAND1) at (0,0) {};
+      \node[thick, nor port] (NOR1) at (2.5,0) {};
+    \end{circuitikz}
+  \end{wrapfigure}
+
+  By adding \textbf{N} to the beginning of a gate, the gate is converted from what it was
+  to the inverse of it. \textbf{AND} becomes \textbf{NOT AND}, \textbf{OR} becomes \textbf{NOT OR}.
+  Functionally, the outputs of either of the gates is just the inverse of the original gate.
+  To convert a drawn AND or OR gate to NAND or NOR respectively, simply add a circle to the
+  output.
+\end{definition}
+
+Just like "regular" algebra, boolean algebra can be operated on through methods such as factoring,
+as well as logical properties such as those listen in Figure \ref{fig:listOfLogicalEquivalences}.
+Using these, we can simplify complex equations to simpler ones:
+\begin{align*}
+  F &= (\overline{x} \land \overline{y} \land z) \lor (x \land y \land z) \lor (\overline{x} \land y \land z) \lor (x \land \overline{y} \land z) \\
+  F &= (\overline{x} \land \overline{y} \land z) \lor (\overline{x} \land y \land z) \lor (x \land y \land z) \lor (x \land \overline{y} \land z) \\
+  F &= [\overline{x} \land z(\overline{y} \lor y)] \lor [x \land z(y \lor \overline{y})] \\
+  F &= (\overline{x} \land z \land 1) \lor (x \land z \land 1) \\
+  F &= (\overline{x} \land z) \lor (x \land z) \\
+  F &= z \land (\overline{x} \lor x) \\
+  F &= z \land 1 \\
+  F &= z \\
+\end{align*}
+Thus, through algebraic manipulation, it can be seen that the original equation:
+\begin{center}
+  $F = (\overline{x} \land \overline{y} \land z) \lor (x \land y \land z) \lor (\overline{x} \land y \land z) \lor (x \land \overline{y} \land z)$
+\end{center}
+is equivalent to the direct state of $z$:
+\begin{center}
+  $F = z$
+\end{center}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc}
+    \toprule
+    \textbf{Mathematical Representation} & \textbf{Name of the Law} \\
+    \midrule
+    $p\lor\neg p \equiv T$ & Law of Excluded Middle \\
+    $p\land \neg p \equiv F$ & Law of Non-Contradiction \\
+    $p \land T \equiv p$ & \SetCell[r=2]{c} Identity Laws \\
+    $p \lor F \equiv p$ \\
+    $p \land F \equiv F$ & \SetCell[r=2]{c} Domination Laws \\
+    $p \lor T \equiv T$ \\
+    $p \lor p \equiv p$ & \SetCell[r=2]{c} Idempotent Laws \\
+    $p \land p \equiv p$ \\
+    $\neg\neg p \equiv p$ & Laws of Double Negation Elimination \\
+    $p \lor q \equiv q \lor q$ & \SetCell[r=2]{c} Commutative Laws \\
+    $p \land q \equiv q \land q$ \\
+    $(p \lor q) \lor r \equiv p \lor (q \lor r)$ & \SetCell[r=2]{c} Associative Laws \\
+    $(p \land q) \land r \equiv p \land (q \land r)$ \\
+    $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ & \SetCell[r=2]{c} Distributive Laws \\
+    $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ \\
+    $\neg(p \land q) \equiv \neg p \lor \neg q$ & \SetCell[r=2]{c} DeMorgan's Laws \\
+    $\neg(p \lor q) \equiv \neg p \land \neg q$ \\
+    $p \lor (p \land q) \equiv p$ & \SetCell[r=2]{c} Absorption Laws \\
+    $p \land (p \lor q) \equiv p$ \\
+    $p \Rightarrow q \equiv q \lor \neg p$ & $\lor$ Restatement of Implication \\
+    $p \Rightarrow q \equiv \neg q \Rightarrow \neg p$ & Contraposition \\
+    $(p \Rightarrow q) \land (p \Rightarrow r) \equiv p \Rightarrow (q \land r)$ & Conjunction of Implications \\
+    $(p \Rightarrow r) \land (q \Rightarrow r) \equiv (p \lor q) \Rightarrow r$ & Will Show This Below \\
+    $(p \Rightarrow q) \lor (p \Rightarrow r) \equiv p \Rightarrow q \lor r$ & \SetCell[r=2]{c} Disjunction of Implications \\
+    $(p \Rightarrow r) \lor (q \Rightarrow r) \equiv (p \land q) \Rightarrow r$ \\
+    $p \Leftrightarrow q \equiv (p \Rightarrow q) \land (q \Rightarrow p)$ & Conjunction of Implications \\
+    $p \Leftrightarrow q \equiv \neg p \Leftrightarrow \neg q$ & Negation Restatement \\
+    $\neg(p \Leftrightarrow q) \equiv \neg p \Leftrightarrow q$ & Negation \\
+    \bottomrule
+  \end{tblr}
+  \caption{List of Logical Equivalences}
+  \label{fig:listOfLogicalEquivalences}
+\end{figure}
+
+\newpage
+
+\vspace{12pt}
+\hrule
+
+\begin{center}
+  Definitions
+\end{center}
+A \textbf{literal} is a variable or the complement of a variable.
+
+A \textbf{Product Term} is a single literal or the logical product of two or more literals.
+
+A \textbf{Sum of Products (SOP)} expression is a logical sum of product terms.
+
+A \textbf{Sum Term} is a single literal or a logical sum of two or more literals.
+
+A \textbf{Product of Sums (POS)} expression is a logical product of sum terms.
+
+A \textbf{Normal Term} is a product or sum term in which no variable appears more than once.
+\vspace{12pt}
+\hrule
+
+\subsection{Canonical Notation}
+\label{ssec:canonicalNotation}
+
+\begin{definition}{Product Term}
+  Denoted with $m_n$, a product term is the product (and) of each input. Inputs default to $1$,
+  with $0$ being the complement of the input.
+\end{definition}
+
+For example, if $A=1$, $B=0$, $C=1$, then $m_5 = A \overline{B} C$.
+$n=5$ because $101$ occurs on the $5^{th}$ row. See Figure \ref{fig:productAndSumTerms}.
+
+\begin{definition}{Sum Term}
+  Denoted with $M_n$, a sum term is the sum (or) of each input. Input defaults to $0$,
+  with $1$ being the complement of the input.
+\end{definition}
+
+For example, if $A=1$, $B=0$, $C=1$, then $M_5 = \overline{A} + B + \overline{C}$.
+$n=5$ because $101$ occurs on the $5^{th}$ row. See Figure \ref{fig:productAndSumTerms}.
+
+\begin{figure}[t]
+  \centering
+  \begin{tblr}{c|ccc|c|c}
+    \toprule
+    Row \# & A & B & C & Product Term & Sum Term \\
+    \midrule
+    0 & 0 & 0 & 0 & $\overline{A} \overline{B} \overline{C} = m_0$ & $A + B + C                                  = M_0$ \\
+    1 & 0 & 0 & 1 & $\overline{A} \overline{B} C            = m_1$ & $A + B + \overline{C}                       = M_1$ \\
+    2 & 0 & 1 & 0 & $\overline{A} B \overline{C}            = m_2$ & $A + \overline{B} + C                       = M_2$ \\
+    3 & 0 & 1 & 1 & $\overline{A} B C                       = m_3$ & $A + \overline{B} + \overline{C}            = M_3$ \\
+    0 & 1 & 0 & 0 & $A \overline{B} \overline{C}            = m_4$ & $\overline{A} + B + C                       = M_4$ \\
+    1 & 1 & 0 & 1 & $A \overline{B} C                       = m_5$ & $\overline{A} + B + \overline{C}            = M_5$ \\
+    2 & 1 & 1 & 0 & $A B \overline{C}                       = m_6$ & $\overline{A} + \overline{B} + C            = M_6$ \\
+    3 & 1 & 1 & 1 & $A B C                                  = m_7$ & $\overline{A} + \overline{B} + \overline{C} = M_7$ \\
+    \bottomrule
+  \end{tblr}
+  \caption{Product and Sum Terms}
+  \label{fig:productAndSumTerms}
+\end{figure}
+
+\begin{definition}{Canonical Notation}
+  Either Sum of Products (SOP) or Product of Sums (POS), canonical notation is used to express a boolean
+  equation by showing where the outputs of a single type are.
+\end{definition}
+
+In Canonical Notation, the \textbf{Sum of Products} shows where the 1s are in the truth table,
+with the \textbf{Product of Sums} showing where the 0s are.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{gather*}
+      F = \sum_{A,B,C}^{} (1, 3, 4, 6) \\
+      F(A,B,C) = \sum_{}^{} m(1, 3, 4, 6)
+    \end{gather*}
+    \vspace{-20pt}
+    \caption{List of Product Terms}
+    \label{fig:listOfProductTerms}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{gather*}
+      F = \prod_{A,B,C}^{} (0, 2, 5, 7) \\
+      F(A,B,C) = \prod_{}^{} m(0, 2, 5, 7)
+    \end{gather*}
+    \vspace{-20pt}
+    \caption{List of Sum Terms}
+    \label{fig:listOfSumTerms}
+  \end{subfigure}
+\end{figure}
+\begin{gather*}
+  \textup{\textbf{Canonical Sum (SOP)}:} \\
+  F(A,B,C) = m_1 + m_3 + m_4 + m_6 = \overline{AB}C + \overline{A}BC + A \overline{BC} + AB \overline{C}
+\end{gather*}
+\begin{gather*}
+  \textup{\textbf{Canonical Product (POS)}:} \\
+  F(A,B,C) = m_0 + m_2 + m_5 + m_7 = (\overline{A} + \overline{B} + C)(A + \overline{B} + C) + A \overline{BC} + AB \overline{C}
+\end{gather*}
+\hrule
+A \textbf{Don't Care} is any row that has input that is unimportant for the relevant use case.
+To notate a "Don't Care", $dc$ is followed by each unimportant row in parentheses:
+\begin{equation*}
+  F(A,B,C) = \prod_{}^{} m(0, 2, 5, 7) + dc(1, 3, 4, 8)
+\end{equation*}
+\hrule
+
+
+\end{document}

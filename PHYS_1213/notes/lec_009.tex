@@ -1,0 +1,235 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 009}
+\date{October 23, 2024}
+
+\begin{document}
+\newpage
+\section{Magnets}
+\label{sec:magnets}
+
+The two fundamental forces covered so far in University Physics have been gravity and
+electrical forces. Magnetism is a third fundamental force.
+
+Similar to electricity in several ways, magnetic force is an attractive force between
+oppositely "charged" magnets and a repulsive force between similarly "charged" magnets.
+Additionally, magnets create a magnetic field around them that behaves similarly to the
+electrical field created by charged particles.
+
+However, magnetic force and electric force are fundamentally different despite their
+similarities.
+
+\subsection{Magnetic Fields}
+\label{ssec:magneticFields}
+Magnetic fields are referred to as $B$ fields. But what causes them? When a compass is
+brought close to a current, the compass will point in a direction due to that current.
+Thus, current (moving particles) creates magnetic fields.
+
+Additionally, magnetic fields exert force onto charged particles. However, considering a
+bar magnet such as the one in Figure \ref{fig:038}, where would the current or induced
+force on the particles around the magnet be?
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_038}
+  \caption{Regular Bar Magnet}
+  \label{fig:038}
+\end{figure}
+The force would be induced onto the electrons near the magnet \textbf{orbiting} within
+each atom. This orbit is a tiny current within the atom, but that current is what the
+magnet is inducing/reacting to. The force exerted onto the particle is called the 
+\textbf{Lorentz Force}.
+
+\begin{formula}{Lorentz Force}
+  \begin{align*}
+    \textup{Force on Particle} &= \textup{Particle Charge}\ (\textup{Particle Velocity} \times \textup{Magnetic Field}) \\
+    F &= q(v \times B) \\
+    |F| &= qvBsin(\theta)
+  \end{align*}
+\end{formula}
+
+\begin{wrapfigure}[6]{r}{0.25\textwidth}
+  \vspace{-15pt}
+  \centering
+  \includestandalone{figures/fig_039}
+  \caption{}
+  \label{fig:039}
+\end{wrapfigure}
+
+Consider the particle in Figure \ref{fig:039}. In the top position, it is moving to the
+right within a magnetic field directed out of the page. By crossing Velocity with the
+Magentic Field ($\overrightarrow{v} \times \overrightarrow{B}$), the resulting force is
+pointed downwards.
+
+As it accelerates downward, its velocity will begin to point downwards as well, eventually
+reaching the position at the right with a new acceleration still towards the center. This
+continues as the particle maintains a circular motion around some point.
+
+Because work is found using the dot product of Force and Velocity
+($\overrightarrow{F} \cdot \overrightarrow{v}$), and the movement of a particle within
+a magnetic field is circular, the work done on a particle by a magnetic field will always
+be zero.
+
+The basic principle of calculating the Lorentz Force can also be used to calculate the
+force from a magnetic field on a current-carrying wire.
+
+\begin{formula}{Lorentz Force (Wire)}
+  \begin{equation*}
+    F = IL \times B \ \ \ \ \ \ \ \ |F| = ILB sin(\theta)
+  \end{equation*}
+\end{formula}
+
+The circular motion experienced by the particle in Figure \ref{fig:0039} is just centripetal
+motion. Thus, the radius of the circle it travels can be found using kinematics, specifically:
+$F = \frac{mv^2}{r}$.
+\begin{wrapfigure}[1]{r}{0.45\textwidth}
+  \vspace{8pt}
+  \centering
+  \includestandalone{figures/fig_039}
+  \caption{Centripetal Motion of a Particle in Magnetic Field}
+  \label{fig:0039}
+\end{wrapfigure}
+\begin{formula}{Gyroradius}
+  \begin{align*}
+    F = \frac{mv^2}{r} &\rightarrow r = \frac{mv^2}{F} \\
+    r = \frac{mv^2}{q(v \times B)} &\rightarrow r = \frac{mv^2}{qvB}
+  \end{align*}
+  {\Large $r = \frac{mv}{qB}$}
+\end{formula}
+Thus, the radius of the circle traveled scales directly with the mass and velocity of
+the particle, and inversely with the charge and the strength of the B field.
+
+\subsection{Sources of Magnetic Fields}
+\label{ssec:sourcesOfMagneticFields}
+
+Magnetic fields are always created by currents. Specifically, the magnetic field moved in
+circles around the direction of the current.
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_040}
+  \caption{Current-Induced Magnetic Field}
+  \label{fig:040}
+\end{figure}
+The relationship between the direction of the
+current and magnetic field are related through the right-hand rule. If the current moves
+in the direction of the thumb, then the magnetic field moved in circles following the
+curling of the fingers.
+
+Since magnetic fields are created by moving charged particles, the electrons in the cloud
+of an atom would also induce a field. Normally, when countless atoms are scattered, all
+oriented in various directions, the net magnetic field generated would be zero.
+
+However, such as in Figure \ref{fig:041}, when atoms are aligned, the tiny amounts of
+magnetic field created by each particle will compound with the next, thus creating a
+magnetic field, the magnitude of which is the sum of all the tiny ones.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_041}
+  \caption{Atoms Aligned in a Bar Magnet}
+  \label{fig:041}
+\end{figure}
+
+\subsection{Strength of a Magnetic Field}
+\label{ssec:strengthOfAMagneticField}
+
+Magnetic fields (which are created by currents) exert force onto moving particles (other
+currents). Thus, wires carrying currents or moving particles individually will exert some
+magnetic force on each other.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_042}
+  \caption{Two Wires in Parallel}
+  \label{fig:042}
+\end{figure}
+\vspace{-20pt}
+In the case of two parallel wires with currents running in the same direction, such as the
+wires in Figure \ref{fig:042}, they would both experience force towards each other. If one
+of the currents were to be reversed, the force would be away from each other.
+
+How strong are B fields actually? The strength of a B field is modeled by the 
+\textbf{Biot-Savart Law}.
+
+\begin{formula}{Biot-Savart Law}
+  \begin{center}
+    \begin{tblr}{rl}
+      $\mu_{0}$ & constant of nature; $\frac{\mu_{0}}{4 \pi}=10^{-7}$ \\
+      $q$       & charge of the particle \\
+      $v$       & velocity of the particle \\
+      $r$       & distance between the particle and a point in the B field \\
+      $\hat{r}$ & unit vector of the direction between the particle and B point \\
+      \bottomrule
+    \end{tblr}
+  \end{center}
+  \vspace{12pt}
+  \begin{equation*}
+    B = \frac{\mu_{0}}{4 \pi}\frac{q(v \times \hat{r})}{r^{2}}
+  \end{equation*}
+\end{formula}
+
+This formula shows how to relate the strength of a magnetic field to the velocity, charge,
+and position of a particle. However, what if a continuous charge (rather than a discrete
+particle) is considered?
+\begin{equation*}
+  B = \frac{\mu_{0}}{4 \pi}\frac{q(v \times \hat{r})}{r^{2}} \rightarrow d \overrightarrow{B} = \frac{\mu_{0}}{4 \pi}\frac{Id \overrightarrow{L} \times \hat{r}}{r^{2}}
+\end{equation*}
+By remodeling the formula in terms of the current in the wire and the length along the wire,
+all that is left is to integrate it with the proper bounds.
+
+\begin{example}
+  How would the magnitude and direction of the B field created by a quarter-circle of wire
+  at point $p$ be calculated? Using the Biot-Savart Law, and modeling it in terms of incremental
+  distances over the wire, the following can be done:
+  \begin{wrapfigure}[5]{r}{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_043}
+  \end{wrapfigure}
+  \begin{equation*}
+    B = \frac{\mu_{0}}{4 \pi}\frac{q(v \times \hat{r})}{r^{2}} \rightarrow d \overrightarrow{B} = \frac{\mu_{0}}{4 \pi}\frac{Id \overrightarrow{L} \times \hat{r}}{r^{2}}
+  \end{equation*}
+  Since $L$ and $\hat{r}$ are perpendicular, the cross product just become multiplication.
+  \begin{align*}
+    d \overrightarrow{B} &= \frac{\mu_{0}}{4 \pi}\frac{I}{r^{2}} d\overrightarrow{L} \\
+    \int_{}^{} d \overrightarrow{B} \, &= \int_{0}^{\frac{\pi r}{2}} \frac{\mu_{0}}{4 \pi}\frac{I}{r^{2}} \, d\overrightarrow{L} \\
+    \int_{}^{} d \overrightarrow{B} \, &= \frac{\mu_{0}}{4 \pi}\frac{I}{r^{2}} \int_{0}^{\frac{\pi r}{2}} d\overrightarrow{L} \\
+    \int_{}^{} d \overrightarrow{B} \, &= \frac{\mu_{0}}{4 \pi}\frac{I}{r^{2}} \frac{\pi r}{2} = \frac{\mu_0I}{8r}
+  \end{align*}
+  Thus, $\frac{\mu_0I}{8r}$ is the magnitude of the B field at point $p$, and its direction
+  can be determined using the right-hand rule. It points out of the page.
+\end{example}
+
+Following a similar process, the strength of a B field at a point $r$ distance away from
+a straight and infinite wire is:
+\begin{equation*}
+  B = \frac{\mu_0I}{2 \pi r}
+\end{equation*}
+
+\subsection{Ampere's Law}
+\label{ssec:amperesLaw}
+
+\begin{formula}{Ampere's Law}
+  \begin{equation*}
+    \oint_{}^{} \overrightarrow{B} \cdot \, d \overrightarrow{L} = \mu_0 I_{through}
+  \end{equation*}
+\end{formula}
+
+Given some current, an arbitrary loop can be drawn around the current. Integrating the 
+B field dotted with the length of the loop gives something directly proportional to the
+"enclosed" current.
+\begin{equation*}
+  \oint_{}^{} \overrightarrow{B} \cdot \, d \overrightarrow{L} = \mu_0 I_{through}
+\end{equation*}
+If the loop is made to be perfectly centered around the current and circular, then B
+is constant and always parallel to the wire, so it can be removed from the integral.
+\begin{align*}
+  \overrightarrow{B}\oint_{0}^{2 \pi r} d \overrightarrow{L} &= \mu_0 I_{through} \\
+  2 \pi rB &= \mu_0 I_{through} \\
+  B &= \frac{\mu_0 I_{through}}{2 \pi r}
+\end{align*}
+Lastly, if no current in enclosed within the loop, then no field will be calculated by 
+Ampere's Law.
+
+
+\end{document}

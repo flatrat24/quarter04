@@ -1,0 +1,22 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 025}
+\date{October 28, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \draw[draw=fg, ultra thick] (a) -- ++(2.25,0) -- ++(0,0.75) -- ++(0.25,0) -- ++(0,-0.75) -- ++(0.25,0) -- ++(0,0.75) -- ++(0.25,0) -- ++(0,-0.75) -- ++(0.25,0) -- ++(0,0.75) -- ++(0.25,0) -- ++(0,-0.75) -- ++(0.25,0) -- ++(0,0.75) -- ++(2.25,0);
+
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(2.25,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(2.50,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(2.75,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(3.00,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(3.25,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=re!75!fg, ultra thick, -stealth] ($(a)+(3.50,-0.1)$) -- ++(0,-0.3);
+  \draw[draw=bl!75!fg, ultra thick, stealth-] ($(a)+(3.75,-0.1)$) -- ++(0,-0.3);
+
+\end{tikzpicture}
+\end{document}

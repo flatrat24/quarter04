@@ -1,0 +1,21 @@
+{
+  "schedule": {
+    "start":        1400,
+    "end":          1600,
+    "days":         "Tue Thu"
+  },
+
+  "name": {
+    "title":        "Discrete Structures in Computer Science",
+    "short":        "COMP 2300",
+    "code":         "COMP",
+    "number":       "2300"
+  },
+
+  "bookmarks": {
+    "Canvas Homepage":        "https://canvas.du.edu/courses/179761",
+    "Truth Table Generator":  "https://mrieppel.net/prog/truthtable.html"
+  },
+
+  "hasLab":         false
+}

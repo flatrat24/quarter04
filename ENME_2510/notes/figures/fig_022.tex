@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 022}
+\date{October 07, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \coordinate (a) at (0,0);
+  \filldraw[fill=fg!25!bg, draw=fg, thick] (a) rectangle ++(2.5,0.5);
+  \draw[-stealth, thick] ($(a)+(0.2,0.650)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = east, xshift = -15pt] {$M^-$};
+  \draw[stealth-, thick, rotate = 180] ($(a)+(-2.3,0.2)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = west, xshift = 17pt] {$M^-$};
+
+  \coordinate (b) at (0,1.25);
+  \filldraw[fill=fg!25!bg, draw=fg, thick] (b) rectangle ++(2.5,0.5);
+  \draw[stealth-, thick] ($(b)+(0.2,0.650)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = east, xshift = -15pt] {$M^+$};
+  \draw[-stealth, thick, rotate = 180] ($(b)+(-2.3,0.2)$) arc [
+    start angle = 60,
+    end angle = 300,
+    x radius = 0.5,
+    y radius = 0.5
+    ] node[anchor = west, xshift = 17pt] {$M^+$};
+
+\end{tikzpicture}
+\end{document}

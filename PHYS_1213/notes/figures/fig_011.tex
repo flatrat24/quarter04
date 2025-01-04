@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 011}
+\date{September 13, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \filldraw[fill=ma!50, draw=ma, thick] (0,2) rectangle (10,2.5);
+  \filldraw[fill=or!50, draw=or, thick] (0,0) rectangle (10,0.5);
+
+  \foreach \x in {0.5,1,...,9.5} {
+    \draw[bg] (\x,0.25) node[rotate = 0, anchor = center] {$+$};
+    \draw[bg] (\x,2.25) node[rotate = 0, anchor = center] {$-$};
+    \draw[draw=fg, thick, -stealth] (\x,0.6) -- (\x,1.9);
+    \draw[draw=fg, thick, -stealth] (\x,3) -- (\x,2.6);
+    \draw[draw=fg, thick, -stealth] (\x,-0.1) -- (\x,-0.5);
+  }
+
+
+\end{tikzpicture}
+\end{document}

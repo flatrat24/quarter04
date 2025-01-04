@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 001}
+\date{September 09, 2024}
+
+\begin{document}
+
+\section{Foundational Concepts}
+\label{sec:foundationalConcepts}
+
+\subsection{Analog and Digital}
+\label{ssec:analogAndDigital}
+
+The world we live in is \textbf{analog}, meaning signals and information are variable and
+continuous. Digital systems, on the other hand, are represented by discrete values.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_001}
+    \caption{Analog}
+    \label{fig:001}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_002}
+    \caption{Digital}
+    \label{fig:002}
+  \end{subfigure}
+  \caption{Analog vs. Digital}
+  \label{fig:analogVsDigital}
+\end{figure}
+
+Digital is used for many different reasons:
+\begin{itemize}
+  \itemsep0em
+  \item Represent and manipulate discrete elements of information
+  \item Perform numeric computations on information with digital computers
+  \item Use digital systems to manipulate elements of information
+  \item Signals as elements of information
+  \item Two-valued (binary) number system
+  \item Integrated Circuit (IC) technology
+\end{itemize}
+
+\subsection{Basic Definition}
+\label{ssec:basicDefinition}
+
+On the very basic level, there are a few definitions that will be used throughout the course.
+
+\begin{definition}{Digital Systems}
+  Manipulate \textbf{discrete elements} of information
+\end{definition}
+
+\begin{definition}{Hardware System}
+  A system whose physical components are constructed from electronic building blocks or modules.
+\end{definition}
+
+\begin{definition}{Binary Digital System}
+  Constrains the values of \textbf{digital} inputs and outputs to two distinct values (1s and 0s).
+\end{definition}
+
+\subsection{Positional Notation}
+\label{ssec:positionalNotation}
+
+\begin{definition}{Positional Notation}
+  Used to represent a number as a position. In base ten, every value to the left of the 
+  decimal point
+
+  \begin{align*}
+    N_r &= (a_n \cdot a_{n-1} ... a_1 \cdot a_0 . a_{-1} ... a_{-m})_r \\
+    \textup{decimal value($N_r$)} &= \sum_{j=-m}^{n} (a_j \times r^j)
+  \end{align*}
+
+  Where:
+  \begin{align*}
+    r   &= \textup{is the \textbf{radix} or \textbf{base} of the number system} \\
+    N_r &= \textup{is the number in base-\textbf{r}} \\
+    a_j &= \textup{is a coefficient of the number with a decimal value in the range of $0$ to $(r-1)$} \\
+    j   &= \textup{is the place (or position) of the digit}
+  \end{align*}
+\end{definition}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{c|cccccccccc}
+    \toprule
+    \textbf{Base} ($r$)     & \SetCell[c=10]{c} $5$ \\
+    \textbf{Number} ($N_r$) & \SetCell[c=10]{c} $4021.23_5$ \\
+    \midrule
+    \textbf{$N_r$}                                       &                                                                              \\
+    \textbf{Position ($j$)}                              & 5     & 4     & 3     &     2 &     1 &     0 & . & -1     &     -2 & -3     \\
+    \textbf{Digit ($a_j$)}                               & 0     & 0     & 4     &     0 &     2 &     1 & . & 2      &     3  & 0      \\
+    \textbf{Position Value ($r^j$)}                      & $5^5$ & $5^4$ & $5^3$ & $5^2$ & $5^1$ & $5^0$ & . & $5^-1$ & $5^-2$ & $5^-3$ \\
+    \textbf{Digit Position Value ($a_j \times r^j$)}     & 0     & 0     & 500   & 0     & 10    & 1     & . &    0.4 &   0.12 & 0      \\
+    \textbf{Decimal Value ($\sum_{}^{} a_j \times r^j$)} & \SetCell[c=10]{c} $511.52$                                                   \\
+    \bottomrule
+  \end{tblr}
+  \caption{Base Five Representation}
+  \label{tbl:baseFiveRepresentation}
+\end{figure}
+
+\subsection{Binary Number System}
+\label{ssec:binaryNumberSystem}
+
+\begin{wrapfigure}[6]{r}{0.3\textwidth}
+  \begin{tblr}{lcc}
+    \toprule
+    $2^10$ & \textbf{K} & Binary Kilo \\
+    $2^20$ & \textbf{M} & Binary Mega \\
+    $2^30$ & \textbf{G} & Binary Giga \\
+    $2^50$ & \textbf{T} & Binary Tera \\
+    \bottomrule
+  \end{tblr}
+  \caption{Special Powers of 2}
+  \label{tbl:pwrtwo}
+\end{wrapfigure}
+
+Digital systems manipulate binary calues. The digits in a binary number are called \textbf{bits}
+(\textbf{b}inary dig\textbf{its}). A group of 8 bits is called a \textbf{byte}.
+
+When in the binary number system, some unit prefixes take on a different meaning. This can
+be seen in Figure \ref{tbl:pwrtwo}.
+
+\subsection{Number Base Conversion}
+\label{ssec:numberBaseConversion}
+
+Conversion of decimal numbers $\rightarrow$ base-r numbers.
+
+\begin{enumerate}
+  \itemsep0em
+  \item Integer Conversion
+    \begin{enumerate}
+      \itemsep0em
+      \item Divide the number by the base r; save the remainder and the quotient.
+      \item Divide the quotient from the previous step by r; save the remainder and \textit{new} quotient.
+      \item Repeat step (a) until the \textit{new} quotient is 0.
+      \item The integer in base-r is the \textbf{remainders} written down in \textbf{reverse} order from which they were generated.
+    \end{enumerate}
+  \item Fractional Conversion
+    \begin{enumerate}
+      \itemsep0em
+      \item Multiply the fractional portion of the number by $r$; save the result and the number to the left of hte decimal point
+      \item Multiply the fractional portion the result from the previous step by $r$; save the result and the \textit{new} number to the left of the decimal point
+      \item Repeat step (b) until the fractional portion is zero or the desired precision is reached.
+      \item The fraction in base-$r$ is the digits save that were left of the decimal point in order.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{align*}
+      47_{10} &= ?_2                    \\
+      47 \div 2 &= 23 \textup{\ remainder \ } 1 \\
+      23 \div 2 &= 11 \textup{\ remainder \ } 1 \\
+      11 \div 2 &= 5  \textup{\ remainder \ } 1 \\
+      5  \div 2 &= 2  \textup{\ remainder \ } 1 \\
+      2  \div 2 &= 1  \textup{\ remainder \ } 0 \\
+      1  \div 2 &= 0  \textup{\ remainder \ } 1 \\
+      47_{10} &= 101111_2
+    \end{align*}
+    \caption{Integer Conversion}
+    \label{fig:integerConversion}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{align*}
+      0.3_{10}     &= ?_2       \\
+      0.3 \times 2 &= 0.6       \\
+      0.6 \times 2 &= 1.2       \\
+      0.2 \times 2 &= 0.4       \\
+      0.4 \times 2 &= 0.8       \\
+      0.8 \times 2 &= 1.6       \\
+      0.3_{10}     &= 0.0\overline{1001}_2
+    \end{align*}
+    \caption{Fractional Conversion}
+    \label{fig:fractionalConversion}
+  \end{subfigure}
+  \caption{Fractional and Integer Conversion}
+  \label{fig:fractionalAndIntegerConversion}
+\end{figure}
+
+This method of converting between base systems works universally. Additionally, they can be
+used in tandem to convert between a number with an integer and fraction part.
+
+\subsection{Octal and Hexadecimal}
+\label{ssec:octalAndHexadecimal}
+
+These are very important within digital design. Notably, both octal (base 8) and hexadecimal (base 16)
+are both powers of binary (base 2). When any number base is a power of another number base
+a quicker conversion method can be used.
+
+\begin{enumerate}
+  \itemsep0em
+  \item Starting from the binary point and proceeding to the left and to the right, partition
+    the binary number into groups of $x$ bits, where $x$ is the power to which the lower base
+    is raised to reach the higher base.
+    \begin{itemize}
+      \itemsep0em
+      \item For example, converting from octal to binary, $x = 3$ since $2^3 = 8$.
+    \end{itemize}
+  \item Convert each group of $x$ bits into the equivalent binary representation.
+\end{enumerate}
+
+\end{document}

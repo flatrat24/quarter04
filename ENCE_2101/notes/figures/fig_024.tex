@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 020}
+\date{October 28, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg
+  }
+  \coordinate (e) at (0,-12);
+  \node[thick, nor port] (nore1) at ($(e)+(1,01.5)$){};
+  \node[thick, nor port] (nore2) at ($(e)+(1,-1.5)$){};
+
+  \draw[draw=fg, thick] ($(nore1.in 1)+(-1,0)$) node[left] {$R$} to[short, *-] node[midway, anchor = south] {{\color{re!75!fg} \textbf{0}}} (nore1.in 1);
+  \draw[draw=fg, thick] ($(nore2.in 2)+(-1,0)$) node[left] {$S$} to[short, *-] node[midway, anchor = north] {{\color{re!75!fg} \textbf{0}}} (nore2.in 2);
+
+  \draw[draw=fg, thick] ($(nore1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(nore2.in 1)+(-0.5,01)$) |- node[midway, anchor = east, yshift = 014pt] {{\color{re!75!fg} \textbf{1}}} (nore2.in 1);
+  \draw[draw=fg, thick] (nore1.out) to[short, -*] node[midway, anchor = south, xshift = -11pt]                                                      {{\color{re!75!fg} \textbf{1}}} ++(1,0) node[anchor = west] {$P$};
+
+  \draw[draw=fg, thick] ($(nore2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(nore1.in 2)+(-0.5,-1)$) |- node[midway, anchor = east, yshift = -14pt] {{\color{re!75!fg} \textbf{0}}} (nore1.in 2);
+  \draw[draw=fg, thick] (nore2.out) to[short, -*] node[midway, anchor = north, xshift = -17pt]                                                      {{\color{re!75!fg} \textbf{0}}} ++(1,0) node[anchor = west] {$Q$};
+
+  \coordinate (f) at (8,-12);
+  \draw[draw=fg, -stealth, ultra thick] ($(f)+(-4,0)$) -- node[midway, anchor = south] {Set $R$ to $1$} ++(2,0);
+  \node[thick, nor port] (norf1) at ($(f)+(1,01.5)$){};
+  \node[thick, nor port] (norf2) at ($(f)+(1,-1.5)$){};
+
+  \draw[draw=fg, thick] ($(norf1.in 1)+(-1,0)$) node[left] {$R$} to[short, *-] node[midway, anchor = south] {{\color{bl!75!fg} \textbf{1}}} (norf1.in 1);
+  \draw[draw=fg, thick] ($(norf2.in 2)+(-1,0)$) node[left] {$S$} to[short, *-] node[midway, anchor = north] {{\color{re!75!fg} \textbf{0}}} (norf2.in 2);
+
+  \draw[draw=fg, thick] ($(norf1.out)+(0.5,0)$) to[short, *-] ++(0,-1) -- ($(norf2.in 1)+(-0.5,01)$) |- node[midway, anchor = east, yshift = 014pt] {{\color{gr!75!fg} \textbf{0}}} (norf2.in 1);
+  \draw[draw=fg, thick]   (norf1.out) to[short, -*] node[midway, anchor = south, xshift = -11pt]                                                    {{\color{gr!75!fg} \textbf{0}}} ++(1,0) node[anchor = west] {$P$};
+
+  \draw[draw=fg, thick] ($(norf2.out)+(0.5,0)$) to[short, *-] ++(0,01) -- ($(norf1.in 2)+(-0.5,-1)$) |- node[midway, anchor = east, yshift = -14pt] {{\color{gr!75!fg} \textbf{1}}} (norf1.in 2);
+  \draw[draw=fg, thick]   (norf2.out) to[short, -*] node[midway, anchor = north, xshift = -17pt]                                                    {{\color{gr!75!fg} \textbf{1}}} ++(1,0) node[anchor = west] {$Q$};
+\end{circuitikz}
+\end{document}

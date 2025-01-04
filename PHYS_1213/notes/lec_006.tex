@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 006}
+\date{October 02, 2024}
+
+\begin{document}
+
+\newpage
+\section{Capacitors}
+\label{sec:capacitor}
+
+\begin{definition}{Capacitor}
+  Circuit components that are used to store charge.
+\end{definition}
+
+The way capacitors are charged is by moving charge from one part of the capacitor to the other
+side of the capacitor, leaving one side positively charged and the other negatively charged.
+This process stores energy.
+
+\begin{figure}[h]
+  \centering
+  \includestandalone{figures/fig_023}
+  \caption{Charging a Capacitor}
+  \label{fig:023}
+\end{figure}
+
+This change in charge between the two plates creates a electric field between them. Doubling
+the charge of the capacitor will double the electric field.
+\begin{formula}{Capacitance}
+  \begin{align*}
+    C &= \frac{Q}{\Delta V}
+  \end{align*}
+  Capacitance is measured in the following units:
+  \begin{align*}
+    \frac{C}{V} = \textup{Farad} = F
+  \end{align*}
+\end{formula}
+The constant being multiplied by voltage is called the \textbf{capacitance}, which is the
+measurement of a capacitor's capability to hold charge. Capacitance depends on the shape
+and material of a capacitor.
+\begin{formula}{Capacitance for Parallel Plates}
+  \begin{figure}[H]
+    \begin{subfigure}[H]{0.35\textwidth}
+      \centering
+      \begin{align*}
+        E = \frac{\frac{Q}{A}}{\epsilon_0}\ &\textup{;}\ \Delta V = Ed \\
+        \Delta V &= \frac{Qd}{\epsilon_0A} \\
+        C &= \frac{\epsilon_0A}{d} \\
+      \end{align*}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.6\textwidth}
+      As distance increases, the capacitance increases. This is because each bit of charge
+      has less voltage drop it needs to go through to reach the other side.
+
+      As area increases, so does capacitance because more area means there is more room to
+      store charge.
+    \end{subfigure}
+  \end{figure}
+\end{formula}
+
+When you connect a capacitor to a battery, that battery maintains a potential difference
+between the two plates. By doing this, the battery pushed charges from one side to the other,
+thus performing \textbf{work}.
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_024}
+  \caption{Battery Connected to a Capacitor}
+  \label{fig:024}
+\end{figure}
+
+The energy required to charge this capacitor with the battery:
+\begin{formula}{Energy to Charge a Capacitor}
+  \begin{figure}[H]
+    \begin{subfigure}[H]{0.3\textwidth}
+      \begin{equation*}
+        U = \frac{Q \Delta V}{2}
+      \end{equation*}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.3\textwidth}
+      \begin{equation*}
+        U = \frac{Q^2}{2C}
+      \end{equation*}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.3\textwidth}
+      \begin{equation*}
+        U = \frac{C \Delta V^2}{2}
+      \end{equation*}
+    \end{subfigure}
+  \end{figure}
+\end{formula}
+
+\begin{figure}[H]
+  \centering
+  % TODO
+  \textbf{ADD IN SYMBOLS FOR CIRCUIT DIAGRAMS}
+  \caption{Circuit Diagram with Capacitor and Battery}
+  \label{fig:0025}
+\end{figure}
+
+Any time there is a circuit diagram, it's important to think about where the particles are
+flowing through the circuit, gaining and losing energy.
+
+When capacitors are connected in parallel, the total capacitance of the capacitors will
+simply be:
+\begin{equation*}
+  C_{parallel} = C_1 + C_2 + C_3 + ...
+\end{equation*}
+This is because the voltage drop across each capacitor will be the same.
+
+When connected in series, the total capacitance is:
+\begin{align*}
+  \Delta V_{total} &= \Delta V_1 + \Delta V_2 + \Delta V_3 + ... \\
+  \Delta V_{total} &= \frac{Q}{C_1} + \frac{Q}{C_2} + \frac{Q}{C_3} + ... \\
+  \Delta V_{total} &= Q\left(\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + ...\right) \\
+  \frac{\Delta V_{total}}{Q} &= \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + ... \\
+  \frac{1}{C_{series}} &= \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + ...
+\end{align*}
+This is because the charge buildup on each capacitor will be the same. When charge flows
+from the end of one capacitor to the beginning of the next, that charge has nowhere to go
+but only the next capacitor.
+
+\subsection{Dielectric}
+\label{ssec:dielectric}
+
+\begin{definition}{Dielectric}
+  A material put between plates of capacitors to maintain the separation as well as modify
+  the capacitance of the capacitor.
+\end{definition}
+
+Capacitors need to be incredibly close together for them to have significant amounts of
+capacitance. Because two oppositely charged plates will have some pull between them, an
+object called a \textbf{dielectric} is usually put between the plates to keep them apart.
+
+\begin{formula}{Dielectric Capacitance}
+  \begin{align*}
+    C_{dielectric} = \kappa C = k \frac{Q}{\Delta V}
+  \end{align*}
+\end{formula}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_025}
+  \caption{Dielectric in a Capacitor}
+  \label{fig:025}
+\end{figure}
+
+\end{document}

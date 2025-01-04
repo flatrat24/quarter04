@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 008}
+\date{September 12, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \filldraw[fill=ma!50, draw=ma!50] (0,0.5) node[bg] {$-$} circle (10pt);
+
+  \filldraw[fill=re!50, draw=re!50, ultra thick] (1.5,0) rectangle (2,3);
+  \foreach \x in {0.5,1,...,2.5} {
+    \draw[bg] (1.75, \x) node[rotate = 0, anchor = center] {$+$};
+  }
+
+  \draw[draw=fg, thick, stealth-stealth] (0.3, 0.8) -- (1.3, 2.8);
+  \draw[draw=fg, thick, stealth-stealth] (0.35, 0.6) -- (1.3, 2);
+  \draw[draw=fg, thick, stealth-stealth] (0.35, 0.4) -- (1.3, 1);
+  \draw[draw=fg, thick, stealth-stealth] (0.3, 0.3) -- (1.3, 0.3);
+
+\end{tikzpicture}
+\end{document}

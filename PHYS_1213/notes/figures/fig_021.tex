@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 019}
+\date{September 26, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \draw[draw=fg, thick, -stealth] (0,0) -- (2.75,0);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (-2.75,0);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (0,2.75);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (0,-2.75);
+
+  \draw[draw=fg, thick, -stealth] (0,0) -- (2,2);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (2,-2);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (-2,2);
+  \draw[draw=fg, thick, -stealth] (0,0) -- (-2,-2);
+
+  \filldraw[fill=or!50!fg, draw=or!75!fg, thick] (0,0) circle (10pt) node[bg] {$+q$};
+
+  \draw[draw=fg, thick, dashed] (0,0) circle (15pt);
+  \draw[draw=fg, thick, dashed] (0,0) circle (20pt);
+  \draw[draw=fg, thick, dashed] (0,0) circle (30pt);
+  \draw[draw=fg, thick, dashed] (0,0) circle (45pt);
+  \draw[draw=fg, thick, dashed] (0,0) circle (70pt);
+
+\end{tikzpicture}
+\end{document}

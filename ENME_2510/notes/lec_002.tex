@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 002}
+\date{September 11, 2024}
+
+\begin{document}
+
+\section{Representing Forces}
+\label{sec:representingForces}
+
+\subsection{Force Vectors}
+\label{ssec:forceVectors}
+
+When describing a force, there are three components to that \textbf{force vector}:
+
+\begin{figure}[h]
+  \begin{subfigure}[H]{0.6\textwidth}
+    \begin{enumerate}
+      \itemsep0em
+      \item Point of application
+      \item Magnitude of the force
+      \item Direction of the force
+    \end{enumerate}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_001}
+  \end{subfigure}
+\end{figure}
+
+
+\begin{definition}{Concurrent Forces}
+  Two or more forces that are acting on the \textit{same point}.
+\end{definition}
+
+When dealing with concurrent forces, you can combine the two forces through vector addition
+to create a single force acting on that same point. That force is called the resultant force.
+
+\begin{definition}{Resultant Force}
+  The vector sum of two or more concurrent forces.
+  \begin{equation*}
+    \sum_{}^{} \overrightarrow{F} = \overrightarrow{F}_R = \overrightarrow{F}_1 + \overrightarrow{F}_2 +...
+  \end{equation*}
+\end{definition}
+
+\subsection{Vectors and Scalars}
+\label{ssec:vectorsAndScalars}
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_002}
+  \caption{Vector}
+  \label{fig:002}
+\end{figure}
+
+\textbf{Vectors} should be represented with an arrow above the variable. For example, 
+a force would be written as $\overrightarrow{\textup{F}}$.
+
+\textbf{Magnitude} is written as an italic version of the vector. So, $|\overrightarrow{\textup{F}}| = F$.
+
+Vector addition with can be done geometrically by creating a triangle, aligning the vectors
+tip-to-tail.
+
+\begin{figure}[H]
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_003}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_004}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.3\textwidth}
+    \centering
+    \includestandalone{figures/fig_005}
+  \end{subfigure}
+  \caption{Vector Addition}
+  \label{fig:003}
+\end{figure}
+
+\textbf{Law of Sines} relates the lengths of the sides of any shaped triangle to the sines
+of its angles.
+
+\begin{formula}{Law of Sines}
+  \begin{equation*}
+    \frac{sin( \alpha )}{|\textup{\textbf{F}}_1|} = \frac{sin( \beta )}{|\textup{\textbf{F}}_2|} = \frac{sin( \gamma )}{|\textup{\textbf{F}}_R|}
+  \end{equation*}
+\end{formula}
+
+\textbf{Law of Cosines} relates the lengths of the sides of any shaped triangle to the cosine
+of one of its angles.
+
+\begin{formula}{Law of Cosines}
+  \begin{equation*}
+    |\textup{\textbf{F}}_R|^2 = |\textup{\textbf{F}}_1|^2 + |\textup{\textbf{F}}_2|^2 - 2|\textup{\textbf{F}}_1||\textup{\textbf{F}}_2|cos( \gamma )
+  \end{equation*}
+\end{formula}
+
+\subsection{Unit Vectors and Components of Vectors}
+\label{ssec:unitVectorsAndComponentsOfVectors}
+
+\textbf{Unit Vector} is a dimensionless vector with a magnitude equal to one. 
+
+\begin{equation*}
+  \hat{u} = \frac{u}{|u|}
+\end{equation*}
+
+When considering a $3D$ space going in the $x$, $y$, and $z$ directions, the corresponding
+unit vectors are $\hat{i}$, $\hat{j}$, and $\hat{k}$ respectively.
+
+When resolving a vector, you can take a force $F$, and break it into its $x$ and $y$ components.
+However, $F_x$ has no direction, so it must be accompanied by a unit vector to specify its direction.
+\begin{equation*}
+  \overrightarrow{F} = F_x\hat{i} + F_y\hat{j} \\
+\end{equation*}
+
+To find the magnitude of a vector:
+
+\begin{equation*}
+  F = |\textup{F}| = \sqrt{(F_x)^2 + (F_y)^2}
+\end{equation*}
+
+To find its direction:
+
+\begin{equation*}
+  \hat{u}_F = \frac{F}{|F|} = \left(\frac{F_x}{F}\right)\hat{i} + \left(\frac{F_y}{F}\right)\hat{j}
+\end{equation*}
+
+\end{document}

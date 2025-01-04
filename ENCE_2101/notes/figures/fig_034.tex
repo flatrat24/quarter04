@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 034}
+\date{November 06, 2024}
+
+\begin{document}
+\begin{circuitikz}
+  \ctikzset{
+    logic ports=ieee,
+    logic ports/scale=1,
+    logic ports/fill=fg!25!bg,
+    sources/fill=fg!25!bg,
+    flipflops/fill=fg!25!bg
+  }
+  \coordinate (a) at (0,0);
+  \node[thick, nor port] (nor) at ($(a)+(5.5,0.5)$){};
+  \node[thick, latch] (da) at ($(a)+(2,2)$){};
+  \node[thick, latch] (db) at ($(a)+(2,-2)$){};
+  \node[thick, vsourcesquareshape, rotate = 90] (clock) at ($(a)+(-1,-4)$){};
+
+  \draw[draw=fg, thick] ($(clock)+(0,0.45)$) to[short, -*] ++(0,0.7) |- (db.pin 3);
+  \draw[draw=fg, thick] ($(clock)+(0,1.15)$) |- (da.pin 3);
+
+  \draw[draw=fg, thick] (da.pin 6) to[short, -*] ++(0.75,0) |- (nor.in 1);
+  \draw[draw=fg, thick] (db.pin 6) to[short, -*] ++(0.75,0) |- (nor.in 2);
+
+  \draw[draw=fg, thick] ($(db.pin 6)+(0.25,0)$) to[short, *-] ++(0,0) |- ++(-3,1.25) |- (da.pin 1);
+
+  \draw[draw=fg, thick] (da.pin 4) to[short, -*] ++(0,0);
+  \draw[draw=fg, thick] (db.pin 4) to[short, -*] ++(0,0);
+
+  \draw[draw=fg, thick] (nor.out) |- ++(-6.465,-0.85) |- (db.pin 1);
+
+  \draw[draw=fg, thick] ($(da.pin 6)+(0.75,0)$) -- ++(2,0) |-    ($(a)+(8,2)$);
+  \draw[draw=fg, thick] (nor.out) to[short, *-] ++(0.25,0) |-    ($(a)+(8,-2)$);
+  \draw[draw=fg, thick] ($(db.pin 6)+(0.75,0)$) -- ++(3.25,0) |- ($(a)+(8,0)$);
+
+  \filldraw[fill=re!50!bg, draw=re, thick] ($(a)+(8,2)$)  circle (0.35) node[anchor = center] {$O_2$};
+  \filldraw[fill=ye!50!bg, draw=ye, thick] ($(a)+(8,0)$)  circle (0.35) node[anchor = center] {$O_1$};
+  \filldraw[fill=gr!50!bg, draw=gr, thick] ($(a)+(8,-2)$) circle (0.35) node[anchor = center] {$O_0$};
+\end{circuitikz}
+\end{document}

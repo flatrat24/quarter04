@@ -1,0 +1,52 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 025}
+\date{October 12, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  % Beam
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (0,0) rectangle ++(5,0.5);
+
+  % Wall
+  \draw[draw=fg, ultra thick] (0,-1) -- ++(0,2.5);
+
+  % F1
+  \coordinate (a) at (5,0.25);
+  \draw[draw=re, ultra thick, stealth-] (a) -- ++(0.5,1) node[anchor = south west] {$F_1$};
+  \draw[draw=fg, thick, dashed] ($(a)+(0.5,0)$) -- ++(0,1);
+  \draw[draw=fg, thick, dashed] (a) node[yshift = 5pt, xshift = 7pt] {$\theta$} -- ++(0.5,0);
+
+  % F2
+  \coordinate (b) at (3,0.25);
+  \draw[draw=re, ultra thick, stealth-] (b) -- ++(0,1) node[anchor = south] {$F_2$};
+
+  % B
+  \coordinate (c) at (0,0.25);
+  \filldraw[fill=bl, draw=bl] (c) circle (3pt) node[anchor = west] {$B$};
+
+  % A
+  \coordinate (e) at (2,0.25);
+  \filldraw[fill=bl, draw=bl] (e) circle (3pt) node[anchor = west] {$A$};
+
+  % Reaction Forces
+  \draw[draw=bl!50!fg, ultra thick, stealth-] (-0.25,0.25) -- ++(-0.5,0) node[anchor = east] {$F_{Rx}$};
+  \draw[draw=bl!50!fg, ultra thick, -stealth] (-0.15,-0.75) -- ++(0,2) node[anchor = east] {$F_{Ry}$};
+  \coordinate (d) at (-0.5,-0.75);
+  \draw[draw=bl!25!fg, ultra thick, dashed] ($(d)+(-0.45,-0.35)$) node[anchor = east, xshift = -10pt] {$M_R$} -- (0,0.25);
+  \draw[-stealth,bl!50!fg, ultra thick] ($(d)+(0,0)$) arc [
+    start angle = 30,
+    end angle = 330,
+    x radius = 0.5,
+    y radius = 0.5
+    ];
+
+  % Lengths
+  \draw[draw=fg, thick, |-|] (0.1,-0.2) -- node[anchor = north] {$L_1$} ++(1.9,0);
+  \draw[draw=fg, thick, |-|] (2,-0.2) -- node[anchor = north] {$L_2$} ++(1,0);
+  \draw[draw=fg, thick, |-|] (3.0,-0.2) -- node[anchor = north] {$L_3$} ++(2,0);
+  \draw[draw=fg, thick, |-|] (0.1,-0.8) -- node[anchor = north] {$L$} ++(4.9,0);
+\end{tikzpicture}
+\end{document}

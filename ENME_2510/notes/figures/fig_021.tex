@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 021}
+\date{October 07, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \filldraw[fill=fg!25!bg, draw=fg, thick] (0,0) rectangle ++(2.5,0.5);
+  \draw[draw=fg, thick, -stealth] (-0.1,0.75) -- node[anchor = east] {$V^-$} ++(0,-1);
+  \draw[draw=fg, thick, stealth-] (2.6,0.75) -- node[anchor = west] {$V^-$} ++(0,-1);
+
+  \filldraw[fill=fg!25!bg, draw=fg, thick] (0,1.25) rectangle ++(2.5,0.5);
+  \draw[draw=fg, thick, stealth-] (-0.1,2) -- node[anchor = east] {$V^+$} ++(0,-1);
+  \draw[draw=fg, thick, -stealth] (2.6,2) -- node[anchor = west] {$V^+$} ++(0,-1);
+
+\end{tikzpicture}
+\end{document}

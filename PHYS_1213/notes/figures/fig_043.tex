@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 043}
+\date{October 31, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+  \tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+      insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+  }
+
+  \draw[ultra thick, fg] (0,0) [partial ellipse=-45:45:2 and 2];
+  \draw[draw=fg, thick, dashed] (0,0) -- node[midway, anchor = south] {$r$} (1.41, -1.41);
+  \filldraw[fill=fg, draw=fg] (0,0) circle (2.5pt) node[anchor = south] {$p$};
+  \draw[draw=or, ultra thick, -stealth] (1.41,-1.41) -- node [midway, anchor = north] {$d \overrightarrow{L}$} ++(0.75,0.75);
+  \draw[draw=gr, ultra thick, -stealth] (1.41,-1.41) -- node [midway, anchor = north] {$\hat{r}$} ++(-0.75,0.75);
+  \draw[draw=bl, ultra thick, -stealth] (2.2,-0.375) -- node [midway, anchor = west] {$I$} ++(0,0.75);
+
+\end{tikzpicture}
+\end{document}

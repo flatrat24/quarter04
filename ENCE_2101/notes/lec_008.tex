@@ -1,0 +1,388 @@
+\documentclass[12pt]{article}
+
+\input{../../xlatex/imports/preamble}
+
+\title{Lecture 008}
+\date{November 06, 2024}
+
+\begin{document}
+
+\newpage
+\section{Sequential Circuit Synthesis}
+\label{sec:sequentialCircuitSynthesis}
+
+The steps to synthesizing a circuit from a description of its behavior are as follows:
+\begin{enumerate}
+  \itemsep0em
+  \item Draw a \textbf{state diagram}
+  \item Construct a \textbf{state/output table}, then assign unique binary values to each
+    state and output in the table
+  \item Create a \textbf{transition/output table}
+  \item Choose a flip-flop
+  \item Construct an \textbf{excitation table}
+  \item Use K-Maps (or another method) to \textbf{derive the logic equations}
+  \item Construct the circuit
+\end{enumerate}
+
+To illustrate this process more clearly, the following design specifications will be used
+to derive a fully functioning circuit. The circuit will operate as a stop light rotating
+through green, red, and yellow:
+\begin{enumerate}
+  \itemsep0em
+  \item All changes in the circuit occur on the positive edge of a clock signal
+  \item The circuit has three outputs ($r$, $y$, and $g$)
+    \begin{enumerate}
+      \itemsep-0.5em
+      \item The output $r$ is equal to 1 if the previous output was $y$
+      \item The output $y$ is equal to 1 if the previous output was $g$
+      \item The output $g$ is equal to 1 if the previous output was $r$ or there is no
+        previous output
+    \end{enumerate}
+\end{enumerate}
+\begin{center}
+  \begin{tblr}{r|cccccccccccccccccccc}
+    \toprule
+    Clockcycle & $t_{0}$ & $t_{1}$ & $t_{2}$ & $t_{3}$ & $t_{4}$ & $t_{5}$ & $t_{6}$ & $t_{7}$ & $t_{8}$ & $t_{9}$ & $t_{10}$ \\
+    \midrule
+    $r$        & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\
+    $y$        & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 \\
+    $g$        & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\
+    \bottomrule
+  \end{tblr}
+\end{center}
+
+\subsection{State Diagram}
+\label{ssec:stateDiagram}
+
+\begin{wrapfigure}[7]{r}{0.45\textwidth}
+  \vspace{-45pt}
+  \centering
+  \includestandalone{figures/fig_028}
+  \caption{State Diagram}
+  \label{fig:stateDiagramOne}
+\end{wrapfigure}
+
+In a simple circuit with no inputs (other than a clock cycle), the conditions for each
+state are straightforward: if the current state is {\color{re!75!fg} red} ($S_2$), then
+the next state is {\color{gr!75!fg} green} ($S_0$).
+
+Note that a starting state is required, otherwise the initial state of the circuit will
+be undefined behavior.
+
+\subsection{State/Output Table}
+\label{ssec:stateOutputTable}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{ccc}
+      \toprule
+      $S$ & $S^+$ & $O$ \\
+      \midrule
+      $S_0$ & $S_1$ & {\color{gr!75!fg}$g$} \\
+      $S_1$ & $S_2$ & {\color{ye!75!fg}$y$} \\
+      $S_2$ & $S_0$ & {\color{re!75!fg}$r$} \\
+      \bottomrule
+    \end{tblr}
+    \caption{Abstract Representation}
+    \label{fig:stateOutputTableAbstractRepresentationOne}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \begin{tblr}{cc|cc|ccc}
+      \toprule
+      \SetCell[c=2]{c} $S$ && \SetCell[c=2]{c} $S^+$ && \SetCell[c=3]{c} $O$ && \\
+      \midrule
+      0 & 0 & 0 & 1 & {\color{gr!75!fg}$1$} & {\color{gr!75!fg}$0$} & {\color{gr!75!fg}$0$} \\
+      0 & 1 & 1 & 0 & {\color{ye!75!fg}$0$} & {\color{ye!75!fg}$1$} & {\color{ye!75!fg}$0$} \\
+      1 & 0 & 0 & 0 & {\color{re!75!fg}$0$} & {\color{re!75!fg}$0$} & {\color{re!75!fg}$1$} \\
+      1 & 1 & * & * & *                     & *                     & *                     \\
+      \bottomrule
+    \end{tblr}
+    \caption{Binary Representation}
+    \label{fig:stateOutputTableBinaryRepresentationOne}
+  \end{subfigure}
+  \caption{State/Output Table}
+  \label{fig:stateOutputTable}
+  \vspace{-15pt}
+\end{figure}
+
+Based on the state diagram (Figure \ref{fig:stateDiagramOne}), a state/output table can be
+derived. This is essentially a tabular representation of the state diagram, showing the
+current state ($S$), the next state ($S^+$), and the output corresponding to each state
+($O$).
+
+In Figure \ref{fig:stateOutputTableAbstractRepresentationOne}, a simple and abstracted table
+is shown, directly mirroring the information in the state diagram. In Figure
+\ref{fig:stateOutputTableBinaryRepresentationOne}, each state and output is replaced with
+actual binary values to represent them.
+
+\subsection{Transition/Output Table}
+\label{ssec:transitionOutputTable}
+
+\begin{figure}[H]
+  \centering
+  \begin{tblr}{cc|cc|ccc}
+    \toprule
+    \SetCell[c=2]{c} $S$ && \SetCell[c=2]{c} $S^+$ && \SetCell[c=3]{c} $O$ && \\
+    $S_0$ & $S_1$         & $S_0^+$ & $S_1^+$       & $O_0$ & $O_1$ & $O_2$   \\
+    \midrule
+    0 & 0 & 0 & 1 & {\color{gr!75!fg}$1$} & {\color{gr!75!fg}$0$} & {\color{gr!75!fg}$0$} \\
+    0 & 1 & 1 & 0 & {\color{ye!75!fg}$0$} & {\color{ye!75!fg}$1$} & {\color{ye!75!fg}$0$} \\
+    1 & 0 & 0 & 0 & {\color{re!75!fg}$0$} & {\color{re!75!fg}$0$} & {\color{re!75!fg}$1$} \\
+    1 & 1 & * & * & *                     & *                     & *                     \\
+    \bottomrule
+  \end{tblr}
+  \caption{Transition Table}
+  \label{fig:transitionTableOne}
+  \vspace{-15pt}
+\end{figure}
+
+Notably, this transition table is essentially identical to the table in Figure
+\ref{fig:stateOutputTableBinaryRepresentationOne}. This is because, when assigning binary
+values to each state/output in the circuit, the transitions become apparent anyway.
+
+\subsection{Choose a Flip-Flop}
+\label{ssec:chooseAFlipFlop}
+
+There are many Flip-Flops to choose from. However, three important ones (each with its own
+derivations) exist: the \textbf{T Flip-Flop}, the \textbf{D Flip-Flop}, and the
+\textbf{JK Flip-Flop}.
+
+\newpage
+\subsubsection{D Flip-Flop}
+\label{sssec:DFlipFlop}
+\begin{wrapfigure}[]{r}{0.5\textwidth}
+  \vspace{-30pt}
+  \centering
+  \begin{subfigure}[H]{0.15\textwidth}
+    \centering
+    \begin{circuitikz}
+      \node[fill=fg!10!bg, thick, latch] (D) at (0,0){};
+    \end{circuitikz}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.30\textwidth}
+    \centering
+    \begin{tblr}{cc|cc}
+      \toprule
+      $D$ & $C$ & $Q^+$ & $\overline{Q}^+$  \\
+      \midrule
+      0 & $\uparrow$ & $0$ & $1$            \\
+      1 & $\uparrow$ & $1$ & $0$            \\
+      X & 1          & $Q$ & $\overline{Q}$ \\
+      \bottomrule
+    \end{tblr}
+  \end{subfigure}
+\end{wrapfigure}
+The D Flip-Flop is described by the characteristic equation:
+\begin{equation*}
+  Q^+ = D
+\end{equation*}
+The D Flip-Flop captures the value of the $D$-input at a definite portion of the clock
+cycle (generally at the rising edge of the clock). That captured value becomes the $Q$
+output. At other times, the output $Q$ does not change.
+
+\subsubsection{T Flip-Flop}
+\label{sssec:TFlipFlop}
+\begin{wrapfigure}[]{l}{0.5\textwidth}
+  \centering
+  \begin{subfigure}[H]{0.15\textwidth}
+    \centering
+    \begin{circuitikz}
+      \node[fill=fg!10!bg, thick, flipflop T] (T) at (0,0){};
+    \end{circuitikz}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.30\textwidth}
+    \centering
+    \begin{tblr}{cc|cc}
+      \toprule
+      $T$ & $C$ & $Q^+$ & $\overline{Q}^+$ \\
+      \midrule
+      0 & $\uparrow$ & $Q$ & $\overline{Q}$ \\
+      1 & $\uparrow$ & $\overline{Q}$ & $Q$ \\
+      X & 1          & $Q$ & $\overline{Q}$ \\
+      X & 0          & $Q$ & $\overline{Q}$ \\
+      \bottomrule
+    \end{tblr}
+  \end{subfigure}
+\end{wrapfigure}
+
+If the $T$ input is high, the T Flip-Flop changes state ("toggles") whenever the clock input
+rises. If the $T$ input is low, the flip-flop holds the previous value. This behavior
+is described by the characteristic equation:
+\begin{equation*}
+  Q^+ = T \oplus Q = (T \land \overline{Q}) \lor (\overline{T} \land Q)
+\end{equation*}
+The toggle only occurs on the rising edge of a clock signal, meaning any input is meaningless
+when not paired with a rising edge. This is seen in rows $2$ and $3$ of the table.
+
+\subsubsection{JK Flip-Flop}
+\label{sssec:jkFlipFlop}
+
+\begin{wrapfigure}[8]{r}{0.5\textwidth}
+  \centering
+  \begin{subfigure}[H]{0.15\textwidth}
+    \centering
+    \begin{circuitikz}
+      \node[fill=fg!10!bg, thick, flipflop JK] (JK) at (0,0){};
+    \end{circuitikz}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.30\textwidth}
+    \centering
+    \begin{tblr}{ccc|cc}
+      \toprule
+      $J$ & $K$ & $C$ & $Q^+$ & $\overline{Q}^+$ \\
+      \midrule
+      0 & 0 & $\uparrow$ & $Q$            & $\overline{Q}$ \\
+      0 & 1 & $\uparrow$ & 0              & 1              \\
+      1 & 0 & $\uparrow$ & 1              & 0              \\
+      1 & 1 & $\uparrow$ & $\overline{Q}$ & $Q$            \\
+      X & X & 0          & $Q$            & $\overline{Q}$ \\
+      X & X & 1          & $Q$            & $\overline{Q}$ \\
+      \bottomrule
+    \end{tblr}
+  \end{subfigure}
+\end{wrapfigure}
+
+The JK Flip-Flop, augments the behavior of the SR flip-flop ($J$: Set, $K$: Reset) by 
+interpreting the $J = K = 1$ condition as a "flip" or toggle command.
+\begin{align*}
+  J=1, K=1 &\rightarrow \textup{Toggle} \\
+  J=0, K=1 &\rightarrow \textup{Reset} \\
+  J=1, K=0 &\rightarrow \textup{Set} \\
+  J=0, K=0 &\rightarrow \textup{No Change}
+\end{align*}
+Similarly to the T Flip-Flop, the changes can only occur on the rising edge of a clock
+signal, making any input outside of that rising edge meaningless. The JK Flip-Flop is
+described by the characteristic equation:
+\begin{equation*}
+  Q^+ = (J \land \overline{Q}) \lor (\overline{K} \land Q)
+\end{equation*}
+\hrule
+\vspace{8pt}
+For the purposes of this circuit, the \textbf{D Flip-Flop} is sufficient and will be used.
+
+\subsection{Construct an Excitation Table}
+\label{ssec:constructAnExcitationTable}
+
+An excitation table is shows the information required to change (or "excite") the circuit
+into moving from one state to the next. Since flip-flops all function differently, an
+excitation table for a circuit cannot be generalized to any flip-flop.
+
+For the current design, the following excitation table can be constructed from the 
+transition/output table.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.40\textwidth}
+    \centering
+    \begin{tblr}{cc|cc|ccc}
+      \toprule
+      \SetCell[c=2]{c} $S$ && \SetCell[c=2]{c} $S^+$ && \SetCell[c=3]{c} $O$ && \\
+      $S_0$ & $S_1$         & $S_0^+$ & $S_1^+$       & $O_0$ & $O_1$ & $O_2$   \\
+      \midrule
+      0 & 0 & 0 & 1 & {\color{gr!75!fg}$1$} & {\color{gr!75!fg}$0$} & {\color{gr!75!fg}$0$} \\
+      0 & 1 & 1 & 0 & {\color{ye!75!fg}$0$} & {\color{ye!75!fg}$1$} & {\color{ye!75!fg}$0$} \\
+      1 & 0 & 0 & 0 & {\color{re!75!fg}$0$} & {\color{re!75!fg}$0$} & {\color{re!75!fg}$1$} \\
+      1 & 1 & * & * & *                     & *                     & *                     \\
+      \bottomrule
+    \end{tblr}
+    \caption{Transition/Output Table}
+    \label{fig:transitionOutputTableOneTwo}
+  \end{subfigure}
+  \begin{subfigure}[H]{0.50\textwidth}
+    \centering
+    \begin{tblr}{cc|cc|cc|ccc}
+      \toprule
+      \SetCell[c=2]{c} $S$ && \SetCell[c=2]{c} $S^+$ && \SetCell[c=2]{c} $D$ && \SetCell[c=3]{c} $O$ && \\
+      $S_0$ & $S_1$         & $S_0^+$ & $S_1^+$       & $D_0$ & $D_1$         & $O_0$ & $O_1$ & $O_2$   \\
+      \midrule
+      0 & 0 & 0 & 1 & 0 & 1 & {\color{gr!75!fg}$1$} & {\color{gr!75!fg}$0$} & {\color{gr!75!fg}$0$} \\
+      0 & 1 & 1 & 0 & 1 & 0 & {\color{ye!75!fg}$0$} & {\color{ye!75!fg}$1$} & {\color{ye!75!fg}$0$} \\
+      1 & 0 & 0 & 0 & 0 & 0 & {\color{re!75!fg}$0$} & {\color{re!75!fg}$0$} & {\color{re!75!fg}$1$} \\
+      1 & 1 & * & * & * & * & *                     & *                     & *                     \\
+      \bottomrule
+    \end{tblr}
+    \caption{Excitation Table}
+    \label{fig:excitationTableOne}
+  \end{subfigure}
+\end{figure}
+Clearly, both the transition table and excitation table are incredibly similar. The only
+difference is the addition of the $D$ column (referring to each of the two D Flip-Flops
+required in the design). This column holds the required inputs to each of the Flip-Flops
+to properly transition the circuit between states.
+
+\subsection{Derive the Logic Equations}
+\label{ssec:deriveTheLogicEquations}
+
+From the excitation table in Figure \ref{fig:excitationTableOne}, a K-Map can be created for
+each of the outputs as well as each of the states. From the K-Maps, the state and output
+equations can be derived.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_029}
+    \begin{equation*}
+      S_0^+ = S_1
+    \end{equation*}
+  \end{subfigure}
+  \vrule
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_030}
+    \begin{equation*}
+      S_1^+ = \overline{S_0} \land \overline{S_1} = S_0 \overline{\lor} S_1
+    \end{equation*}
+  \end{subfigure}
+  \caption{State K-Maps}
+  \label{fig:stateKMapsOne}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_031}
+    \begin{equation*}
+      {\color{gr!50!fg}O_0} = \overline{S_0} \land \overline{S_1} = S_0 \overline{\lor} S_1
+    \end{equation*}
+  \end{subfigure}
+  \vrule
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_032}
+    \begin{equation*}
+      {\color{ye!50!fg}O_1} = S_1
+    \end{equation*}
+  \end{subfigure}
+  \vspace{12pt}
+  \hrule
+  \vspace{12pt}
+  \begin{subfigure}[H]{0.45\textwidth}
+    \centering
+    \includestandalone{figures/fig_033}
+    \begin{equation*}
+      {\color{re!75!fg}O_2} = S_0
+    \end{equation*}
+  \end{subfigure}
+  \caption{State K-Maps}
+  \label{fig:outputKMapsOne}
+\end{figure}
+
+\subsection{Construct the Circuit}
+\label{ssec:constructTheCircuit}
+
+Using the equations derived in the previous step, all that is left is to construct the
+circuit accordingly:
+
+\begin{figure}[H]
+  \centering
+  \includestandalone{figures/fig_034}
+  \caption{Fully Constructed Circuit}
+  \label{fig:fullyConstructedCircuitOne}
+\end{figure}
+
+\end{document}

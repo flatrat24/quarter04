@@ -1,0 +1,19 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 011}
+\date{October 06, 2024}
+
+\begin{document}
+\begin{tikzpicture}
+
+  \filldraw[fill=fg!10!bg, draw=fg, thick] (0,0) rectangle ++(3,3);
+  \draw[draw=fg, thick, dashed] (1.5,0) -- ++(0,3);
+  \draw[draw=fg, thick, dashed] (0,1.5) -- ++(3,0);
+  \filldraw[fill=re, draw=re] (1.5,1.5) circle (3pt);
+
+  \draw[draw=fg, thick, |-|] (0,-0.25) -- node[midway, anchor = north] {$l$} ++(3,0);
+  \draw[draw=fg, thick, |-|] (3.25,0) -- node[midway, anchor = west] {$h$} ++(0,3);
+
+\end{tikzpicture}
+\end{document}

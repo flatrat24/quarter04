@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\input{../../../xlatex/imports/preamble}
+
+\title{Figure 015}
+\date{October 06, 2024}
+
+\begin{document}
+\begin{tikzpicture}[scale = 1.8]
+
+  \draw[draw=fg!10!bg, step = 0.25] (-0.5,1.95) grid ++(3.95,-2.65);
+
+  \filldraw[fill=fg!10!bg, draw=fg, ultra thick] (0,0) -- ++(3,0) -- ++(0,1.5) -- cycle;
+  \begin{scope}
+    \clip(0,0) -- ++(3,0) -- ++(0,1.5) -- cycle;
+    \draw[draw=re!75!fg, ultra thick, dashed] (2,0) -- ++(0,3);
+  \end{scope}
+  \draw[draw=fg, thick, |-|] (0,-0.25) -- node[midway, anchor = north] {$b = 3$} ++(3,0);
+  \draw[draw=fg, thick, |-|] (3.25,0) -- node[rotate = 90, midway, anchor = north] {$h = 1.5$} ++(0,1.5);
+
+\end{tikzpicture}
+\end{document}
